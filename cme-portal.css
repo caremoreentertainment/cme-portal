@@ -1,0 +1,3960 @@
+ @import url(https://djep21.com/clients/includes/stylesheet_updates.css); 
+@charset "utf-8";
+/* StyleSheet - Default Style Version 24022012.0029 */
+html {overflow-y: scroll; text-decoration:none;}
+a {text-decoration:none;}
+.djep-cursorpointer {
+	cursor: pointer;
+}
+/* Additional Body Structures */
+
+.djep-othereventcontainer  {
+	text-align:right;
+}
+.djep-balanceduerow {
+	background-color: #FAF07E !important;
+	color: #E7690C;
+	font-weight: 700;
+	text-transform:uppercase;
+}
+.djep-balancepaidrow {
+	background-color: #E2FFB7 !important;
+	color: #488215;
+	font-weight: 700;
+	text-transform:uppercase;
+}
+.djep-totalfeerow {
+	background-color: #D7F4FF !important;
+	color: #044B9B;
+	font-weight:700;
+	text-transform:uppercase;
+}
+.djep-totaldepositrow  {
+	background-color: #FFCACB !important;
+	color: #790003;
+	font-weight: 700;
+	text-transform:uppercase;
+}
+.djep-totalfeerow span {
+	background-color: #D7F4FF !important;
+	color: #044B9B;
+	font-weight:700;
+	text-transform:uppercase;
+}
+.djep-esigned {
+background-image: url(https://djep21.com/clients/images/padlock_closed.png);
+background-size: 12px;
+background-repeat: no-repeat;
+background-position: 5px 5px;
+text-indent: 25px;
+}
+
+#edit_special_song_type_helper_div {
+	max-width: 275px;
+}
+#special_song_type_id {
+	max-width:100%;
+}
+
+#welcomeHTML {
+	display:hidden;	
+}
+
+.djep-planningformsbox table tbody tr, .djep-timelinebox table tbody tr, .djep-ourcontactinfobox table tbody tr{ 
+	vertical-align: middle;
+}
+
+tr{vertical-align: middle;}
+
+
+select.djep-printbox { 
+	max-width: 280px;
+}
+
+#upcomingeventid { display: none; }
+
+.djep-viewplanningformdiv { 
+width:98%;height:400px;border:1px solid black;overflow:auto;
+}
+
+#djep-content {
+	max-width:800px !important;
+	width: auto !important;
+}
+/* Main Body Structures */
+body.djep-body {
+    padding: 0;
+    width: 100%;
+    height: auto !important;
+    height: 100%;
+    min-height: 100%;
+    color: #102D3C;
+    background-repeat: repeat-x;
+	background-position: top left;
+    Font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 12px;
+	margin: 0;
+}
+#djep-page {
+	width:100%;
+    margin: 0;
+    padding: 0;
+    height: auto !important;
+}
+#djep-guestrequestpage {
+	width:100%;
+    margin: 0;
+    padding: 0;
+    height: auto !important;
+}
+
+body.djep-body[style*="background-color:"] {background-color:#FFFFFF;}
+
+
+#djep-header {
+    text-align: center;
+    width: 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+#djep-content {
+    border: 1px solid #333;
+    padding: 0px 10px;
+    text-align: left;
+    margin: 0 auto;
+
+    width: 800px; /* VERY IMPORTANT - DNE */
+    border-radius: 5px;
+    box-shadow: #999 0px 2px 8px;
+    background: #FFFFFF; /* VERY IMPORTANT - DNE */
+	overflow:hidden;
+}
+#djep-guestrequestcontent {
+    border: 1px solid #333;
+    padding: 0px 10px;
+    text-align: left;
+    margin: 0 auto;
+
+    width: 800px; /* VERY IMPORTANT - DNE */
+    border-radius: 5px;
+    box-shadow: #999 0px 2px 8px;
+    background: #FFFFFF; /* VERY IMPORTANT - DNE */
+	overflow:hidden;
+}
+
+
+#djep-countdownclock {}
+
+/* Navigation Bar */
+#djep-navbar {margin: 0 auto;
+width:800px;}
+ul#djep-navigation {
+    height: 36px;
+    margin: 0 auto;
+    padding: 20px 10px 0 10px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+}
+
+ul#djep-navigation li {
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    float: left;
+    width: 104px;
+    margin: 0 5px 0 0;
+    background-color: #2B477D;
+    border: solid 1px #415F9D;
+    position: relative;
+    z-index: 1;
+    list-style: none;
+}
+
+ul#djep-navigation li.selected {
+    z-index: 3;
+}
+
+ul#djep-navigation li.shadow {
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    border: none;
+    background: none;
+    z-index: 2;
+    -webkit-box-shadow: #111 0 -2px 6px;
+    -moz-box-shadow: #111 0 -2px 6px;
+    box-shadow: #111 0 -2px 6px;
+}
+
+ul#djep-navigation li a:link, ul#djep-navigation li a:visited {
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    display: block;
+    text-align: center;
+    width: 104px;
+    height: 40px;
+    line-height: 38px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 1px;
+    outline: none;
+    float: left;
+    background: #2B477D;
+    -webkit-transition: background-color 0.3s linear;
+    -moz-transition: background-color 0.3s linear;
+    -o-transition: background-color 0.3s linear;
+}
+
+ul#djep-navigation li a:hover {
+    background-color: #5a87dd;
+}
+
+ul#djep-navigation li.selected a:link, ul#djep-navigation li.selected a:visited {
+    color: #2B477D;
+    border: solid 1px #fff;
+    -webkit-transition: background-color 0.2s linear;
+    background: -moz-linear-gradient(top center, #d1d1d1, #f2f2f2 80%) repeat scroll 0 0 #f2f2f2;
+    background: -webkit-gradient(linear,left bottom,left top,color-stop(.2, #f2f2f2),color-stop(.8, #d1d1d1));
+    background-color: #f2f2f2;
+}
+
+/* Main Typography Styling */
+h1.djep-h1 {font-style: normal; font-weight: bold; font-size: 32px; color: #096F95; margin: 21px 0; /* IMPORTANT - hack to fix IE7 */}
+h2.djep-h2 {font-size: 24px; color: #336699; margin: 21px 0; /* IMPORTANT - hack to fix IE7 */}
+h3.djep-h3 {font-size: 18px; color: #666;}
+p.djep-p-standard {font-size: 16px;}
+p {}
+
+/* Section Title Headings */
+
+.djep-titlebar { 
+  padding: 11px 0px 11px 17px !important;
+}
+.djep-titlebar {
+    display: block;
+    width: 96%;
+    background-color: #F8F8F8;
+    border-color: #ddd;
+    border-style: solid;
+    border-width: 1px 0;
+    font-weight: bold;
+    margin: 20px auto;
+    padding: 11px 17px;
+    font-size: 14px;
+    color: #036;
+}
+
+.djep-titlebarsmall {
+    display: block;
+    width: 90%;
+    clear: both;
+    background-color: #F8F8F8;
+    border-color: #DDD;
+    border-style: solid;
+    border-width: 1px 0;
+    font-weight: bold;
+    margin: 20px auto;
+    padding: 11px 17px;
+    font-size: 14px;
+    color: #036;
+}
+
+.djep-titlebarsmaller {
+    display: block;
+    width: 80%;
+    clear: both;
+    background-color: #F8F8F8;
+    border-color: #DDD;
+    border-style: solid;
+    border-width: 1px 0;
+    font-weight: bold;
+    margin: 20px auto;
+    padding: 11px 17px;
+    font-size: 14px;
+    color: #036;
+}
+
+.djep-titlebarsmallalert {
+    display: block;
+    width: 90%;
+    clear: both;
+    background-color: #e99f9f;
+    border-color: #DDD;
+    border-style: solid;
+    border-width: 1px 0;
+    font-weight: bold;
+    margin: 20px auto;
+    padding: 11px 17px;
+    font-size: 14px;
+    color: #036;
+}
+
+.djep-titlebarconfirm {
+    display: block;
+    width: 90%;
+    clear: both;
+    background-color: #abed97;
+    background-image: -moz-linear-gradient(top, #abed97, #d6fdca);
+    background-image: -webkit-gradient(linear, center top, center bottom, from(#abed97), to(#d6fdca));
+    background-image: -o-linear-gradient(top, #abed97, #d6fdca);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#abed97', endColorstr='#d6fdca');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#abed97', endColorstr='#d6fdca')";
+    background-image: linear-gradient(top, #abed97, #d6fdca);
+    border-color: #DDD;
+    border-style: solid;
+    border-width: 1px 0;
+    font-weight: bold;
+    margin: 20px auto 10px;
+    padding: 11px 2px;
+    font-size: 14px;
+    color: #036;
+}
+
+.djep-titlebarmusicconfirm {
+    display: block;
+    width: 90%;
+    clear: both;
+    background-color: #abed97;
+    background-image: -moz-linear-gradient(top, #abed97, #d6fdca);
+    background-image: -webkit-gradient(linear, center top, center bottom, from(#abed97), to(#d6fdca));
+    background-image: -o-linear-gradient(top, #abed97, #d6fdca);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#abed97', endColorstr='#d6fdca');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#abed97', endColorstr='#d6fdca')";
+    background-image: linear-gradient(top, #abed97, #d6fdca);
+    border-color: #DDD;
+    border-style: solid;
+    border-width: 1px 0;
+    font-weight: bold;
+    margin: 20px auto -10px;
+    padding: 11px 2px;
+    font-size: 14px;
+    color: #036;
+}
+
+.djep-songrequesttotals {
+    display: block;
+    width: 95%;
+    clear: both;
+    background-color: #fffce2;
+    border-color: #DDD;
+    border-style: solid;
+    border-width: 1px;
+    font-weight: normal;
+    margin: 20px auto;
+    padding: 3px;
+    font-size: 12px;
+    color: #036;
+}
+
+.djep-titlebarnotices {
+    display: block;
+    width: 90%;
+    clear: both;
+    background-color: #fffce2;
+    border-color: #DDD;
+    border-style: solid;
+    border-width: 2px;
+    font-weight: bold;
+    margin: 20px auto;
+    padding: 11px 17px;
+    font-size: 14px;
+    color: #036;
+}
+
+.djep-titlebarlockout {
+    display: block;
+    width: 80%;
+    clear: both;
+    background-color: #E22328;
+    border-color: #820003;
+    border-style: solid;
+    border-width: 2px;
+    font-weight: bold;
+    margin: 0 auto;
+    padding: 11px 17px;
+    font-size: 20px;
+    color: #FFF;
+    text-align: center;
+}
+
+/* Clearing and Spacing Divs */
+.djep-cleared    {display: block; clear: both; float: none; margin: 5px 0 0; padding: 5px 0 0; border: none; font-size: 0; height: 0; overflow: hidden;}
+.djep-faqcleared {display: block; clear: both; float: none; margin: 22px 0 0; padding: 22px 0 0; border: none; font-size: 0; height: 0; overflow: hidden;}
+
+/* System Input Styles */
+#djep-form-div {
+    background-color: #F5F5F5;
+    padding: 15px;
+}
+
+#djep-wrapper {
+    margin: 10px auto;
+    width: 500px;
+}
+
+input.djep-input, select.djep-select, textarea.djep-textarea {
+    vertical-align: middle;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+}
+
+input.djep-widgetaction {
+    padding: 8px;
+    border: solid 1px #AAA;
+    font: normal 12px Verdana, Tahoma, sans-serif;
+    background-color: #CCCCCC;
+    width: 80%;
+}
+
+textarea.djep-textarea {
+    padding: 8px;
+    border: solid 1px #E5E5E5;
+    font: normal 12px Verdana, Tahoma, sans-serif;
+    width: 90%;
+}
+
+.djep-textarea_notes {
+    width: 95%;
+    max-width: 400px;
+    height: 195px;
+    line-height: 150%;
+}
+
+.djep-textarea_todo {
+    width: 95%;
+    max-width: 400px;
+    height: 70px;
+    line-height: 150%;
+}
+
+.djep-form label {
+    margin-left: 10px;
+    font-size: 18px;
+    color: #666;
+    padding: 9px 15px;
+}
+
+.djep-submit input {
+    width: 50px;
+    padding: 9px 15px;
+    background: #617798;
+    font-size: 14px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+
+/* FAQ Accordian Styling */
+/* Feature will be released soon - DO NOT EDIT BELOW! If you use a custom stylesheet, ensure this section is added also */
+#djep-accordianwrapper {width: 95%; margin-left: auto; margin-right: auto; height: auto !important;}
+.djep-accordianbuttonimage {float: left; padding-right: 15px; padding-left: 5px;}
+.djep-accordianbuttonimageright {float: right; padding-right: 15px; padding-left: 5px;}
+.djep-accordionContent {width: 95%; float: left; background: transparent !important; display: none; padding: 8px 6px 25px; margin-top: -8px;}
+.djep-accordionButton {
+    width: 95%;
+    float: left;
+    margin: 8px 0;
+    padding: 5px 10px;
+    background-color: #ffffff;
+    border: thin solid;
+    border-width: 1px;
+    border-color: #CCC;
+    border-radius: 6px;
+    background-image: -moz-linear-gradient(top, #d1cfcd, #ffffff);
+    background-image: -webkit-gradient(linear, center top, center bottom, from(#d1cfcd), to(#ffffff));
+    background-image: -o-linear-gradient(top, #d1cfcd, #ffffff);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d1cfcd', endColorstr='#ffffff');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#d1cfcd', endColorstr='#ffffff')";
+    background-image: linear-gradient(top, #d1cfcd, #ffffff);
+    -moz-background-clip: padding-box;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    cursor: pointer;
+}
+
+
+/* Requests and Sepcial Songs Playlist Panels */
+
+.djep-playlistboxspotifytitle {
+	
+background: rgb(212,255,163); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(212,255,163,1) 0%, rgba(173,255,163,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(212,255,163,1) 0%,rgba(173,255,163,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(212,255,163,1) 0%,rgba(173,255,163,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4ffa3', endColorstr='#adffa3',GradientType=0 ); /* IE6-9 */
+height:35px;
+margin-top: 8px;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+}
+.djep-playlistboxmustplaytitle {
+background: #b4e391;
+background: -moz-linear-gradient(top,  #b4e391 0%, #96f21f 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b4e391), color-stop(100%,#96f21f));
+background: -webkit-linear-gradient(top,  #b4e391 0%,#96f21f 100%);
+background: -o-linear-gradient(top,  #b4e391 0%,#96f21f 100%);
+background: -ms-linear-gradient(top,  #b4e391 0%,#96f21f 100%);
+background: linear-gradient(top,  #b4e391 0%,#96f21f 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4e391', endColorstr='#96f21f',GradientType=0 );
+height:35px;
+margin-top: 8px;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+}
+
+.djep-playlistboxplayifposstitle {
+background: #fff8c1;
+background: -moz-linear-gradient(top,  #fff8c1 0%, #f1da36 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fff8c1), color-stop(100%,#f1da36));
+background: -webkit-linear-gradient(top,  #fff8c1 0%,#f1da36 100%);
+background: -o-linear-gradient(top,  #fff8c1 0%,#f1da36 100%);
+background: -ms-linear-gradient(top,  #fff8c1 0%,#f1da36 100%);
+background: linear-gradient(top,  #fff8c1 0%,#f1da36 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff8c1', endColorstr='#f1da36',GradientType=0 );
+height:35px;
+margin-top: 8px;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+}
+.djep-playlistboxdedicationstitle {
+background: #adcdfc;
+background: -moz-linear-gradient(top,  #adcdfc 1%, #81b3f9 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#adcdfc), color-stop(100%,#81b3f9));
+background: -webkit-linear-gradient(top,  #adcdfc 1%,#81b3f9 100%);
+background: -o-linear-gradient(top,  #adcdfc 1%,#81b3f9 100%);
+background: -ms-linear-gradient(top,  #adcdfc 1%,#81b3f9 100%);
+background: linear-gradient(top,  #adcdfc 1%,#81b3f9 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#adcdfc', endColorstr='#81b3f9',GradientType=0 );
+height:35px;
+margin-top: 8px;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+}
+.djep-playlistboxonlyrequesttitle {
+background: #ffe8e8;
+background: -moz-linear-gradient(top,  #ffe8e8 0%, #a5829b 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffe8e8), color-stop(100%,#a5829b));
+background: -webkit-linear-gradient(top,  #ffe8e8 0%,#a5829b 100%);
+background: -o-linear-gradient(top,  #ffe8e8 0%,#a5829b 100%);
+background: -ms-linear-gradient(top,  #ffe8e8 0%,#a5829b 100%);
+background: linear-gradient(top,  #ffe8e8 0%,#a5829b 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffe8e8', endColorstr='#a5829b',GradientType=0 );
+height:35px;
+margin-top: 8px;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+}
+.djep-playlistboxdonotplaytitle {
+background: #f7a99b;
+background: -moz-linear-gradient(top,  #f7a99b 0%, #e5584b 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f7a99b), color-stop(100%,#e5584b));
+background: -webkit-linear-gradient(top,  #f7a99b 0%,#e5584b 100%);
+background: -o-linear-gradient(top,  #f7a99b 0%,#e5584b 100%);
+background: -ms-linear-gradient(top,  #f7a99b 0%,#e5584b 100%);
+background: linear-gradient(top,  #f7a99b 0%,#e5584b 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7a99b', endColorstr='#e5584b',GradientType=0 );
+height:35px;
+padding-top: 4px;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+}
+
+.djep-playlistbox			{background-color: #F6F6F6; text-align: left;}
+.djep-playlistboxspotify	{background-color: #F1FFEA; text-align: left;}
+.djep-playlistboxmustplay	{background-color: #F1FFEA; text-align: left;}
+.djep-playlistboxdonotplay	{background-color: #fff1f1; text-align: left;}
+.djep-playlistboxplayifposs {background-color: #FFFEE8; text-align: left;}
+.djep-playlistboxdedications{background-color: #DDE8FF; text-align: left;}
+.djep-playlistboxonlyrequest{background-color: #E9CEFF; text-align: left;}
+.djep-playlistboxmustplay, .djep-playlistboxdonotplay, .djep-playlistboxplayifposs, .djep-playlistboxdedications, .djep-playlistboxonlyrequest, .djep-playlistbox {
+	border-radius: 4px;
+}
+
+.djep-playlistboxcustomtype1 {background-color: #ecfbff; text-align: left;}
+.djep-playlistboxcustomtype2 {background-color: #ecfff0; text-align: left;}
+.djep-playlistboxcustomtype3 {background-color: #fff3ff; text-align: left;}
+.djep-playlistboxcustomtype4 {background-color: #fff1e3; text-align: left;}
+.djep-playlistboxcustomtype5 {background-color: #ffffd3; text-align: left;}
+.djep-playlistboxcustomtype3title { 
+background: #ffc9dd;
+background: -moz-linear-gradient(top,  #ffc9dd 0%, #ff8fb9 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffc9dd), color-stop(100%,#ff8fb9));
+background: -webkit-linear-gradient(top,  #ffc9dd 0%,#ff8fb9 100%);
+background: -o-linear-gradient(top,  #ffc9dd 0%,#ff8fb9 100%);
+background: -ms-linear-gradient(top,  #ffc9dd 0%,#ff8fb9 100%);
+background: linear-gradient(top,  #ffc9dd 0%,#ff8fb9 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc9dd', endColorstr='#ff8fb9',GradientType=0 );
+height:35px;
+margin-top: 8px;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+}
+ .djep-playlistboxcustomtype2title {
+background: #d0e4c1;
+background: -moz-linear-gradient(top,  #d0e4c1 0%, #c1ef86 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d0e4c1), color-stop(100%,#c1ef86));
+background: -webkit-linear-gradient(top,  #d0e4c1 0%,#c1ef86 100%);
+background: -o-linear-gradient(top,  #d0e4c1 0%,#c1ef86 100%);
+background: -ms-linear-gradient(top,  #d0e4c1 0%,#c1ef86 100%);
+background: linear-gradient(top,  #d0e4c1 0%,#96f21f 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d0e4c1', endColorstr='#c1ef86',GradientType=0 );
+height:35px;
+margin-top: 8px;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+}
+ .djep-playlistboxcustomtype1title {
+background: #e2f3ff;
+background: -moz-linear-gradient(top,  #e2f3ff 0%, #a7c2ff 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e2f3ff), color-stop(100%,#a7c2ff));
+background: -webkit-linear-gradient(top,  #e2f3ff 0%,#a7c2ff 100%);
+background: -o-linear-gradient(top,  #e2f3ff 0%,#a7c2ff 100%);
+background: -ms-linear-gradient(top,  #e2f3ff 0%,#a7c2ff 100%);
+background: linear-gradient(top,  #e2f3ff 0%,#a7c2ff 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2f3ff', endColorstr='#a7c2ff',GradientType=0 );
+height:35px;
+margin-top: 8px;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+}
+ .djep-playlistboxcustomtype4title {
+background: #ffceb6;
+background: -moz-linear-gradient(top,  #ffceb6 0%, #ff9b6a 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffceb6), color-stop(100%,#ff9b6a));
+background: -webkit-linear-gradient(top,  #ffceb6 0%,#ff9b6a 100%);
+background: -o-linear-gradient(top,  #ffceb6 0%,#ff9b6a 100%);
+background: -ms-linear-gradient(top,  #ffceb6 0%,#ff9b6a 100%);
+background: linear-gradient(top,  #ffceb6 0%,#ff9b6a 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffceb6', endColorstr='#ff9b6a',GradientType=0 );
+height:35px;
+margin-top: 8px;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+}
+.djep-playlistboxcustomtype5title {
+background: #fdfd9b;
+background: -moz-linear-gradient(top,  #FFEBCD 0%, #fddcaa 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFEBCD), color-stop(100%,#fddcaa));
+background: -webkit-linear-gradient(top,  #FFEBCD 0%,#fddcaa 100%);
+background: -o-linear-gradient(top,  #FFEBCD 0%,#fddcaa 100%);
+background: -ms-linear-gradient(top,  #FFEBCD 0%,#fddcaa 100%);
+background: linear-gradient(top,  #FFEBCD 0%,#fddcaa 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFEBCD', endColorstr='#fddcaa',GradientType=0 );
+height:35px;
+margin-top: 8px;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+}
+
+
+.djep-specialtitle {position:relative;top:9px; left:25px;}
+.djep-specialsongtitle {background-color: #E9E9E9; height:25px;border:1px solid white;}
+.djep-specialsongcontent {background-color: #FEFEFE;}
+.djep-specialsongbutton {
+    background-color: #EFEFEF;
+    border: 1px solid #7a7a7a;
+    color: #5c5a5c;
+    font-family: arial;
+    font-size: 10px !important;
+    font-weight: normal;
+    padding: 4px 2px;
+    text-decoration: none;
+    border-radius: 4px;
+    width:90px;
+	cursor: pointer;
+}
+.djep-specialsongbutton:hover {
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f5f5f5), color-stop(1, #ffffff) );
+    background: -moz-linear-gradient( center top, #f5f5f5 5%, #ffffff 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#ffffff');
+    background-color: #f5f5f5;
+}
+.djep-specialsongbutton:active {
+    position: relative;
+    top: 1px;
+}
+
+.djep-special_song_header {
+background: #DDD;
+height:35px;
+margin-top: 8px;
+font-weight: 400;
+font-size:14px;
+border: 1px solid #b5b5b5 !important;
+text-decoration:none;
+color:#000;
+}
+.djep-special_song_content_div{
+	background: white;
+	padding: 0px !important;
+}
+
+.djep-playlisttitle	{
+	position:relative;
+	top:9px;
+	left:25px;
+}
+.djep-playlistlimits {
+	padding-right: 5px; 
+	padding-top: 3px; 
+	font-size: 11px; 
+	float: right; 
+	font-weight: 200;
+}
+.djep-requestonlytitle {
+	font-size:12px;
+	font-family: Verdana, Geneva, sans-serif;
+	color: #666;
+	text-align:center;
+	width:280px;
+	margin:2px auto 0;
+	border: 1px solid #AAA;
+	background: #CCC url(../images/ui-bg_highlight-soft_75_cccccc_1x100.png) center repeat-x;
+	border-radius: 4px;
+	height:34px;
+}
+.djep-requestonlytitle > p {
+	margin-top: 10px;
+}
+.djep-songideasdropdown, .djep-songgenresdropdown {
+	background-color: #EDEDED;
+	border: 1px solid black;
+	display: inline-block;
+	color: #999!important;
+	font-family: "Arial Black", Gadget, sans-serif;
+	font-weight: 900;
+	height: 35px;
+	text-decoration: none;
+	padding: 4px 5px;
+	width: 90%;
+	font-size: 18px !important;
+	border-radius: 5px;
+}
+.djep-requestlimitbox{
+	margin: 10px auto;
+	color: black;
+	line-height: 100%;
+	vertical-align: center;
+	width:90%;
+}
+.djep-requestlimittitle{
+    display: block;
+	width: 90%;
+	background-color: #FEFEFE;
+	border-color: #D6D6D6;
+	border-style: solid;
+	border-width: 1px 0;
+	font-weight: bold;
+	margin: 2px auto;
+	padding: 11px 0px 11px 17px;
+	font-size: 14px;
+	color: #036;
+}
+
+.djep-songideaerror {
+	border: 1px solid gold;
+	background: lightYellow;
+	padding: 15px 0px 15px 0px;
+	margin: 10px auto;
+	border-radius: 3px;
+	color: black;
+	line-height: 100%;
+	vertical-align: center;
+}
+
+
+/* NavBar Switch between Request and Special Songs */
+.djep-music_selections_navigation {
+	width:280px;
+	margin:2px auto 0;
+border: 1px solid #AAA;
+background: #CCC url(../images/ui-bg_highlight-soft_75_cccccc_1x100.png) center repeat-x;
+border-radius: 4px;
+	height:34px;
+	font-family:Arial, Helvetica, sans-serif;
+}
+.djep-music_selections_navigation ul {
+	list-style: none;
+	margin-left: -25px;
+	float:left;
+}
+.djep-music_selections_navigation li {
+  width: 120px;
+  height:20px;
+  float:left;
+  margin: -8px 10px 0 0;
+}
+.djep-music_selections_navigation li a{
+  border-radius:4px;
+  text-align: center;
+  padding-top:5px;
+  width: 115px;
+  height:20px;
+  float:left;
+}
+.djep-playlistbuttonoverrides a{ 
+	padding: 5px 8px 0px;
+}
+.djep-playlistbuttonoverrides a, .djep-playlistbuttonoverrides { 
+	width: auto !important;
+}
+
+.djep-music_selections_navigation li a{
+	text-decoration:none;
+	color:inherit;
+}
+
+.djep-music_selections_navigation-li a /*inactive state */ {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+	background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+	background-color:#ededed;
+	border: solid 1px #F9F9F9;
+	color:#777777;
+}
+.djep-music_selections_navigation-li a:hover /*inactive state */ {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+	background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+	background-color:#dfdfdf;
+	color:#777777;
+}
+.djep-music_selections_navigation-active a /*active state */{
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6) );
+	background:-moz-linear-gradient( center top, #ffffff 5%, #f6f6f6 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6');
+	background-color:#ffffff;
+	color: #000;
+	font-weight:400;
+	border:1px solid #dcdcdc;
+}
+.djep-music_selections_navigation-active a:hover /*active state */{
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f6f6f6), color-stop(1, #ffffff) );
+	background:-moz-linear-gradient( center top, #f6f6f6 5%, #ffffff 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#ffffff');
+	background-color:#f6f6f6;
+}
+
+
+
+
+.djep-specialdescription{
+	border: 0px 0px 1px 0px solid gold;
+	background: lightYellow;
+	padding-top: 2px;
+	padding-right: 2px;
+	padding-bottom: 7px;
+	padding-left: 2px;
+	margin: 0px 0px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
+	color: black;
+	text-shadow: 0px 1px rgba(255, 255, 255, 0.5);
+}
+.djep-specialcloseicon {
+font-size:11px;
+width:100%;
+text-align:right;
+}
+.djep-specialcloseicon a{
+	color:#C00;
+	text-align:right;
+	margin-right: 5px;
+}
+.djep-specialdescriptiontext {
+	padding-left: 4px;
+	padding-right: 20px;
+	margin-top:-10px;
+}
+
+
+/* Music Database */
+.djep-databaseheader {
+    background-color: #FFFFFF;
+    padding: 4px;
+    text-align: left;
+    text-indent: 20px;
+    color: #333333;
+    font-weight: bolder;
+    font-size: 14px;
+}
+
+.djep-databasetableheader {
+    background-color: #DDD;
+    color: #333333;
+    font-weight: bolder;
+    font-size: 12px;
+}
+
+.djep-musicresultstable {font-size: 11px !important;}
+.djep-musicsearchform {
+    border-width: medium;
+    border-radius: 5px;
+    width: 350px;
+    height: 23px;
+    font-size: 18px !important;
+    font-weight: 700;
+    color: #999;
+    text-indent: 10px;
+    border-color: #666;
+}
+
+.djep-databasebox {
+    border: 1px solid #666;
+    background-color: #F1F1F1;
+    padding: 2px;
+    text-align: left;
+    color: #333333;
+    font-size: 11px;
+}
+
+.djep-paginatebutton {
+    border: 1px solid #AAAAAA;
+    cursor: pointer;
+    margin: 0 2px;
+    padding: 2px 5px;
+    background-color: #DDDDDD;
+}
+.djep-paginatebutton:hover {background-color: #BBBBBB;}
+
+.djep-activepaginatebutton {
+    border: 1px solid #AAAAAA;
+    cursor: pointer;
+    margin: 0 2px;
+    padding: 2px 5px;
+    font-weight: bold;
+    background-color: #99B3FF;
+}
+
+.djep-dragtoplaylist {
+    background-image: url(../images/dragimage.png);
+    background-repeat: no-repeat;
+    height: 70px;
+    width: 173px;
+}
+
+.djep-playlistitemsaved {
+    background-image: url(../images/savedmusic.png);
+    position: absolute;
+    left: 45px;
+    top: 20px;
+    height: 70px;
+    width: 173px;
+}
+.djep-specialsongitemsaved {
+    background-image: url(../images/specialsavedmusic.png);
+    position: absolute;
+    left: 45px;
+    top: 20px;
+    height: 70px;
+    width: 173px;
+	z-index:1;
+}
+
+tr[id*="draggable_"] {cursor: url(../images/openhand.cur), default !important; /* Forces a custom hand icon to indicate drag and drop*/}
+tr[id*="song_row_for_songid"] > td {padding:0 3px !important;}
+
+/* General Table Styling Elements */
+.djep-odd {background-color: #EAEAEA;}
+.djep-even {background-color: #FFFFFF;}
+.djep-table-headers {background-color: #e4e4e4;}
+.djep-sectiontitle {background-color: #E9E9E9; height:25px;}
+.djep-tablehover {background-color: #BBD7E8;}
+.djep-tablehover1 {background-color:#F1F1F1;}
+.djep-tablehover2 {background-color:transparent;}
+.djep-service-desc-div {border: thin #CCC solid;}
+.djep-service-desc-topcell {
+	border-left: thin #CCC solid;
+    border-right: thin #CCC solid;
+    border-top: thin #CCC solid;
+}
+.djep-service-desc-bottomcell {
+    border-left: thin #CCC solid;
+    border-right: thin #CCC solid;
+    border-bottom: thin #CCC solid;
+}
+
+/* Misc Styling Elements */
+.djep-servicedetailsfieldset {border: #CCCCCC thin solid; margin-bottom:10px;}
+.djep-servicedetailslegend {font-size: 14px;}
+#djep-contactbox {font: 12px Verdana, Geneva, sans-serif; background: #f1f1f1; padding: 15px 10px; width: 95%;}
+.djep-form-sections {background-color: #e4e4e4;}
+.djep-pointerforce {cursor: pointer;}
+.djep-opaque {opacity: 1.4; filter: alpha(opacity=100);}
+.djep-opaque:hover {opacity: 0.4; filter: alpha(opacity=40);}
+.djep-opaque:active {opacity: 0.8; filter: alpha(opacity=80);}
+.djep-changebutton {float: right; padding: 0 30px;}
+.djep-printbox {height: 24px; font-size: 14px;}
+#djep-printhelper {padding-right: 10px; width:100%; height:40px; text-align:right;}
+#djep-printplanningformicon {padding:0 5px;}
+#print_helper { float:right; padding:0;}
+djep-SubmitHide {display: none;}
+.djep-playlistboxtext {font-size: 11px; text-align: left;}
+.djep-playlist_highlight_focus_in {border: 1px solid #585858; background-color: #F7FE2E;}
+.djep-playlist_highlighter_focus_out {border: none; background-color: #fff;}
+.djep-musiccounterspan {float: right; margin-top: -8px;  font-size: 12px;}
+.djep-playlistcounterspan {
+    float: right;
+    padding-right: 3px;
+    font-size: 11px;
+    text-align: right;
+    font-weight: 100;
+}
+.djep-guestrequestlink { color:#F00;}
+.djep-guestrequestpassword {color:#FF0000;}
+
+
+/* Imageless Calendar Icon CSS - We advise not editing any of this */
+.calendar {width: 74px; font-size: 1.4em; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; background: -webkit-gradient(linear, left top, left bottom, from(#405b72), to(#e6e6e6), color-stop(.08,#f9f9f9)); background: -moz-linear-gradient(top, #f9f9f9, #e6e6e6); box-shadow: 0 0 5px #05587e; -moz-box-shadow: 0 0 5px #05587e; -webkit-box-shadow: 0 0 5px #05587e;}
+.calendar > span {display: block;}
+.calendar > .month {text-align: center; padding: 2px 5px 2px 0; font-size: 0.8em; background: #6086a6; color: #fff; font-weight: bold; -webkit-border-top-left-radius: 5px; -moz-border-radius-topleft: 5px; -webkit-border-top-right-radius: 5px; -moz-border-radius-topright: 5px; text-shadow: 0 1px #000; background: -webkit-gradient(linear, left top, left bottom, from(#acc0d1), to(#6086a6)); background: -moz-linear-gradient(top, #acc0d1, #6086a6);}
+.calendar > .day {text-align: center; font-weight: bold; font-size: 1.9em; margin-bottom: -6px; -webkit-border-bottom-left-radius: 5px; -moz-border-radius-bottomleft: 5px; -webkit-border-bottom-right-radius: 5px; -moz-border-radius-bottomright: 5px;}
+.calendar > .year {color: #999; font-size: 8px;}
+
+
+/* CSS buttons */
+.djep-planeventbutton {
+    -moz-box-shadow: inset 0px 1px 0px 0px #a4e271;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #a4e271;
+    box-shadow: inset 0px 1px 0px 0px #a4e271;
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #89c403), color-stop(1, #77a809) );
+    background: -moz-linear-gradient( center top, #89c403 5%, #77a809 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#89c403', endColorstr='#77a809');
+    background-color: #89c403;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    border: 1px solid #74b807;
+    display: inline-block;
+    color: #ffffff;
+    font-family: arial;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 23px;
+    margin-top: -5px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.djep-planeventbutton:hover {
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #77a809), color-stop(1, #89c403) );
+    background: -moz-linear-gradient( center top, #77a809 5%, #89c403 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#77a809', endColorstr='#89c403');
+    background-color: #77a809;
+}
+
+.djep-planeventbutton:active {
+    position: relative;
+    top: 1px;
+}
+
+.djep-eventdetailsbutton {
+    -moz-box-shadow: inset 0px 1px 0px 0px #dcecfb;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #dcecfb;
+    box-shadow: inset 0px 1px 0px 0px #dcecfb;
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #c6d6e6), color-stop(1, #6086a6) );
+    background: -moz-linear-gradient( center top, #c6d6e6 5%, #6086a6 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c6d6e6', endColorstr='#6086a6');
+    background-color: #c6d6e6;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    border: 1px solid #9e9e9e;
+    display: inline-block;
+    color: #ffffff;
+    font-family: arial;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 25px;
+    margin-top: -5px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.djep-eventdetailsbutton:hover {
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #6086a6), color-stop(1, #c6d6e6) );
+    background: -moz-linear-gradient( center top, #6086a6 5%, #c6d6e6 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6086a6', endColorstr='#c6d6e6');
+    background-color: #6086a6;
+}
+
+.djep-eventdetailsbutton:active {
+    position: relative;
+    top: 1px;
+}
+
+.djep-paymentbutton {
+-moz-box-shadow:inset 0px 1px 0px 0px #e6cafc;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #e6cafc;
+	box-shadow:inset 0px 1px 0px 0px #e6cafc;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #c579ff), color-stop(1, #a341ee) );
+	background:-moz-linear-gradient( center top, #c579ff 5%, #a341ee 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#c579ff', endColorstr='#a341ee');
+	background-color:#c579ff;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #a946f5;
+    display: inline-block;
+color:#ffffff;
+    font-family: arial;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 23px;
+    text-decoration: none;
+    margin-top: 5px;
+    text-align: center;
+	text-shadow:1px 1px 0px #8628ce;
+}
+
+.djep-paymentbutton:hover {
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #a341ee), color-stop(1, #c579ff) );
+	background:-moz-linear-gradient( center top, #a341ee 5%, #c579ff 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#a341ee', endColorstr='#c579ff');
+	background-color:#a341ee;
+}
+
+.djep-paymentbutton :active {
+    position: relative;
+    top: 1px;
+}
+
+.djep-readviewbutton {
+    -moz-box-shadow: inset 0px 1px 0px 0px #dcecfb;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #dcecfb;
+    box-shadow: inset 0px 1px 0px 0px #dcecfb;
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #c6d6e6), color-stop(1, #6086a6) );
+    background: -moz-linear-gradient( center top, #c6d6e6 5%, #6086a6 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c6d6e6', endColorstr='#6086a6');
+    background-color: #c6d6e6;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    border: 1px solid #9e9e9e;
+    display: inline-block;
+    color: #ffffff;
+    font-family: arial;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 25px;
+    margin-top: -5px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.djep-readviewbutton:hover {
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #6086a6), color-stop(1, #c6d6e6) );
+    background: -moz-linear-gradient( center top, #6086a6 5%, #c6d6e6 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6086a6', endColorstr='#c6d6e6');
+    background-color: #6086a6;
+}
+
+.djep-readviewbutton:active {
+    position: relative;
+    top: 1px;
+}
+
+.djep-actionbutton {
+    -moz-box-shadow: inset 0px 1px 0px 0px #a6a6a6;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #a6a6a6;
+    box-shadow: inset 0px 1px 0px 0px #a6a6a6;
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #858585), color-stop(1, #575757) );
+    background: -moz-linear-gradient( center top, #858585 5%, #575757 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#858585', endColorstr='#575757');
+    background-color: #858585;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #dcdcdc;
+    display: inline-block;
+    color: #ffffff;
+    font-family: arial;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 4px 12px;
+    text-decoration: none;
+    text-shadow: 1px 1px 0px #7d7d7d;
+    margin-top: -5px;
+}
+
+.djep-actionbutton:hover {
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #575757), color-stop(1, #858585) );
+    background: -moz-linear-gradient( center top, #575757 5%, #858585 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#575757', endColorstr='#858585');
+    background-color: #575757;
+}
+
+.djep-actionbutton:active {
+    position: relative;
+    top: 1px;
+}
+
+.djep-logoutbutton {
+    -moz-box-shadow: inset 0px 1px 0px 0px #adadad;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #adadad;
+    box-shadow: inset 0px 1px 0px 0px #adadad;
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #707070), color-stop(1, #1c1300) );
+    background: -moz-linear-gradient( center top, #707070 5%, #1c1300 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#707070', endColorstr='#1c1300');
+    background-color: #707070;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    border: 1px solid #000000;
+    display: inline-block;
+    color: #ffffff;
+    font-family: arial;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 6px 24px;
+    text-decoration: none;
+    text-shadow: 1px 1px 0px #666666;
+}
+
+.djep-logoutbutton:hover {
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #1c1300), color-stop(1, #707070) );
+    background: -moz-linear-gradient( center top, #1c1300 5%, #707070 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1c1300', endColorstr='#707070');
+    background-color: #1c1300;
+}
+
+.djep-logoutbutton:active {
+    position: relative;
+    top: 1px;
+}
+
+.djep-searchbutton {
+    -moz-box-shadow: inset 0px 1px 0px 0px #a6a6a6;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #a6a6a6;
+    box-shadow: inset 0px 1px 0px 0px #a6a6a6;
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #858585), color-stop(1, #575757) );
+    background: -moz-linear-gradient( center top, #858585 5%, #575757 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#858585', endColorstr='#575757');
+    background-color: #858585;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #dcdcdc;
+    display: inline-block;
+    color: #ffffff;
+    font-family: arial;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 4px 19px;
+    text-decoration: none;
+    text-shadow: 1px 1px 0px #7d7d7d;
+}
+
+.djep-searchbutton:hover {
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #575757), color-stop(1, #858585) );
+    background: -moz-linear-gradient( center top, #575757 5%, #858585 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#575757', endColorstr='#858585');
+    background-color: #575757;
+}
+
+.djep-searchbutton:active {
+    position: relative;
+    top: 1px;
+}
+
+.djep-clipboardbutton {
+    -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
+    box-shadow: inset 0px 1px 0px 0px #ffffff;
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f9f9f9), color-stop(1, #e9e9e9) );
+    background: -moz-linear-gradient( center top, #f9f9f9 5%, #e9e9e9 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#e9e9e9');
+    background-color: #f9f9f9;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #dcdcdc;
+    display: inline-block;
+    color: #666666;
+    font-family: arial;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 4px 12px;
+    text-decoration: none;
+    text-shadow: 1px 1px 0px #ffffff;
+    margin-top: -5px;
+}
+
+.djep-clipboardbutton:hover {
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e9e9e9), color-stop(1, #f9f9f9) );
+    background: -moz-linear-gradient( center top, #e9e9e9 5%, #f9f9f9 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e9e9e9', endColorstr='#f9f9f9');
+    background-color: #e9e9e9;
+}
+
+.djep-clipboardbutton:active {
+    position: relative;
+    top: 1px;
+}
+
+.djep-songideabutton {
+    -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
+    box-shadow: inset 0px 1px 0px 0px #ffffff;
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f5f5f5) );
+    background: -moz-linear-gradient( center top, #ffffff 5%, #f5f5f5 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f5f5f5');
+    background-color: #ffffff;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    border: 1px solid #7a7a7a;
+    display: inline-block;
+    color: #5c5a5c;
+    font-family: arial;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 4px 14px;
+    text-decoration: none;
+    text-shadow: 1px 1px 0px #ffffff;
+}
+
+.djep-songideabutton:hover {
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f5f5f5), color-stop(1, #ffffff) );
+    background: -moz-linear-gradient( center top, #f5f5f5 5%, #ffffff 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#ffffff');
+    background-color: #f5f5f5;
+}
+
+.djep-songideabutton:active {
+    position: relative;
+    top: 1px;
+}
+
+.djep-toplistbuttons {
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e8e8e8), color-stop(1, #d8d8d8) );
+    background: -moz-linear-gradient( center top, #e8e8e8 5%, #d8d8d8 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e8e8e8', endColorstr='#d8d8d8');
+    background-color: #e8e8e8;
+    border: 1px solid #b8b8b8;
+    display: inline-block;
+    color: #333 !important;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 15px;
+    font-weight: 900;
+    width: 110px;
+    height: 25px;
+    padding-top: 3px;
+    margin-top: 3px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.djep-toplistbuttons:hover {
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #d8d8d8), color-stop(1, #e8e8e8) );
+    background: -moz-linear-gradient( center top, #d8d8d8 5%, #F3FDF9 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d8d8d8', endColorstr='#e8e8e8');
+    background-color: #d8d8d8;
+	color: #000 !important;
+}
+
+.djep-toplistbuttons2 {
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e8e8e8), color-stop(1, #d8d8d8) );
+    background: -moz-linear-gradient( center top, #e8e8e8 5%, #d8d8d8 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e8e8e8', endColorstr='#d8d8d8');
+    background-color: #e8e8e8;
+    border: 1px solid #b8b8b8;
+    display: inline-block;
+    color: #666 !important;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 15px;
+    font-weight: 900;
+    width: 59px;
+    height: 25px;
+    padding-top: 3px;
+    margin-top: 3px;
+    text-decoration: none;
+	text-align:center;
+
+}
+.djep-toplistbuttons2:hover {
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #d8d8d8), color-stop(1, #e8e8e8) );
+    background: -moz-linear-gradient( center top, #d8d8d8 5%, #e8e8e8 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d8d8d8', endColorstr='#e8e8e8');
+    background-color: #d8d8d8;
+	color: #333 !important;
+}
+.djep-toplistbuttons2_active {
+    background-color: #ffffff;
+    border: 1px solid #999;
+    display: inline-block;
+    color: #303030;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 15px;
+    font-weight: 900;
+    width: 59px;
+    height: 25px;
+    padding-top: 3px;
+    margin-top: 3px;
+    text-decoration: none;
+	text-align:center;
+}
+
+.djep-toplistbuttons3 {
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e8e8e8), color-stop(1, #d8d8d8) );
+    background: -moz-linear-gradient( center top, #e8e8e8 5%, #d8d8d8 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e8e8e8', endColorstr='#d8d8d8');
+    background-color: #e8e8e8;
+    border: 1px solid #b8b8b8;
+    display: inline-block;
+    color: #666 !important;
+    font-family: Arial;
+    font-size: 11px;
+    font-weight: normal;
+    width: 85px;
+    height: 30px;
+    padding-top: 3px;
+    margin-top: 3px;
+    text-decoration: none;
+	text-align:center;
+}
+.djep-toplistbuttons3:hover {
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #d8d8d8), color-stop(1, #e8e8e8) );
+    background: -moz-linear-gradient( center top, #d8d8d8 5%, #e8e8e8 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d8d8d8', endColorstr='#e8e8e8');
+    background-color: #d8d8d8;
+	color: #333 !important;
+}
+.djep-toplistbuttons3_active {
+    background-color: #ffffff;
+    border: 1px solid #999;
+    display: inline-block;
+    color: #303030;
+    font-family: Arial;
+    font-size: 11px;
+    font-weight: normal;
+    width: 85px;
+    height: 30px;
+    padding-top: 3px;
+    margin-top: 3px;
+    text-decoration: none;
+	text-align:center;
+}
+
+.djep-toplistbuttons4 {
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e8e8e8), color-stop(1, #d8d8d8) );
+    background: -moz-linear-gradient( center top, #e8e8e8 5%, #d8d8d8 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e8e8e8', endColorstr='#d8d8d8');
+    background-color: #e8e8e8;
+    border: 1px solid #b8b8b8;
+    display: inline-block;
+    color: #666 !important;
+    font-family: Arial, Helvetica, sans-serif,;
+    font-size: 10px;
+    font-weight: 900;
+	padding:5px 0 5px 0;
+	margin-top: 5px;
+    width: 56px;
+    text-decoration: none;
+	text-align:center;
+
+}
+.djep-toplistbuttons4:hover {
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #d8d8d8), color-stop(1, #e8e8e8) );
+    background: -moz-linear-gradient( center top, #d8d8d8 5%, #e8e8e8 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d8d8d8', endColorstr='#e8e8e8');
+    background-color: #d8d8d8;
+	color: #333 !important;
+}
+.djep-toplistbuttons4_active {
+    background-color: #ffffff;
+    border: 1px solid #999;
+    display: inline-block;
+    color: #303030;
+    font-family: Arial, Helvetica, sans-serif,;
+    font-size: 10px;
+    font-weight: 900;
+	padding:5px 0 5px 0;
+	margin-top: 5px;
+    width: 56px;
+    text-decoration: none;
+	text-align:center;
+}
+
+.djep-toplistbuttons5 {
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e8e8e8), color-stop(1, #d8d8d8) );
+    background: -moz-linear-gradient( center top, #e8e8e8 5%, #d8d8d8 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e8e8e8', endColorstr='#d8d8d8');
+    background-color: #e8e8e8;
+    border: 1px solid #b8b8b8;
+    display: inline-block;
+    color: #333 !important;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 15px;
+    font-weight: 900;
+    height: 25px;
+    padding-top: 3px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 3px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.djep-toplistbuttons5:hover {
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #d8d8d8), color-stop(1, #e8e8e8) );
+    background: -moz-linear-gradient( center top, #d8d8d8 5%, #F3FDF9 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d8d8d8', endColorstr='#e8e8e8');
+    background-color: #d8d8d8;
+		color: #000 !important;
+
+}
+
+.djep-artistsongbuttons {
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e8e8e8), color-stop(1, #d8d8d8) );
+    background: -moz-linear-gradient( center top, #e8e8e8 5%, #d8d8d8 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e8e8e8', endColorstr='#d8d8d8');
+    background-color: #e8e8e8;
+    border: 1px solid #b8b8b8;
+    display: inline-block;
+    color: #303030;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    width: 28px;
+    height: 28px;
+    text-decoration: none;
+	text-align:center;
+	opacity: 0.4;
+	filter: alpha(opacity=40);
+}
+.djep-artistsongbuttons:hover {
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #d8d8d8), color-stop(1, #e8e8e8) );
+    background: -moz-linear-gradient( center top, #d8d8d8 5%, #e8e8e8 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d8d8d8', endColorstr='#e8e8e8');
+    background-color: #d8d8d8;
+	opacity: 1;
+	filter: alpha(opacity=100);
+}
+.djep-artistsongbuttonswide {
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e8e8e8), color-stop(1, #d8d8d8) );
+    background: -moz-linear-gradient( center top, #e8e8e8 5%, #d8d8d8 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e8e8e8', endColorstr='#d8d8d8');
+    background-color: #e8e8e8;
+    border: 1px solid #b8b8b8;
+    display: inline-block;
+    color: #303030;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    width: 60px;
+    height: 28px;
+    text-decoration: none;
+	text-align:center;
+	opacity: 0.4;
+	filter: alpha(opacity=40);
+}
+.djep-artistsongbuttonswide:hover {
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #d8d8d8), color-stop(1, #e8e8e8) );
+    background: -moz-linear-gradient( center top, #d8d8d8 5%, #e8e8e8 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d8d8d8', endColorstr='#e8e8e8');
+    background-color: #d8d8d8;
+	opacity: 1;
+	filter: alpha(opacity=100);
+}
+.djep-toplistbutton_a {margin-top: 5px;}
+
+.djep-esigned {
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+	background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+	background-color:#ededed;
+	border-radius:2px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	color:#050505;
+	font-family:Arial;
+	font-size:9px;
+	margin-top: 8px;
+	margin-left: 5px;
+	padding-top: 6px;
+	padding-right:10px;
+	text-transform:uppercase;
+	width:71px;
+	height:16px;
+	font-weight:bold;
+	text-decoration:none;
+	background-size: 12px;
+	background-repeat:no-repeat;
+	background-position: 5px 5px ;
+	text-indent: 25px;
+}
+
+/*TimeLine Elements*/
+textarea#djep-timelineheadline {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:19px;
+	text-align:center;
+	height:75px;
+	overflow-x: auto;
+	border: 1px #CCCCCC solid;
+	border-radius: 3px;
+}
+.djep-timelinetable {padding:2px; border-spacing:0;	border:0;}
+.djep-timelinetable tr:nth-child(odd){background: #FFFFFF;}
+.djep-timelinetable tr:nth-child(even){background: #FFFFFF;}
+.djep-timelinetable tr:hover{background: #E6E6E6;}
+.djep-timelinetextbox1 {color:#777; width:95%}
+.djep-timelinetextbox1:hover {background: #EDFFE6;}
+.djep-timelinetextbox2 {color: #777; width:90%}
+.djep-timelinetextbox2:hover {background: #D9EBFF;}
+.djep-timelinetextbox3 {color: #777; width:90%;}
+.djep-timelinetextbox3:hover {background: #D9EBFF;}
+
+/* Module Box Stylings - Uncomment to activate
+
+.djep-eventlistbox {
+	background: #F5F5F5;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+border-radius: 4px;
+text-decoration:none;
+color:#000;
+margin-bottom: 20px;
+overflow:hidden;
+}
+.djep-upcomingmeetingsbox {
+	background: #F5F5F5;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+border-radius: 4px;
+text-decoration:none;
+color:#000;
+margin-bottom: 20px;
+overflow:hidden;
+}
+.djep-latestemailsbox {
+background: #F5F5F5;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+border-radius: 4px;
+text-decoration:none;
+color:#000;
+margin-bottom: 20px;
+overflow:hidden;
+}
+.djep-welcometextbox {
+background: #F5F5F5;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+border-radius: 4px;
+text-decoration:none;
+color:#000;
+margin-bottom: 20px;
+overflow:hidden;
+}
+.djep-contactdetailsbox {
+background: #F5F5F5;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+border-radius: 4px;
+text-decoration:none;
+color:#000;
+margin-bottom: 20px;
+overflow:hidden;
+}
+.djep-logindetailsbox{
+background: #F5F5F5;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+border-radius: 4px;
+text-decoration:none;
+color:#000;
+margin-bottom: 20px;
+overflow:hidden;
+}
+.djep-contactformbox{
+background: #F5F5F5;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+border-radius: 4px;
+text-decoration:none;
+color:#000;
+margin-bottom: 20px;
+overflow:hidden;
+}
+.djep-ourcontactinfobox {
+background: #F5F5F5;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+border-radius: 4px;
+text-decoration:none;
+color:#000;
+margin-bottom: 20px;
+overflow:hidden;
+}
+.djep-emailhistorybox {
+background: #F5F5F5;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+border-radius: 4px;
+text-decoration:none;
+color:#000;
+margin-bottom: 20px;
+overflow:hidden;
+}
+.djep-planneraccessbox {
+background: #F5F5F5;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+border-radius: 4px;
+text-decoration:none;
+color:#000;
+margin-bottom: 20px;
+margin-top: 8px;
+overflow:hidden;
+}
+.djep-managemusicbox {
+background: #F5F5F5;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+border-radius: 4px;
+text-decoration:none;
+color:#000;
+margin-bottom: 20px;
+overflow:hidden;
+}
+.djep-planningformsbox {
+background: #F5F5F5;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+border-radius: 4px;
+text-decoration:none;
+color:#000;
+margin-bottom: 20px;
+overflow:hidden;
+}
+.djep-timelinebox {
+background: #F5F5F5;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+border-radius: 4px;
+text-decoration:none;
+color:#000;
+margin-bottom: 20px;
+overflow:hidden;
+}
+.djep-othertoolsbox {
+background: #F5F5F5;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+border-radius: 4px;
+text-decoration:none;
+color:#000;
+margin-bottom: 20px;
+overflow:hidden;
+}
+.djep-selectyourmusicbox {
+background: #F5F5F5;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+border-radius: 4px;
+text-decoration:none;
+color:#000;
+margin-bottom: 20px;
+overflow:hidden;
+}
+.djep-eventdatetimesbox {
+background: #F5F5F5;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+border-radius: 4px;
+text-decoration:none;
+color:#000;
+margin-bottom: 20px;
+overflow:hidden;
+}
+.djep-servicedetailsbox {
+background: #F5F5F5;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+border-radius: 4px;
+text-decoration:none;
+color:#000;
+margin-bottom: 20px;
+overflow:hidden;
+}
+.djep-eventdescriptionbox {
+background: #F5F5F5;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+border-radius: 4px;
+text-decoration:none;
+color:#000;
+margin-bottom: 20px;
+overflow:hidden;
+}
+.djep-venueinfobox {
+background: #F5F5F5;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+border-radius: 4px;
+text-decoration:none;
+color:#000;
+margin-bottom: 20px;
+overflow:hidden;
+}
+.djep-staffingbox {
+background: #F5F5F5;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+border-radius: 4px;
+text-decoration:none;
+color:#000;
+margin-bottom: 20px;
+overflow:hidden;
+}
+.djep-paymentsfinancesbox {
+	background: #F5F5F5;
+	font-weight: 400;
+	border: 1px solid #b5b5b5 !important;
+	border-radius: 4px;
+	text-decoration:none;
+	color:#000;
+	margin-bottom: 20px;
+	overflow:hidden;
+}
+.djep-feedetailsbox {
+	background: #F5F5F5;
+	font-weight: 400;
+	border: 1px solid #b5b5b5 !important;
+	border-radius: 4px;
+	text-decoration:none;
+	color:#000;
+	margin-bottom: 20px;
+	overflow:hidden;
+}
+.djep-paymenthistorybox {
+	background: #F5F5F5;
+	font-weight: 400;
+	border: 1px solid #b5b5b5 !important;
+	border-radius: 4px;
+	text-decoration:none;
+	color:#000;
+	margin-bottom: 20px;
+	overflow:hidden;
+}
+.djep-totalfeebox {
+	background: #F5F5F5;
+	font-weight: 400;
+	border: 1px solid #b5b5b5 !important;
+	border-radius: 4px;
+	text-decoration:none;
+	color:#000;
+	margin-bottom: 20px;
+	overflow:hidden;
+}
+.djep-otherfilesbox {
+	background: #F5F5F5;
+	font-weight: 400;
+	border: 1px solid #b5b5b5 !important;
+	border-radius: 4px;
+	text-decoration:none;
+	color:#000;
+	margin-bottom: 20px;
+	overflow:hidden;
+	padding: -20px 0px;
+}
+.djep-documentsbox {
+	background: #F5F5F5;
+	font-weight: 400;
+	border: 1px solid #b5b5b5 !important;
+	border-radius: 4px;
+	text-decoration:none;
+	color:#000;
+	margin-bottom: 20px;
+	overflow:hidden;
+}
+.djep-relatedfilesbox {
+	background: #F5F5F5;
+	font-weight: 400;
+	border: 1px solid #b5b5b5 !important;
+	border-radius: 4px;
+	text-decoration:none;
+	color:#000;
+	margin-bottom: 20px;
+	overflow:hidden;
+}
+.djep-requestchangesbox {
+	background: #F5F5F5;
+	font-weight: 400;
+	border: 1px solid #b5b5b5 !important;
+	border-radius: 4px;
+	text-decoration:none;
+	color:#000;
+	margin-bottom: 20px;
+	overflow:hidden;
+}
+
+.djep-viewrequestboxes {
+	background: #F5F5F5;
+	font-weight: 400;
+	border: 1px solid #b5b5b5 !important;
+	border-radius: 4px;
+	text-decoration:none;
+	color:#000;
+	margin-bottom: 20px;
+	overflow:hidden;
+}
+.djep-viewrequestboxes {
+	background: #F5F5F5;
+	font-weight: 400;
+	border: 1px solid #b5b5b5 !important;
+	border-radius: 4px;
+	text-decoration:none;
+	color:#000;
+	margin-bottom: 20px;
+	overflow:hidden;
+}
+.djep-guestrequestdescription {
+	background: #F5F5F5;
+	font-weight: 400;
+	border: 1px solid #b5b5b5 !important;
+	border-radius: 4px;
+	text-decoration:none;
+	color:#000;
+	margin-bottom: 20px;
+	overflow:hidden;
+}
+.djep-guestrequesthowitworksbox {
+	background: #F5F5F5;
+	font-weight: 400;
+	border: 1px solid #b5b5b5 !important;
+	border-radius: 4px;
+	text-decoration:none;
+	color:#000;
+	margin-bottom: 20px;
+	overflow:hidden;
+}
+.djep-guestrequestsettingsbox {
+	background: #F5F5F5;
+	font-weight: 400;
+	border: 1px solid #b5b5b5 !important;
+	border-radius: 4px;
+	text-decoration:none;
+	color:#000;
+	margin-bottom: 20px;
+	overflow:hidden;
+}
+.djep-emailmessagebox {
+	background: #F5F5F5;
+	font-weight: 400;
+	border: 1px solid #b5b5b5 !important;
+	border-radius: 4px;
+	text-decoration:none;
+	color:#000;
+	margin-bottom: 20px;
+	overflow:hidden;
+}
+.djep-makepaymentbox {
+	background: #F5F5F5;
+	font-weight: 400;
+	border: 1px solid #b5b5b5 !important;
+	border-radius: 4px;
+	text-decoration:none;
+	color:#000;
+	margin-bottom: 20px;
+	overflow:hidden;
+}
+.djep-viewdocumentbox {
+	background: #F5F5F5;
+	font-weight: 400;
+	border: 1px solid #b5b5b5 !important;
+	border-radius: 4px;
+	text-decoration:none;
+	color:#000;
+	margin-bottom: 20px;
+	overflow:hidden;
+}
+.djep-requestchangesformbox {
+	background: #F5F5F5;
+	font-weight: 400;
+	border: 1px solid #b5b5b5 !important;
+	border-radius: 4px;
+	text-decoration:none;
+	color:#000;
+	margin-bottom: 20px;
+	overflow:hidden;
+}
+.djep-planningformseditbox {
+	background: #F5F5F5;
+	font-weight: 400;
+	border: 1px solid #b5b5b5 !important;
+	border-radius: 4px;
+	text-decoration:none;
+	color:#000;
+	margin-bottom: 20px;
+	overflow:hidden;
+}
+.djep-weddingnamesbox{
+	background: #F5F5F5;
+	font-weight: 400;
+	border: 1px solid #b5b5b5 !important;
+	border-radius: 4px;
+	text-decoration:none;
+	color:#000;
+	margin-bottom: 20px;
+	overflow:hidden;
+}
+
+.djep-evaluationbox{
+	background: #F5F5F5;
+	font-weight: 400;
+	border: 1px solid #b5b5b5 !important;
+	border-radius: 4px;
+	text-decoration:none;
+	color:#000;
+	margin-bottom: 20px;
+	overflow:hidden;
+}
+.djep-printdocumentbox{
+	background: #F5F5F5;
+	font-weight: 400;
+	border: 1px solid #b5b5b5 !important;
+	border-radius: 4px;
+	text-decoration:none;
+	color:#000;
+	margin-bottom: 20px;
+	overflow:hidden;
+}
+.djep-planningformsviewbox {
+	background: #F5F5F5;
+	font-weight: 400;
+	border: 1px solid #b5b5b5 !important;
+	border-radius: 4px;
+	text-decoration:none;
+	color:#000;
+	margin-bottom: 20px;
+	overflow:hidden;
+}
+.djep-viewtimelinebox {
+background: #F5F5F5;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+border-radius: 4px;
+text-decoration:none;
+color:#000;
+margin-bottom: 20px;
+overflow:hidden;
+}
+.djep-edittimelinebox {
+background: #F5F5F5;
+font-weight: 400;
+border: 1px solid #b5b5b5 !important;
+border-radius: 4px;
+text-decoration:none;
+color:#000;
+margin-bottom: 20px;
+overflow:hidden;
+}
+.djep-viewweddingnamesbox{
+	background: #F5F5F5;
+	font-weight: 400;
+	border: 1px solid #b5b5b5 !important;
+	border-radius: 4px;
+	text-decoration:none;
+	color:#000;
+	margin-bottom: 20px;
+	overflow:hidden;
+}
+.djep-editweddingnamesbox{
+	background: #F5F5F5;
+	font-weight: 400;
+	border: 1px solid #b5b5b5 !important;
+	border-radius: 4px;
+	text-decoration:none;
+	color:#000;
+	margin-bottom: 20px;
+	overflow:hidden;
+}*/
+
+/* Guest Request Music Database CSS Settings */
+.djep-playlistboxguests {
+	width:90%;
+	min-height:250px;
+	overflow:auto;
+	position:relative;
+	border:2px dashed #0066FF;
+	border-radius: 0px;
+	padding-top: 2px;
+}
+.djep-guestsubmitrequests {
+	-moz-box-shadow: inset 0px 1px 0px 0px #a6a6a6;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #a6a6a6;
+	box-shadow: inset 0px 1px 0px 0px #a6a6a6;
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #858585), color-stop(1, #575757) );
+	background: -moz-linear-gradient( center top, #858585 5%, #575757 100% );
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#858585', endColorstr='#575757');
+	background-color: #858585;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	border: 1px solid gainsboro;
+	display: inline-block;
+	color: white;
+	font-family: arial;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 4px 12px;
+	text-decoration: none;
+	text-shadow: 1px 1px 0px #7D7D7D;
+	margin-top: -5px;
+}
+.djep-guestsubmitrequests:hover {
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #575757), color-stop(1, #858585) );
+    background: -moz-linear-gradient( center top, #575757 5%, #858585 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#575757', endColorstr='#858585');
+    background-color: #575757;
+}
+
+.djep-guestlogout {
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6) );
+	background:-moz-linear-gradient( center top, #ffffff 5%, #f6f6f6 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6');
+	background-color:#ffffff;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	color:#666666;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #ffffff;
+	float:right;
+}.djep-guestlogout:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f6f6f6), color-stop(1, #ffffff) );
+	background:-moz-linear-gradient( center top, #f6f6f6 5%, #ffffff 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#ffffff');
+	background-color:#f6f6f6;
+}.djep-guestlogout:active {
+	position:relative;
+	top:1px;
+}
+.djep-guestsubmit {
+	-moz-box-shadow:inset 0px 1px 0px 0px #c1ed9c;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #c1ed9c;
+	box-shadow:inset 0px 1px 0px 0px #c1ed9c;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #9dce2c), color-stop(1, #8cb82b) );
+	background:-moz-linear-gradient( center top, #9dce2c 5%, #8cb82b 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#9dce2c', endColorstr='#8cb82b');
+	background-color:#9dce2c;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #83c41a;
+	display:inline-block;
+	color:#ffffff;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 34px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #689324;
+	margin-left:8px;
+}.djep-guestsubmit:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #8cb82b), color-stop(1, #9dce2c) );
+	background:-moz-linear-gradient( center top, #8cb82b 5%, #9dce2c 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#8cb82b', endColorstr='#9dce2c');
+	background-color:#8cb82b;
+}.djep-guestsubmit:active {
+	position:relative;
+	top:1px;
+}
+
+.ui-progressbar-value { background-image: url(../includes/smoothness/images/uipattern4.png) !important; }
+#djep-progressbartitle {
+	font-size:24px;
+	color:#060;
+	text-align:center;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	padding:25px 0px 5px 0px;
+	height:50px;
+}
+#djep-donesavingtext {font-size:24px;
+	color:#060;
+	text-align:center;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	padding:25px 0px 5px 0px;
+	height:118px;
+}
+#progressbar {
+	width:550px;
+	margin:20px auto;
+}
+
+/* Testing Purposes Styles - timeline */
+.djep-timelineitems:hover:before {
+	margin: 0px 4px;
+	float:right;
+	content: url(https://djep21.com/clients/images/arrow_right.png);
+}
+
+.djep-timelineitems {
+-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6) );
+	background:-moz-linear-gradient( center top, #ffffff 5%, #f6f6f6 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6');
+	background-color:#ffffff;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	border:1px solid #999;
+	display:inline-block;
+	color:#666666;
+	font-family:arial;
+	font-size:12px;
+	font-weight:300;
+	padding:4px 6px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #ffffff;
+	width: 220px;
+	text-align:left;
+	text-decoration:none;
+	cursor: url(../images/openhand.cur), default !important;
+}.djep-timelineitems:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f6f6f6), color-stop(1, #ffffff) );
+	background:-moz-linear-gradient( center top, #f6f6f6 5%, #ffffff 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#ffffff');
+	background-color:#f6f6f6;
+}
+
+
+#guest_request_container table tr {
+	cursor:pointer;
+}
+
+.djep-latestemailsbox, .djep-upcomingmeetingsbox {
+	width:48%;
+	float:left;
+	margin:5px;	
+}
+
+
+#djep-addsongimage a, #djep-musicrequestsimage a, #djep-specialsongsimage a, #djep-printrequestsimage a, #djep-guestrequestsimage a{
+	height: 150px;
+	width: 150px;
+	display:inline-block;
+}
+#djep-addsongimage a {
+	background: url('../images/musicrequests_addsong.png');
+}
+#djep-musicrequestsimage a{
+	background: url('../images/musicrequests.png');
+}
+#djep-specialsongsimage a {
+	background: url('../images/musicrequests_special.png');
+}
+#djep-printrequestsimage a{
+	background: url('../images/musicrequests_print.png');
+}
+#djep-guestrequestsimage a{
+	background: url('../images/musicrequests_guests.png');
+}
+
+.djep-apptdetails { 
+	padding: 5px;
+	border: 1px solid #DDD;
+	margin-bottom: 5px;
+}
+
+/* Mobile CSS */
+
+.djepm-musicicondiv { 
+	max-width: 900px; 
+	overflow-x: scroll; 
+}
+.djepm-musicicondiv ul li { 
+	float: left;
+	margin-right: 10px;
+}
+.djepm-dropdownstyle  {
+	background: #1B1B1B;
+}
+.djepm-form-sections{
+	padding: 10px 8px;
+	font-size:14px;
+	margin: 20px 0px 10px;
+}
+.djepm-planningformseditbox .questiontitle{ 
+	font-size: 14px;
+	margin-bottom:5px;
+} 
+.djepm-timelinemobilepanel { 
+	border: 1px solid #666666;
+	border-radius: 4px;
+	background: #EEE;
+	margin: 15px 0px;
+}
+.djepm-timelinemobileheader { 
+	padding: 5px;
+	background: #AAAAAA; 
+}
+.djepm-timelinemobilebody { 
+	padding: 5px;
+}
+.djepm-timelinemobilerow { 
+	margin: 10px 0px;
+}
+.djepm-timeline-select-fixed { 
+	position: fixed;
+	top:0px;
+	background: white;
+	border-bottom: 2px solid #BBB;
+	padding-top: 15px;
+	padding-bottom: 8px;
+	z-index:9999;
+}
+.djepm-content {
+  margin: 10px !important;
+}
+.djepm-toplistbuttons { 
+  background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e8e8e8), color-stop(1, #d8d8d8) );
+  background: -moz-linear-gradient( center top, #e8e8e8 5%, #d8d8d8 100% );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e8e8e8', endColorstr='#d8d8d8');
+  background-color: #e8e8e8;
+  border: 1px solid #b8b8b8;
+  display: inline-block;
+  color: #333 !important;
+  font-family: "Arial Black", Gadget, sans-serif;
+  font-size: 13px;
+  font-weight: 900;
+  width: 31%;
+  height: 25px;
+  padding-top: 6px;
+  margin-top: 3px;
+  text-decoration: none;
+  text-transform: uppercase;
+ }
+tr[id*="song_row_for_songid"] > td.djepm-playlistboxtext, .djepm-playlistboxtext {
+	border-bottom: 1px solid #DDD;
+	padding: 3px 5px !important;
+}
+
+.djep-profilepicture { 
+margin: 0px auto 20px;
+width: 95%;
+}
+
+.djep-musicresultrow td:nth-child(1) { 
+	width: 20px;
+	font-size: 11px !important;
+}
+
+.djep-musicresultrow td:nth-child(2), .djep-musicresultrow td:nth-child(3) { 
+	width: 165px;
+	font-size: 11px !important;
+	padding-left: 2px;
+}
+.djep-musicresultrow td:nth-child(4), .djep-musicresultrow td:nth-child(5) { 
+	width: 55px;
+	text-align: center;
+}
+
+.musicresultrowmobile td div:nth-child(1) { 
+	float: right;
+	margin: 3px;
+}
+.musicresultrowmobile td div:nth-child(2) { 
+	padding:3px;
+}
+
+.djep-musicresultrow:hover, .djep-musicresultrowmobile:hover { 
+	background-color: #BBD7E8;
+}
+/* ============================================================
+   CARE MORE ENTERTAINMENT — CLIENT PORTAL DARK THEME v3.7
+   Append to the BOTTOM of DJEP's downloaded theme CSS.
+   Replaces v2 entirely. Do not delete anything above it.
+
+   v3 fixes:
+   - relative image paths rewritten absolute (icons were 404ing)
+   - #djep-content padding reverted (was clipping wide layouts)
+   - jQuery UI smoothness theme skinned (white music panel)
+   - e-signature / payment / error blocks skinned
+
+   v3.7 fixes (drag-and-drop safety audit):
+   - ALL transforms removed from draggable/droppable elements.
+     jQuery UI computes drag position from element offsets; a CSS
+     transform creates a containing block its math ignores. This
+     is the likely cause of rows landing in the wrong place.
+   - timeline table returned to border-collapse: collapse.
+     border-spacing shifted every droppable row's geometry.
+     Row separation is now done with borders/padding instead.
+
+   v3.6 fixes:
+   - drag handle was rendering two icons stacked (BUG from v3.5)
+   - category colour bars removed
+   - all input types now caught (white boxes on mobile)
+   - mobile: full-bleed layout, sized music tiles, no sticky hover
+   - contact phone row hidden
+
+   v3.5 adds:
+   - timeline row control icons replaced (grip / up / down / trash)
+
+   v3.4 adds:
+   - timeline instruction hint card
+
+   v3.3 adds:
+   - timeline builder rebuilt as a card-row editor
+
+   v3.2 fixes:
+   - container widened (music planner was being clipped at 800px)
+   - fixed-height list buttons no longer wrap and overlap on hover
+   - music section icons replaced with inline SVG
+
+   v3.1 adds:
+   - Stripe payment page skinned (#maincarddiv, #card-submit button)
+   - NOTE: card number / expiry / CVC boxes are Stripe Elements
+     rendered in cross-origin iframes. CSS cannot reach inside them.
+     They are intentionally left light so typed digits stay legible.
+   ============================================================ */
+
+:root {
+  --cme-bg:      #0a0a0a;
+  --cme-panel:   #0d0d0d;
+  --cme-inset:   #111111;
+  --cme-raise:   #161616;
+  --cme-line:    #1f1f1f;
+  --cme-line2:   #2a2a2a;
+  --cme-text:    #e0e0e0;
+  --cme-muted:   #8f8f8f;
+  --cme-white:   #f5f5f5;
+  --cme-red:     #e50914;
+  --cme-red2:    #cc0000;
+  --cme-redlite: #ff2b36;
+  --cme-reddeep: #a30610;
+  --cme-img:     https://djep21.com/clients/images;
+  --cme-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---------- PAGE SHELL ---------- */
+body.djep-body,
+body.djep-body[style*="background-color:"] {
+  background-color: var(--cme-bg) !important;
+  background-image:
+    radial-gradient(ellipse 900px 420px at 50% -80px, rgba(229,9,20,.13), transparent 70%) !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  color: var(--cme-text) !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: 13.5px !important;
+  line-height: 1.65 !important;
+  -webkit-font-smoothing: antialiased;
+}
+html { scroll-behavior: smooth; }
+::selection { background: var(--cme-red); color: #fff; }
+
+#djep-page, #djep-guestrequestpage, #djep-header { background: transparent !important; }
+
+/* padding matches DJEP's original 0 10px — do not increase, it clips wide content */
+#djep-content,
+#djep-guestrequestcontent {
+  background: var(--cme-panel) !important;
+  border: 1px solid var(--cme-line) !important;
+  border-top: 2px solid var(--cme-red) !important;
+  border-radius: 14px !important;
+  box-shadow:
+    0 24px 70px rgba(0,0,0,.9),
+    0 0 60px rgba(229,9,20,.07),
+    inset 0 1px 0 rgba(255,255,255,.03) !important;
+  color: var(--cme-text) !important;
+  padding: 0px 10px !important;
+  animation: cmeRise .5s cubic-bezier(.16,.84,.44,1) both;
+}
+@keyframes cmeRise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #djep-content, #djep-guestrequestcontent { animation: none; }
+  * { transition: none !important; }
+}
+
+/* ============================================================
+   IMAGE PATH REPAIR — relative URLs break when this file is
+   rehosted off DJEP's server. All rewritten absolute.
+   ============================================================ */
+#djep-addsongimage a       { background: url('https://djep21.com/clients/images/musicrequests_addsong.png') no-repeat center !important; }
+#djep-musicrequestsimage a { background: url('https://djep21.com/clients/images/musicrequests.png') no-repeat center !important; }
+#djep-specialsongsimage a  { background: url('https://djep21.com/clients/images/musicrequests_special.png') no-repeat center !important; }
+#djep-printrequestsimage a { background: url('https://djep21.com/clients/images/musicrequests_print.png') no-repeat center !important; }
+#djep-guestrequestsimage a { background: url('https://djep21.com/clients/images/musicrequests_guests.png') no-repeat center !important; }
+
+#djep-addsongimage a, #djep-musicrequestsimage a, #djep-specialsongsimage a,
+#djep-printrequestsimage a, #djep-guestrequestsimage a {
+  height: 150px !important;
+  width: 150px !important;
+  display: inline-block !important;
+  border-radius: 12px !important;
+  transition: transform .25s ease, filter .25s ease !important;
+}
+#djep-addsongimage a:hover, #djep-musicrequestsimage a:hover,
+#djep-specialsongsimage a:hover, #djep-printrequestsimage a:hover,
+#djep-guestrequestsimage a:hover {
+  transform: translateY(-3px) scale(1.03) !important;
+  filter: drop-shadow(0 6px 18px rgba(229,9,20,.45)) !important;
+}
+
+.djep-dragtoplaylist {
+  background-image: url('https://djep21.com/clients/images/dragimage.png') !important;
+  background-repeat: no-repeat !important;
+}
+.djep-playlistitemsaved {
+  background-image: url('https://djep21.com/clients/images/savedmusic.png') !important;
+}
+.djep-specialsongitemsaved {
+  background-image: url('https://djep21.com/clients/images/specialsavedmusic.png') !important;
+}
+tr[id*="draggable_"] {
+  cursor: url('https://djep21.com/clients/images/openhand.cur'), grab !important;
+}
+.djep-esigned {
+  background-image: url('https://djep21.com/clients/images/padlock_closed.png') !important;
+  background-size: 12px !important;
+  background-repeat: no-repeat !important;
+  background-position: 7px 8px !important;
+  text-indent: 22px !important;
+  width: auto !important;
+  padding-right: 10px !important;
+}
+.djep-timelineitems:hover:before {
+  content: url('https://djep21.com/clients/images/arrow_right.png') !important;
+}
+.ui-progressbar-value {
+  background-image: none !important;
+  background: linear-gradient(90deg, var(--cme-reddeep), var(--cme-redlite)) !important;
+}
+
+/* Stock DJEP icons (contact info, file icons) — desaturate so they
+   stop reading as clip art against the dark panels. */
+.djep-ourcontactinfobox img,
+.djep-planningformsbox img,
+.djep-documentsbox img,
+.djep-otherfilesbox img,
+.djep-relatedfilesbox img {
+  filter: grayscale(1) brightness(1.7) contrast(.85) !important;
+  opacity: .82 !important;
+  transition: opacity .25s ease, filter .25s ease !important;
+}
+.djep-ourcontactinfobox img:hover,
+.djep-planningformsbox img:hover,
+.djep-documentsbox img:hover {
+  opacity: 1 !important;
+  filter: grayscale(.2) brightness(1.4) !important;
+}
+.djep-profile_image {
+  border: 1px solid var(--cme-line2) !important;
+  border-radius: 10px !important;
+  background: var(--cme-inset) !important;
+}
+
+/* ============================================================
+   jQUERY UI (smoothness) — the white music panel, tabs, dialogs,
+   accordions, datepickers. Loaded from a file we don't control.
+   ============================================================ */
+.ui-widget, .ui-widget-content, .ui-widget.ui-widget-content {
+  background: var(--cme-inset) !important;
+  background-image: none !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-radius: 12px !important;
+  color: var(--cme-text) !important;
+  font-family: var(--cme-ui) !important;
+}
+.ui-widget-content a:link, .ui-widget-content a:visited { color: var(--cme-red) !important; }
+.ui-widget-header {
+  background: var(--cme-raise) !important;
+  background-image: none !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-bottom: 2px solid var(--cme-red) !important;
+  border-radius: 12px 12px 0 0 !important;
+  color: var(--cme-white) !important;
+  font-family: var(--cme-ui) !important;
+  letter-spacing: .1em !important;
+}
+.ui-state-default, .ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default, .ui-button {
+  background: var(--cme-raise) !important;
+  background-image: none !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-radius: 8px !important;
+  color: var(--cme-muted) !important;
+  font-weight: 600 !important;
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease !important;
+}
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited {
+  color: var(--cme-muted) !important;
+}
+.ui-state-hover, .ui-widget-content .ui-state-hover,
+.ui-state-focus, .ui-button:hover {
+  background: #1c0406 !important;
+  background-image: none !important;
+  border: 1px solid var(--cme-red) !important;
+  color: #ffffff !important;
+}
+.ui-state-hover a, .ui-state-hover a:hover, .ui-state-hover a:link, .ui-state-hover a:visited {
+  color: #ffffff !important;
+}
+.ui-state-active, .ui-widget-content .ui-state-active,
+.ui-tabs .ui-tabs-nav li.ui-tabs-active {
+  background: linear-gradient(180deg, var(--cme-redlite), var(--cme-reddeep)) !important;
+  background-image: linear-gradient(180deg, var(--cme-redlite), var(--cme-reddeep)) !important;
+  border: 1px solid var(--cme-redlite) !important;
+  color: #ffffff !important;
+}
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited,
+.ui-tabs .ui-tabs-nav li.ui-tabs-active a { color: #ffffff !important; }
+.ui-tabs, .ui-tabs .ui-tabs-panel {
+  background: var(--cme-inset) !important;
+  border-color: var(--cme-line2) !important;
+  color: var(--cme-text) !important;
+}
+.ui-tabs .ui-tabs-nav {
+  background: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  border-bottom: 1px solid var(--cme-line2) !important;
+  border-radius: 0 !important;
+  padding: 6px 6px 0 !important;
+}
+.ui-corner-all, .ui-corner-top, .ui-corner-bottom,
+.ui-corner-left, .ui-corner-right { border-radius: 8px !important; }
+.ui-dialog, .ui-autocomplete, .ui-menu {
+  background: var(--cme-panel) !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 24px 60px rgba(0,0,0,.85) !important;
+  color: var(--cme-text) !important;
+}
+.ui-menu .ui-menu-item-wrapper.ui-state-active,
+.ui-menu .ui-menu-item a.ui-state-focus {
+  background: var(--cme-red) !important;
+  color: #fff !important;
+}
+.ui-widget-overlay { background: rgba(0,0,0,.72) !important; opacity: 1 !important; }
+.ui-datepicker { background: var(--cme-panel) !important; border-color: var(--cme-line2) !important; }
+.ui-datepicker-header {
+  background: var(--cme-raise) !important; background-image: none !important;
+  border-color: var(--cme-line2) !important; color: var(--cme-white) !important;
+}
+.ui-icon { filter: invert(1) brightness(1.6) !important; }
+.ui-state-active .ui-icon, .ui-state-hover .ui-icon { filter: invert(1) brightness(2) !important; }
+.ui-progressbar { background: var(--cme-inset) !important; border-color: var(--cme-line2) !important; }
+
+/* Instruction / helper boxes inside the music tool */
+.ui-widget-content div[style*="dashed"],
+div[style*="dashed"] {
+  border-color: var(--cme-line2) !important;
+  color: var(--cme-muted) !important;
+  border-radius: 10px !important;
+}
+
+/* ---------- NAVIGATION ---------- */
+ul#djep-navigation li {
+  background-color: transparent !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+}
+ul#djep-navigation li a:link,
+ul#djep-navigation li a:visited {
+  background: var(--cme-inset) !important;
+  background-image: none !important;
+  color: var(--cme-muted) !important;
+  border-radius: 8px !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 10.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: .2em !important;
+  transition: background-color .3s ease, color .3s ease !important;
+}
+ul#djep-navigation li a:hover { background-color: #1c0406 !important; color: var(--cme-white) !important; }
+ul#djep-navigation li.selected a:link,
+ul#djep-navigation li.selected a:visited {
+  background: linear-gradient(180deg, var(--cme-red) 0%, var(--cme-reddeep) 100%) !important;
+  background-color: var(--cme-red) !important;
+  color: #ffffff !important;
+  border: 1px solid var(--cme-redlite) !important;
+  box-shadow: 0 0 26px rgba(229,9,20,.4) !important;
+}
+ul#djep-navigation li.shadow { box-shadow: none !important; }
+
+/* ---------- TYPOGRAPHY ---------- */
+h1.djep-h1, h2.djep-h2, h3.djep-h3 {
+  font-family: var(--cme-ui) !important;
+  color: var(--cme-white) !important;
+  letter-spacing: .06em !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+}
+h1.djep-h1 { font-size: 27px !important; letter-spacing: .04em !important; }
+h2.djep-h2 { font-size: 19px !important; }
+h3.djep-h3 { font-size: 14px !important; color: var(--cme-muted) !important; letter-spacing: .14em !important; }
+p, td, th, li, span, label, div, dt, dd { color: var(--cme-text); }
+a:link, a:visited { color: var(--cme-red) !important; transition: color .2s ease, opacity .2s ease; }
+a:hover { color: var(--cme-redlite) !important; }
+:focus-visible { outline: 2px solid var(--cme-red) !important; outline-offset: 2px !important; }
+
+/* ---------- SECTION TITLE BARS ---------- */
+.djep-titlebar, .djep-titlebarsmall, .djep-titlebarsmaller,
+.djep-requestlimittitle, .djep-databaseheader {
+  background-color: var(--cme-inset) !important;
+  background-image: linear-gradient(90deg, rgba(229,9,20,.10), transparent 55%) !important;
+  border: 1px solid var(--cme-line) !important;
+  border-left: 3px solid var(--cme-red) !important;
+  border-radius: 8px !important;
+  color: var(--cme-white) !important;
+  font-family: var(--cme-ui) !important;
+  letter-spacing: .16em !important;
+  text-transform: uppercase !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+}
+.djep-titlebarconfirm, .djep-titlebarmusicconfirm {
+  background: #0e1a0e !important; background-image: none !important; filter: none !important;
+  border: 1px solid #2f5c2f !important; color: #8ce07a !important; border-radius: 8px !important;
+}
+.djep-titlebarsmallalert {
+  background-color: #1a0607 !important; border: 1px solid #5c1f22 !important;
+  color: #ff9ba0 !important; border-radius: 8px !important;
+}
+.djep-titlebarnotices, .djep-songrequesttotals, .djep-songideaerror, .djep-specialdescription {
+  background: #150607 !important; border-color: var(--cme-line2) !important;
+  color: var(--cme-text) !important; border-radius: 8px !important; text-shadow: none !important;
+}
+.djep-titlebarlockout {
+  background-color: var(--cme-red) !important; border-color: var(--cme-redlite) !important;
+  color: #fff !important; border-radius: 8px !important;
+  box-shadow: 0 0 34px rgba(229,9,20,.4) !important;
+}
+.djep-specialcloseicon a:link, .djep-specialcloseicon a:visited { color: var(--cme-red) !important; }
+
+/* ---------- MODULE PANELS ---------- */
+.djep-eventlistbox, .djep-upcomingmeetingsbox, .djep-latestemailsbox,
+.djep-welcometextbox, .djep-contactdetailsbox, .djep-logindetailsbox,
+.djep-contactformbox, .djep-ourcontactinfobox, .djep-emailhistorybox,
+.djep-planneraccessbox, .djep-managemusicbox, .djep-planningformsbox,
+.djep-timelinebox, .djep-othertoolsbox, .djep-selectyourmusicbox,
+.djep-eventdatetimesbox, .djep-servicedetailsbox, .djep-eventdescriptionbox,
+.djep-venueinfobox, .djep-staffingbox, .djep-paymentsfinancesbox,
+.djep-feedetailsbox, .djep-paymenthistorybox, .djep-totalfeebox,
+.djep-otherfilesbox, .djep-documentsbox, .djep-relatedfilesbox,
+.djep-requestchangesbox, .djep-viewrequestboxes, .djep-emailmessagebox,
+.djep-makepaymentbox, .djep-viewdocumentbox, .djep-requestchangesformbox,
+.djep-planningformseditbox, .djep-weddingnamesbox, .djep-evaluationbox,
+.djep-printdocumentbox, .djep-planningformsviewbox, .djep-viewtimelinebox,
+.djep-edittimelinebox, .djep-viewweddingnamesbox, .djep-editweddingnamesbox,
+.djep-guestrequestdescription, .djep-guestrequesthowitworksbox,
+.djep-guestrequestsettingsbox, #djep-contactbox, #djep-form-div,
+.djep-apptdetails, .djep-form-sections, .djepm-form-sections,
+.djep-paymentdetailsblock, #djep-esignature_results_div {
+  background: var(--cme-inset) !important;
+  background-image: linear-gradient(180deg, rgba(255,255,255,.022), transparent 120px) !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-radius: 12px !important;
+  color: var(--cme-text) !important;
+  margin-bottom: 20px !important;
+  overflow: hidden !important;
+  box-shadow: 0 2px 14px rgba(0,0,0,.45) !important;
+  transition: border-color .3s ease, box-shadow .3s ease, transform .3s ease !important;
+}
+.djep-eventlistbox:hover, .djep-upcomingmeetingsbox:hover, .djep-latestemailsbox:hover,
+.djep-planneraccessbox:hover, .djep-paymentsfinancesbox:hover, .djep-documentsbox:hover,
+.djep-planningformsbox:hover, .djep-timelinebox:hover, .djep-managemusicbox:hover,
+.djep-servicedetailsbox:hover, .djep-venueinfobox:hover, .djep-feedetailsbox:hover,
+.djep-paymenthistorybox:hover, .djep-eventdatetimesbox:hover {
+  border-color: rgba(229,9,20,.45) !important;
+  box-shadow: 0 8px 30px rgba(0,0,0,.6), 0 0 26px rgba(229,9,20,.10) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* E-signature document rows */
+.djep-esignature_document_row { border-bottom-color: var(--cme-line2) !important; }
+.djep-esignature_document_row:hover { background: rgba(229,9,20,.08) !important; }
+.djep-errormessagecontent, .djep-errormessagecontent-checkbox {
+  background: #1a0607 !important;
+  border: 1px solid #5c1f22 !important;
+  border-radius: 8px !important;
+  color: #ff9ba0 !important;
+  padding: 10px 14px !important;
+}
+
+/* ---------- TABLES ---------- */
+.djep-odd  { background-color: rgba(255,255,255,.022) !important; }
+.djep-even { background-color: transparent !important; }
+.djep-table-headers, .djep-sectiontitle, .djep-databasetableheader,
+.djep-specialsongtitle, .djep-special_song_header {
+  background-color: var(--cme-raise) !important;
+  background-image: none !important;
+  color: var(--cme-white) !important;
+  border-color: var(--cme-line2) !important;
+  border-bottom: 2px solid var(--cme-red) !important;
+  font-family: var(--cme-ui) !important;
+  letter-spacing: .14em !important;
+  text-transform: uppercase !important;
+  font-size: 10.5px !important;
+  font-weight: 700 !important;
+}
+.djep-tablehover, .djep-tablehover1,
+.djep-musicresultrow:hover, .djep-musicresultrowmobile:hover,
+.djep-timelinetable tr:hover { background-color: rgba(229,9,20,.10) !important; }
+.djep-tablehover2 { background-color: transparent !important; }
+.djep-timelinetable tr:nth-child(odd), .djep-timelinetable tr:nth-child(even),
+.djep-specialsongcontent, .djep-special_song_content_div,
+.djep-databasebox, .djep-service-desc-div {
+  background: transparent !important; background-color: transparent !important;
+  color: var(--cme-text) !important; border-color: var(--cme-line) !important;
+}
+.djep-service-desc-topcell, .djep-service-desc-bottomcell,
+.djep-servicedetailsfieldset { border-color: var(--cme-line2) !important; }
+.djep-servicedetailslegend { color: var(--cme-white) !important; font-family: var(--cme-ui) !important; }
+
+/* ---------- FINANCIAL SUMMARY ROWS ---------- */
+.djep-totalfeerow, .djep-totalfeerow span {
+  background-color: #0d1520 !important; color: #86b7ff !important;
+  border-top: 1px solid #1d3550 !important; letter-spacing: .1em !important;
+}
+.djep-totaldepositrow {
+  background-color: #17090b !important; color: #ffa4a9 !important;
+  border-top: 1px solid #4a1c20 !important; letter-spacing: .1em !important;
+}
+.djep-balanceduerow {
+  background-color: #1c0608 !important; color: #ffffff !important;
+  border-top: 1px solid var(--cme-red) !important;
+  border-bottom: 1px solid var(--cme-red) !important;
+  letter-spacing: .1em !important;
+}
+.djep-balancepaidrow {
+  background-color: #0d1a0d !important; color: #92e47f !important;
+  border-top: 1px solid #2f5c2f !important; letter-spacing: .1em !important;
+}
+
+/* ---------- BUTTONS: PRIMARY ---------- */
+.djep-planeventbutton, .djep-paymentbutton, .djep-guestsubmit, .djep-guestsubmitrequests,
+a.djep-planeventbutton:link, a.djep-planeventbutton:visited,
+a.djep-paymentbutton:link,   a.djep-paymentbutton:visited,
+a.djep-guestsubmit:link,     a.djep-guestsubmit:visited,
+a.djep-guestsubmitrequests:link, a.djep-guestsubmitrequests:visited,
+.djep-submit input, input.djep-widgetaction {
+  background: linear-gradient(180deg, var(--cme-redlite) 0%, var(--cme-red) 45%, var(--cme-reddeep) 100%) !important;
+  background-color: var(--cme-red) !important;
+  filter: none !important;
+  border: 1px solid var(--cme-redlite) !important;
+  border-radius: 8px !important;
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,.45) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.22), 0 3px 12px rgba(0,0,0,.5) !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: .16em !important;
+  text-transform: uppercase !important;
+  padding: 10px 22px !important;
+  line-height: 1.3 !important;
+  transition: box-shadow .28s ease, transform .15s ease !important;
+}
+a.djep-planeventbutton:hover, a.djep-paymentbutton:hover,
+a.djep-guestsubmit:hover, a.djep-guestsubmitrequests:hover,
+.djep-planeventbutton:hover, .djep-paymentbutton:hover,
+.djep-guestsubmit:hover, .djep-guestsubmitrequests:hover,
+.djep-submit input:hover {
+  background: linear-gradient(180deg, #ff3d47 0%, var(--cme-redlite) 45%, var(--cme-red) 100%) !important;
+  background-color: var(--cme-redlite) !important;
+  color: #ffffff !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 0 30px rgba(229,9,20,.5) !important;
+  transform: translateY(-1px) !important;
+}
+a.djep-planeventbutton:active, a.djep-paymentbutton:active,
+.djep-planeventbutton:active, .djep-paymentbutton:active {
+  transform: translateY(1px) !important;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,.5) !important;
+}
+
+/* ---------- BUTTONS: SECONDARY ---------- */
+.djep-eventdetailsbutton, .djep-readviewbutton, .djep-actionbutton, .djep-logoutbutton,
+.djep-searchbutton, .djep-clipboardbutton, .djep-songideabutton, .djep-specialsongbutton,
+.djep-guestlogout, .djep-toplistbuttons, .djep-toplistbuttons2, .djep-toplistbuttons3,
+.djep-toplistbuttons4, .djep-toplistbuttons5, .djepm-toplistbuttons,
+.djep-artistsongbuttons, .djep-artistsongbuttonswide, .djep-paginatebutton,
+.djep-accordionButton, .djep-timelineitems, .djep-esigned,
+.djep-songideasdropdown, .djep-songgenresdropdown,
+a.djep-eventdetailsbutton:link, a.djep-eventdetailsbutton:visited,
+a.djep-readviewbutton:link,     a.djep-readviewbutton:visited,
+a.djep-actionbutton:link,       a.djep-actionbutton:visited,
+a.djep-logoutbutton:link,       a.djep-logoutbutton:visited,
+a.djep-searchbutton:link,       a.djep-searchbutton:visited,
+a.djep-clipboardbutton:link,    a.djep-clipboardbutton:visited,
+a.djep-songideabutton:link,     a.djep-songideabutton:visited,
+a.djep-specialsongbutton:link,  a.djep-specialsongbutton:visited,
+a.djep-guestlogout:link,        a.djep-guestlogout:visited,
+a.djep-toplistbuttons:link,     a.djep-toplistbuttons:visited,
+a.djep-toplistbuttons2:link,    a.djep-toplistbuttons2:visited,
+a.djep-toplistbuttons3:link,    a.djep-toplistbuttons3:visited,
+a.djep-toplistbuttons4:link,    a.djep-toplistbuttons4:visited,
+a.djep-toplistbuttons5:link,    a.djep-toplistbuttons5:visited,
+a.djepm-toplistbuttons:link,    a.djepm-toplistbuttons:visited,
+a.djep-artistsongbuttons:link,  a.djep-artistsongbuttons:visited,
+a.djep-artistsongbuttonswide:link, a.djep-artistsongbuttonswide:visited,
+a.djep-timelineitems:link,      a.djep-timelineitems:visited,
+a.djep-esigned:link,            a.djep-esigned:visited {
+  background: var(--cme-raise) !important;
+  background-image: none !important;
+  background-color: var(--cme-raise) !important;
+  filter: none !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-radius: 8px !important;
+  color: var(--cme-text) !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  font-family: var(--cme-ui) !important;
+  font-weight: 600 !important;
+  letter-spacing: .12em !important;
+  transition: border-color .25s ease, color .25s ease, background-color .25s ease, transform .15s ease !important;
+}
+a.djep-eventdetailsbutton:hover, a.djep-readviewbutton:hover, a.djep-actionbutton:hover,
+a.djep-logoutbutton:hover, a.djep-searchbutton:hover, a.djep-clipboardbutton:hover,
+a.djep-songideabutton:hover, a.djep-specialsongbutton:hover, a.djep-guestlogout:hover,
+a.djep-toplistbuttons:hover, a.djep-toplistbuttons2:hover, a.djep-toplistbuttons3:hover,
+a.djep-toplistbuttons4:hover, a.djep-toplistbuttons5:hover, a.djepm-toplistbuttons:hover,
+a.djep-artistsongbuttons:hover, a.djep-artistsongbuttonswide:hover, a.djep-timelineitems:hover,
+.djep-eventdetailsbutton:hover, .djep-readviewbutton:hover, .djep-actionbutton:hover,
+.djep-logoutbutton:hover, .djep-searchbutton:hover, .djep-clipboardbutton:hover,
+.djep-songideabutton:hover, .djep-specialsongbutton:hover, .djep-guestlogout:hover,
+.djep-toplistbuttons:hover, .djep-toplistbuttons2:hover, .djep-toplistbuttons3:hover,
+.djep-toplistbuttons4:hover, .djep-toplistbuttons5:hover, .djepm-toplistbuttons:hover,
+.djep-artistsongbuttons:hover, .djep-artistsongbuttonswide:hover,
+.djep-paginatebutton:hover, .djep-accordionButton:hover, .djep-timelineitems:hover {
+  background: #1c0406 !important;
+  background-color: #1c0406 !important;
+  background-image: none !important;
+  filter: none !important;
+  border-color: var(--cme-red) !important;
+  color: #ffffff !important;
+  transform: translateY(-1px) !important;
+}
+.djep-artistsongbuttons, .djep-artistsongbuttonswide { opacity: .65 !important; }
+.djep-artistsongbuttons:hover, .djep-artistsongbuttonswide:hover { opacity: 1 !important; }
+
+/* ACTIVE / SELECTED PILLS — includes the white-background variants
+   from stylesheet_updates.css */
+.djep-toplistbuttons_active, .djepm-toplistbuttons_active,
+.djep-toplistbuttons2_active, .djep-toplistbuttons3_active, .djep-toplistbuttons4_active,
+.djep-activepaginatebutton,
+a.djep-toplistbuttons_active:link,  a.djep-toplistbuttons_active:visited,
+a.djepm-toplistbuttons_active:link, a.djepm-toplistbuttons_active:visited,
+a.djep-toplistbuttons2_active:link, a.djep-toplistbuttons2_active:visited,
+a.djep-toplistbuttons3_active:link, a.djep-toplistbuttons3_active:visited,
+a.djep-toplistbuttons4_active:link, a.djep-toplistbuttons4_active:visited,
+.djep-music_selections_navigation-active a:link,
+.djep-music_selections_navigation-active a:visited {
+  background: var(--cme-red) !important;
+  background-color: var(--cme-red) !important;
+  background-image: none !important;
+  filter: none !important;
+  border: 1px solid var(--cme-redlite) !important;
+  border-radius: 8px !important;
+  color: #ffffff !important;
+  text-shadow: none !important;
+  box-shadow: 0 0 18px rgba(229,9,20,.35) !important;
+}
+.djep-music_selections_navigation, .djep-requestonlytitle {
+  background: var(--cme-inset) !important; background-image: none !important;
+  border: 1px solid var(--cme-line2) !important; color: var(--cme-text) !important;
+  border-radius: 8px !important;
+}
+.djep-music_selections_navigation-li a:link,
+.djep-music_selections_navigation-li a:visited {
+  background: transparent !important; background-image: none !important; filter: none !important;
+  border: 1px solid transparent !important; color: var(--cme-muted) !important;
+}
+
+/* ---------- FORM FIELDS ---------- */
+input.djep-input, select.djep-select, textarea.djep-textarea,
+.djep-musicsearchform, .djep-textarea_notes, .djep-textarea_todo,
+input[type="text"], input[type="email"], input[type="tel"],
+input[type="password"], input[type="number"], input[type="date"],
+select, textarea, textarea#djep-timelineheadline,
+.djep-timelinetextbox1, .djep-timelinetextbox2, .djep-timelinetextbox3 {
+  background-color: #131313 !important;
+  color: var(--cme-white) !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-radius: 8px !important;
+  font-family: var(--cme-ui) !important;
+  transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease !important;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--cme-red) !important;
+  background-color: #171717 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(229,9,20,.16) !important;
+}
+::placeholder { color: #666 !important; }
+input[type="checkbox"], input[type="radio"] { accent-color: var(--cme-red); }
+.djep-timelinetextbox1:hover, .djep-timelinetextbox2:hover,
+.djep-timelinetextbox3:hover, .djep-playlist_highlighter_focus_out {
+  background: #1c0406 !important; color: var(--cme-white) !important;
+}
+.djep-playlist_highlight_focus_in {
+  background-color: #2a0004 !important; border-color: var(--cme-red) !important;
+}
+.djep-form label { color: var(--cme-muted) !important; font-family: var(--cme-ui) !important; }
+
+/* ---------- PLAYLIST / SONG PANELS ---------- */
+.djep-playlistbox, .djep-playlistboxspotify, .djep-playlistboxmustplay,
+.djep-playlistboxdonotplay, .djep-playlistboxplayifposs,
+.djep-playlistboxdedications, .djep-playlistboxonlyrequest,
+.djep-playlistboxcustomtype1, .djep-playlistboxcustomtype2,
+.djep-playlistboxcustomtype3, .djep-playlistboxcustomtype4,
+.djep-playlistboxcustomtype5 {
+  background-color: var(--cme-inset) !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-radius: 0 0 10px 10px !important;
+  color: var(--cme-text) !important;
+}
+.djep-playlistboxspotifytitle, .djep-playlistboxmustplaytitle,
+.djep-playlistboxplayifposstitle, .djep-playlistboxdedicationstitle,
+.djep-playlistboxonlyrequesttitle, .djep-playlistboxdonotplaytitle,
+.djep-playlistboxcustomtype1title, .djep-playlistboxcustomtype2title,
+.djep-playlistboxcustomtype3title, .djep-playlistboxcustomtype4title,
+.djep-playlistboxcustomtype5title {
+  background: var(--cme-raise) !important; background-image: none !important; filter: none !important;
+  border: 1px solid var(--cme-line2) !important; color: var(--cme-white) !important;
+  border-radius: 10px 10px 0 0 !important;
+  font-family: var(--cme-ui) !important; letter-spacing: .1em !important;
+}
+.djep-playlistboxmustplaytitle   { border-left: 3px solid #7ed957 !important; }
+.djep-playlistboxplayifposstitle { border-left: 3px solid #f1da36 !important; }
+.djep-playlistboxdedicationstitle{ border-left: 3px solid #81b3f9 !important; }
+.djep-playlistboxonlyrequesttitle{ border-left: 3px solid #c07ad6 !important; }
+.djep-playlistboxdonotplaytitle  { border-left: 3px solid var(--cme-red) !important; }
+.djep-playlistboxspotifytitle    { border-left: 3px solid #1db954 !important; }
+.djep-playlistboxguests { border: 2px dashed rgba(229,9,20,.6) !important; border-radius: 10px !important; }
+.djep-playlistboxtext, .djepm-playlistboxtext { color: var(--cme-text) !important; }
+tr[id*="song_row_for_songid"] > td.djepm-playlistboxtext,
+.djepm-playlistboxtext { border-bottom: 1px solid var(--cme-line) !important; }
+.djep-playlistlimits, .djep-playlistcounterspan, .djep-musiccounterspan { color: var(--cme-muted) !important; }
+
+/* ---------- MOBILE ---------- */
+.djepm-dropdownstyle { background: var(--cme-inset) !important; }
+.djepm-timelinemobilepanel {
+  background: var(--cme-inset) !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-radius: 12px !important;
+}
+.djepm-timelinemobileheader {
+  background: var(--cme-raise) !important;
+  border-bottom: 1px solid var(--cme-red) !important;
+  color: var(--cme-white) !important;
+}
+.djepm-timeline-select-fixed {
+  background: var(--cme-bg) !important;
+  border-bottom: 2px solid var(--cme-red) !important;
+}
+
+/* ---------- MISC ---------- */
+.djep-accordionContent { color: var(--cme-text) !important; }
+#djep-progressbartitle, #djep-donesavingtext {
+  color: var(--cme-red) !important; font-family: var(--cme-ui) !important;
+}
+#djep-countdownclock {
+  color: var(--cme-white) !important; font-family: var(--cme-ui) !important;
+  letter-spacing: .12em !important;
+}
+.calendar {
+  background: var(--cme-inset) !important;
+  border: 1px solid var(--cme-line2) !important;
+  box-shadow: 0 0 20px rgba(229,9,20,.22) !important;
+  border-radius: 8px !important;
+}
+.calendar > .month {
+  background: var(--cme-red) !important; background-image: none !important;
+  color: #fff !important; text-shadow: none !important;
+  font-family: var(--cme-ui) !important; letter-spacing: .14em !important;
+}
+.calendar > .day  { color: var(--cme-white) !important; font-family: var(--cme-ui) !important; }
+.calendar > .year { color: var(--cme-muted) !important; }
+.djep-guestrequestlink, .djep-guestrequestpassword { color: var(--cme-red) !important; }
+.djep-tosdescriptiontext { color: var(--cme-muted) !important; }
+img[src*="logo"] { border-radius: 12px !important; }
+hr { border-color: var(--cme-line) !important; }
+
+/* ---------- SCROLLBAR ---------- */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--cme-bg); }
+::-webkit-scrollbar-thumb { background: var(--cme-line2); border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: var(--cme-red); }
+* { scrollbar-color: var(--cme-line2) var(--cme-bg); }
+
+/* ============================================================
+   STRIPE PAYMENT PAGE (v3.1)
+   Confirmed via inspector: #page_paypal > form#payment-form
+   containing div#maincarddiv.credit-card.cardbox.gr-visa,
+   div#card-errors, div#djep-billingcheckbox, div#card-submit > button.
+   The gr-* class is brand-dependent (gr-visa / gr-mastercard / gr-amex),
+   so the card face is matched on the wildcard too.
+   ============================================================ */
+#page_paypal, .payment_page_div { background: transparent !important; }
+
+/* Card face */
+#maincarddiv,
+.credit-card.cardbox,
+.credit-card[class*="gr-"] {
+  background: linear-gradient(145deg, #1a1a1a 0%, #101010 55%, #1c0406 100%) !important;
+  background-image: linear-gradient(145deg, #1a1a1a 0%, #101010 55%, #1c0406 100%) !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-radius: 16px !important;
+  box-shadow:
+    0 20px 50px rgba(0,0,0,.75),
+    0 0 40px rgba(229,9,20,.12),
+    inset 0 1px 0 rgba(255,255,255,.06) !important;
+}
+#maincarddiv label,
+.credit-card.cardbox label,
+#maincarddiv .cardlabel {
+  color: var(--cme-white) !important;
+  font-family: var(--cme-ui) !important;
+  letter-spacing: .16em !important;
+  text-transform: uppercase !important;
+  font-size: 10.5px !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+}
+
+/* Pay button — bare <button>, no class, so it needs its own rule */
+#card-submit button {
+  background: linear-gradient(180deg, var(--cme-redlite) 0%, var(--cme-red) 45%, var(--cme-reddeep) 100%) !important;
+  border: 1px solid var(--cme-redlite) !important;
+  border-radius: 8px !important;
+  color: #ffffff !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: .14em !important;
+  text-transform: uppercase !important;
+  padding: 14px 40px !important;
+  cursor: pointer !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,.45) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.22), 0 4px 16px rgba(0,0,0,.5) !important;
+  transition: box-shadow .28s ease, transform .15s ease !important;
+}
+#card-submit button:hover {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 0 32px rgba(229,9,20,.5) !important;
+  transform: translateY(-1px) !important;
+}
+#card-submit button:active {
+  transform: translateY(1px) !important;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,.5) !important;
+}
+#card-submit button:disabled {
+  opacity: .5 !important;
+  transform: none !important;
+  box-shadow: none !important;
+  cursor: not-allowed !important;
+}
+
+/* Stripe error message */
+#card-errors {
+  background: #1a0607 !important;
+  border: 1px solid #5c1f22 !important;
+  border-radius: 8px !important;
+  color: #ff9ba0 !important;
+  padding: 10px 14px !important;
+  margin: 10px auto !important;
+  max-width: 550px !important;
+  font-family: var(--cme-ui) !important;
+}
+
+/* Billing details block */
+#djep-billingcheckbox { color: var(--cme-text) !important; }
+#djep-billingcheckbox em, #djep-billingcheckbox i { color: var(--cme-muted) !important; }
+#djep-billingcheckbox label { font-family: var(--cme-ui) !important; }
+
+/* ============================================================
+   v3.2 — LAYOUT WIDTH
+   DJEP caps #djep-content at 800px with overflow:hidden, which
+   guillotines the music planner and other wide tools. Widened
+   responsively; the nav bar is widened to match so the tabs
+   stay aligned with the card edge.
+   ============================================================ */
+#djep-content,
+#djep-guestrequestcontent {
+  max-width: min(1180px, 96vw) !important;
+  width: auto !important;
+}
+#djep-navbar {
+  width: auto !important;
+  max-width: min(1180px, 96vw) !important;
+  margin: 0 auto !important;
+}
+#djep-header { max-width: min(1180px, 96vw) !important; margin: 0 auto !important; }
+
+/* Wide inner tools get their own scroll rather than being cut off */
+.djep-viewplanningformdiv,
+.djepm-musicicondiv {
+  overflow: auto !important;
+  max-width: 100% !important;
+}
+
+/* ============================================================
+   v3.2 — FIXED-HEIGHT LIST BUTTONS
+   .djep-toplistbuttons3 / 4 have hard-coded heights. The global
+   letter-spacing pushed their labels onto a second line, which
+   overflowed into the row beneath. Spacing removed, height freed.
+   ============================================================ */
+.djep-toplistbuttons, .djep-toplistbuttons2, .djep-toplistbuttons3,
+.djep-toplistbuttons4, .djep-toplistbuttons5, .djepm-toplistbuttons,
+.djep-toplistbuttons_active, .djepm-toplistbuttons_active,
+.djep-toplistbuttons2_active, .djep-toplistbuttons3_active,
+.djep-toplistbuttons4_active,
+a.djep-toplistbuttons:link, a.djep-toplistbuttons:visited,
+a.djep-toplistbuttons2:link, a.djep-toplistbuttons2:visited,
+a.djep-toplistbuttons3:link, a.djep-toplistbuttons3:visited,
+a.djep-toplistbuttons4:link, a.djep-toplistbuttons4:visited,
+a.djep-toplistbuttons5:link, a.djep-toplistbuttons5:visited,
+a.djepm-toplistbuttons:link, a.djepm-toplistbuttons:visited {
+  letter-spacing: .02em !important;
+  height: auto !important;
+  min-height: 34px !important;
+  line-height: 1.15 !important;
+  padding: 8px 10px !important;
+  font-size: 11.5px !important;
+  font-weight: 700 !important;
+  white-space: normal !important;
+  overflow-wrap: break-word !important;
+  box-sizing: border-box !important;
+  vertical-align: top !important;
+  text-align: center !important;
+}
+/* no lift on these — they sit in tight grids and the shift reads as a glitch */
+.djep-toplistbuttons:hover, .djep-toplistbuttons2:hover, .djep-toplistbuttons3:hover,
+.djep-toplistbuttons4:hover, .djep-toplistbuttons5:hover, .djepm-toplistbuttons:hover,
+a.djep-toplistbuttons:hover, a.djep-toplistbuttons2:hover, a.djep-toplistbuttons3:hover,
+a.djep-toplistbuttons4:hover, a.djep-toplistbuttons5:hover, a.djepm-toplistbuttons:hover {
+  transform: none !important;
+}
+.djep-toplistbutton_a { margin-top: 5px !important; vertical-align: top !important; }
+
+/* ============================================================
+   v3.2 — MUSIC SECTION ICONS
+   DJEP's originals are skeuomorphic PNGs on white tiles. Replaced
+   with inline SVG line icons; labels were baked into the old PNGs
+   so they are re-added as ::after text.
+   ============================================================ */
+#djep-addsongimage a, #djep-musicrequestsimage a, #djep-specialsongsimage a,
+#djep-printrequestsimage a, #djep-guestrequestsimage a {
+  background-color: var(--cme-raise) !important;
+  background-repeat: no-repeat !important;
+  background-position: center 34px !important;
+  background-size: 52px 52px !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-radius: 14px !important;
+  width: 150px !important;
+  height: 150px !important;
+  display: inline-block !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+  transition: border-color .25s ease, background-color .25s ease,
+              transform .25s ease, box-shadow .25s ease !important;
+}
+#djep-addsongimage a::after, #djep-musicrequestsimage a::after,
+#djep-specialsongsimage a::after, #djep-printrequestsimage a::after,
+#djep-guestrequestsimage a::after {
+  position: absolute !important;
+  left: 6px; right: 6px; bottom: 20px;
+  text-align: center;
+  font-family: var(--cme-ui);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--cme-text);
+  line-height: 1.3;
+}
+#djep-addsongimage a:hover, #djep-musicrequestsimage a:hover,
+#djep-specialsongsimage a:hover, #djep-printrequestsimage a:hover,
+#djep-guestrequestsimage a:hover {
+  background-color: #1c0406 !important;
+  border-color: var(--cme-red) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 10px 28px rgba(0,0,0,.6), 0 0 26px rgba(229,9,20,.22) !important;
+  filter: none !important;
+}
+#djep-addsongimage a:hover::after, #djep-musicrequestsimage a:hover::after,
+#djep-specialsongsimage a:hover::after, #djep-printrequestsimage a:hover::after,
+#djep-guestrequestsimage a:hover::after { color: #ffffff; }
+
+/* Add Requests — note + plus */
+#djep-addsongimage a {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e50914' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M11 18V5l9-2v13'/%3E%3Ccircle cx='8' cy='18' r='3'/%3E%3Ccircle cx='17' cy='16' r='3'/%3E%3Cpath d='M4 3v6M1 6h6'/%3E%3C/svg%3E") !important;
+}
+#djep-addsongimage a::after { content: "Add Requests"; }
+
+/* View Requests — magnifier */
+#djep-musicrequestsimage a {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e50914' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='10.5' cy='10.5' r='7.5'/%3E%3Cpath d='M21 21l-5-5'/%3E%3Cpath d='M9 14V8l5-1v5'/%3E%3Ccircle cx='8' cy='14' r='1.6'/%3E%3C/svg%3E") !important;
+}
+#djep-musicrequestsimage a::after { content: "View Requests"; }
+
+/* Special Songs — star */
+#djep-specialsongsimage a {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e50914' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.4-5.8-3-5.8 3 1.1-6.4L2.6 9.8l6.5-.9z'/%3E%3C/svg%3E") !important;
+}
+#djep-specialsongsimage a::after { content: "Special Songs"; }
+
+/* Print Requests — printer */
+#djep-printrequestsimage a {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e50914' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9V3h12v6'/%3E%3Cpath d='M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2'/%3E%3Crect x='6' y='14' width='12' height='8' rx='1'/%3E%3C/svg%3E") !important;
+}
+#djep-printrequestsimage a::after { content: "Print Requests"; }
+
+/* Guest Requests — people */
+#djep-guestrequestsimage a {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e50914' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='9' cy='7' r='4'/%3E%3Cpath d='M22 20v-2a4 4 0 0 0-3-3.9'/%3E%3Cpath d='M17 3.1a4 4 0 0 1 0 7.8'/%3E%3C/svg%3E") !important;
+}
+#djep-guestrequestsimage a::after { content: "Guest Requests"; }
+
+/* ============================================================
+   v3.3 — TIMELINE BUILDER
+   Rows become spaced cards instead of a dense grid, the drop
+   targets read as drop targets, and the active row is obvious.
+   ============================================================ */
+
+/* --- Headline banner --- */
+textarea#djep-timelineheadline {
+  background: linear-gradient(180deg, var(--cme-raise), var(--cme-inset)) !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-bottom: 2px solid var(--cme-red) !important;
+  border-radius: 12px !important;
+  color: var(--cme-white) !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: 20px !important;
+  line-height: 1.45 !important;
+  text-align: center !important;
+  padding: 16px !important;
+  height: auto !important;
+  min-height: 118px !important;
+  resize: vertical !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.04) !important;
+}
+textarea#djep-timelineheadline:focus {
+  border-color: var(--cme-red) !important;
+  box-shadow: 0 0 0 3px rgba(229,9,20,.15) !important;
+}
+
+/* --- Rows become spaced cards --- */
+.djep-timelinetable {
+  border-collapse: separate !important;
+  border-spacing: 0 7px !important;
+  width: 100% !important;
+  padding: 0 !important;
+}
+.djep-timelinetable tr:nth-child(odd),
+.djep-timelinetable tr:nth-child(even) {
+  background: var(--cme-inset) !important;
+}
+.djep-timelinetable tbody tr {
+  transition: background-color .2s ease, box-shadow .2s ease !important;
+}
+.djep-timelinetable td {
+  background: transparent !important;
+  border-top: 1px solid var(--cme-line) !important;
+  border-bottom: 1px solid var(--cme-line) !important;
+  padding: 7px 8px !important;
+  vertical-align: middle !important;
+}
+.djep-timelinetable td:first-child {
+  border-left: 3px solid var(--cme-line2) !important;
+  border-radius: 10px 0 0 10px !important;
+  transition: border-color .2s ease !important;
+}
+.djep-timelinetable td:last-child {
+  border-right: 1px solid var(--cme-line) !important;
+  border-radius: 0 10px 10px 0 !important;
+}
+.djep-timelinetable tr:hover { background: #141414 !important; }
+.djep-timelinetable tr:hover td:first-child { border-left-color: var(--cme-red) !important; }
+
+/* Active row — the one being edited lights up */
+.djep-timelinetable tr:focus-within {
+  background: #1a0507 !important;
+  box-shadow: 0 6px 22px rgba(0,0,0,.55) !important;
+}
+.djep-timelinetable tr:focus-within td:first-child {
+  border-left-color: var(--cme-red) !important;
+}
+
+/* --- Field treatment per column --- */
+/* TIME — the anchor of the whole document, so it gets weight */
+.djep-timelinetextbox1 {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  background: #0f0f0f !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-radius: 7px !important;
+  color: #ffffff !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  font-variant-numeric: tabular-nums !important;
+  letter-spacing: .04em !important;
+  text-align: center !important;
+  padding: 8px 6px !important;
+}
+/* ACTIVITY */
+.djep-timelinetextbox2 {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  background: #0f0f0f !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-radius: 7px !important;
+  color: var(--cme-white) !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  padding: 8px 10px !important;
+}
+/* COMMENTS — secondary, quieter */
+.djep-timelinetextbox3 {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  background: #0d0d0d !important;
+  border: 1px solid var(--cme-line) !important;
+  border-radius: 7px !important;
+  color: var(--cme-text) !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 12.5px !important;
+  padding: 8px 10px !important;
+  min-height: 34px !important;
+  resize: vertical !important;
+}
+.djep-timelinetextbox1:hover, .djep-timelinetextbox2:hover, .djep-timelinetextbox3:hover {
+  background: #131313 !important;
+  border-color: #3a3a3a !important;
+  color: var(--cme-white) !important;
+}
+.djep-timelinetextbox1:focus, .djep-timelinetextbox2:focus, .djep-timelinetextbox3:focus {
+  background: #171717 !important;
+  border-color: var(--cme-red) !important;
+  box-shadow: 0 0 0 3px rgba(229,9,20,.16) !important;
+  outline: none !important;
+}
+
+/* --- Activity option chips (left column) --- */
+.djep-timelineitems {
+  background: var(--cme-raise) !important;
+  background-image: none !important;
+  filter: none !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-left: 3px solid #3a3a3a !important;
+  border-radius: 9px !important;
+  color: var(--cme-text) !important;
+  text-shadow: none !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 12.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: .02em !important;
+  padding: 10px 12px 10px 30px !important;
+  width: 240px !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  cursor: grab !important;
+  transition: border-color .2s ease, background-color .2s ease,
+              transform .18s ease, box-shadow .2s ease !important;
+}
+/* grip dots — makes the drag affordance visible instead of hidden */
+.djep-timelineitems::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 12px; top: 50%;
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: #555 !important;
+  box-shadow: 0 -5px 0 #555, 0 5px 0 #555,
+              6px 0 0 #555, 6px -5px 0 #555, 6px 5px 0 #555 !important;
+  transform: translateY(-50%) !important;
+  transition: background-color .2s ease, box-shadow .2s ease !important;
+}
+.djep-timelineitems:hover {
+  background: #1c0406 !important;
+  background-image: none !important;
+  border-color: var(--cme-red) !important;
+  border-left-color: var(--cme-red) !important;
+  color: #ffffff !important;
+  transform: translateX(3px) !important;
+  box-shadow: 0 6px 20px rgba(0,0,0,.5), 0 0 20px rgba(229,9,20,.18) !important;
+}
+.djep-timelineitems:hover::before {
+  background: var(--cme-red) !important;
+  box-shadow: 0 -5px 0 var(--cme-red), 0 5px 0 var(--cme-red),
+              6px 0 0 var(--cme-red), 6px -5px 0 var(--cme-red), 6px 5px 0 var(--cme-red) !important;
+}
+.djep-timelineitems:active { cursor: grabbing !important; transform: scale(.985) !important; }
+.djep-timelineitems:hover:before { content: "" !important; }
+
+/* --- Row action icons --- */
+.djep-timelinetable td img,
+.djep-timelinebox td img {
+  opacity: .55 !important;
+  padding: 5px !important;
+  border-radius: 7px !important;
+  box-sizing: content-box !important;
+  cursor: pointer !important;
+  transition: opacity .18s ease, background-color .18s ease, transform .18s ease !important;
+}
+.djep-timelinetable tr:hover td img,
+.djep-timelinebox tr:hover td img { opacity: .85 !important; }
+.djep-timelinetable td img:hover,
+.djep-timelinebox td img:hover {
+  opacity: 1 !important;
+  background: rgba(229,9,20,.15) !important;
+  transform: scale(1.12) !important;
+}
+
+/* --- Auto-save indicator --- */
+.djep-timelinebox .djep-titlebar span,
+.djep-edittimelinebox .djep-titlebar span {
+  font-family: var(--cme-ui) !important;
+  font-size: 10px !important;
+  letter-spacing: .14em !important;
+  color: var(--cme-muted) !important;
+}
+
+/* --- Mobile timeline --- */
+.djepm-timelinemobilerow { margin: 12px 0 !important; }
+.djepm-timelinemobilebody { padding: 10px !important; }
+
+/* ============================================================
+   v3.4 — TIMELINE INSTRUCTION HINT
+   div#djep-timelineactivitydescription.djep-timeline_instructions
+   Was DJEP-default light gray, effectively invisible on dark.
+   Restyled as a dashed hint card that reads as a drop target.
+   ============================================================ */
+#djep-timelineactivitydescription,
+.djep-timeline_instructions {
+  background: #101010 !important;
+  border: 1px dashed #3a3a3a !important;
+  border-radius: 12px !important;
+  color: var(--cme-muted) !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  line-height: 1.6 !important;
+  letter-spacing: .01em !important;
+  text-align: center !important;
+  padding: 46px 16px 18px !important;
+  height: auto !important;
+  min-height: 120px !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  transition: border-color .25s ease, color .25s ease, background-color .25s ease !important;
+}
+/* the leading <br><br> in the markup is dead space — suppress it */
+#djep-timelineactivitydescription br,
+.djep-timeline_instructions br { display: none !important; }
+
+/* pointer/hand glyph above the text */
+#djep-timelineactivitydescription::before,
+.djep-timeline_instructions::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 14px; left: 50%;
+  transform: translateX(-50%) !important;
+  width: 26px; height: 26px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e50914' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 11V5.5a1.5 1.5 0 0 1 3 0V11'/%3E%3Cpath d='M12 11V4.5a1.5 1.5 0 0 1 3 0V11'/%3E%3Cpath d='M15 11V6.5a1.5 1.5 0 0 1 3 0V13'/%3E%3Cpath d='M9 11V9.5a1.5 1.5 0 0 0-3 0V14a7 7 0 0 0 7 7h1a6 6 0 0 0 6-6'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
+  opacity: .9 !important;
+}
+#djep-timelineactivitydescription:hover,
+.djep-timeline_instructions:hover {
+  border-color: rgba(229,9,20,.55) !important;
+  background: #140406 !important;
+  color: var(--cme-text) !important;
+}
+
+/* ============================================================
+   v3.5 — TIMELINE ROW CONTROLS
+   Confirmed markup per row:
+     img.ui-draggable#timeline_icon_row_N   (drag handle)
+     a[onclick*="jsMoveDown"] > img          (move down)
+     a[onclick*="jsMoveUp"]   > img          (move up)
+     a[onclick*="jsClearRow"] > img          (clear/delete)
+   The original GIFs are hidden and replaced with inline SVG so
+   each control is self-explanatory. onclick handlers untouched —
+   this is purely cosmetic, the row logic is unchanged.
+
+   NOTE: jsClearRow on an already-empty row does nothing (DJEP JS).
+   That is a DJEP-side behavior CSS can't change; flagged separately.
+   ============================================================ */
+
+/* Hide the original raster icons */
+img.ui-draggable[id^="timeline_icon_row_"],
+.djep-timelinetable a[onclick*="jsMoveDown"] > img,
+.djep-timelinetable a[onclick*="jsMoveUp"] > img,
+.djep-timelinetable a[onclick*="jsClearRow"] > img,
+.djep-timelinebox a[onclick*="jsMoveDown"] > img,
+.djep-timelinebox a[onclick*="jsMoveUp"] > img,
+.djep-timelinebox a[onclick*="jsClearRow"] > img {
+  width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Shared control chip — applied to the draggable img (as a box)
+   and to each action anchor */
+img.ui-draggable[id^="timeline_icon_row_"],
+.djep-timelinetable a[onclick*="jsMoveDown"],
+.djep-timelinetable a[onclick*="jsMoveUp"],
+.djep-timelinetable a[onclick*="jsClearRow"],
+.djep-timelinebox a[onclick*="jsMoveDown"],
+.djep-timelinebox a[onclick*="jsMoveUp"],
+.djep-timelinebox a[onclick*="jsClearRow"] {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 30px !important;
+  height: 30px !important;
+  margin: 2px !important;
+  padding: 0 !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-radius: 8px !important;
+  background-color: var(--cme-raise) !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: 17px 17px !important;
+  vertical-align: middle !important;
+  box-sizing: border-box !important;
+  opacity: .6 !important;
+  transition: opacity .18s ease, background-color .18s ease,
+              border-color .18s ease, transform .15s ease !important;
+}
+
+/* Reveal controls on row hover, like the action-icon pattern elsewhere */
+.djep-timelinetable tr:hover img.ui-draggable[id^="timeline_icon_row_"],
+.djep-timelinetable tr:hover a[onclick*="jsMoveDown"],
+.djep-timelinetable tr:hover a[onclick*="jsMoveUp"],
+.djep-timelinetable tr:hover a[onclick*="jsClearRow"] { opacity: .85 !important; }
+
+img.ui-draggable[id^="timeline_icon_row_"]:hover,
+.djep-timelinetable a[onclick*="jsMoveDown"]:hover,
+.djep-timelinetable a[onclick*="jsMoveUp"]:hover,
+.djep-timelinebox a[onclick*="jsMoveDown"]:hover,
+.djep-timelinebox a[onclick*="jsMoveUp"]:hover {
+  opacity: 1 !important;
+  border-color: var(--cme-red) !important;
+  background-color: #1c0406 !important;
+  transform: translateY(-1px) !important;
+}
+
+/* DRAG HANDLE — grip dots, grab cursor */
+img.ui-draggable[id^="timeline_icon_row_"] {
+  cursor: grab !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238f8f8f'%3E%3Ccircle cx='9' cy='6' r='1.6'/%3E%3Ccircle cx='15' cy='6' r='1.6'/%3E%3Ccircle cx='9' cy='12' r='1.6'/%3E%3Ccircle cx='15' cy='12' r='1.6'/%3E%3Ccircle cx='9' cy='18' r='1.6'/%3E%3Ccircle cx='15' cy='18' r='1.6'/%3E%3C/svg%3E") !important;
+}
+img.ui-draggable[id^="timeline_icon_row_"]:active { cursor: grabbing !important; transform: scale(.94) !important; }
+
+/* MOVE UP — chevron up */
+.djep-timelinetable a[onclick*="jsMoveUp"],
+.djep-timelinebox a[onclick*="jsMoveUp"] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c9c9c9' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 15l6-6 6 6'/%3E%3C/svg%3E") !important;
+}
+/* MOVE DOWN — chevron down */
+.djep-timelinetable a[onclick*="jsMoveDown"],
+.djep-timelinebox a[onclick*="jsMoveDown"] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c9c9c9' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") !important;
+}
+.djep-timelinetable a[onclick*="jsMoveUp"]:hover img,
+.djep-timelinetable a[onclick*="jsMoveDown"]:hover img { filter: none !important; }
+
+/* CLEAR / DELETE — trash can, red hover so its consequence is legible */
+.djep-timelinetable a[onclick*="jsClearRow"],
+.djep-timelinebox a[onclick*="jsClearRow"] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b98a8a' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 7h16'/%3E%3Cpath d='M10 4h4a1 1 0 0 1 1 1v2H9V5a1 1 0 0 1 1-1z'/%3E%3Cpath d='M6 7l1 13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1l1-13'/%3E%3Cpath d='M10 11v6M14 11v6'/%3E%3C/svg%3E") !important;
+}
+.djep-timelinetable a[onclick*="jsClearRow"]:hover,
+.djep-timelinebox a[onclick*="jsClearRow"]:hover {
+  opacity: 1 !important;
+  border-color: var(--cme-red) !important;
+  background-color: #2a0004 !important;
+  transform: translateY(-1px) !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff5760' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 7h16'/%3E%3Cpath d='M10 4h4a1 1 0 0 1 1 1v2H9V5a1 1 0 0 1 1-1z'/%3E%3Cpath d='M6 7l1 13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1l1-13'/%3E%3Cpath d='M10 11v6M14 11v6'/%3E%3C/svg%3E") !important;
+}
+
+/* ============================================================
+   v3.6 — FIX: drag handle rendering two icons
+   v3.5 gave the <img> a background icon but never removed its
+   own src image, so both drew on top of each other. content:
+   replaces the image itself, which is the correct approach.
+   ============================================================ */
+img.ui-draggable[id^="timeline_icon_row_"] {
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='%238f8f8f'%3E%3Ccircle cx='9' cy='6' r='1.7'/%3E%3Ccircle cx='15' cy='6' r='1.7'/%3E%3Ccircle cx='9' cy='12' r='1.7'/%3E%3Ccircle cx='15' cy='12' r='1.7'/%3E%3Ccircle cx='9' cy='18' r='1.7'/%3E%3Ccircle cx='15' cy='18' r='1.7'/%3E%3C/svg%3E") !important;
+  background-image: none !important;
+  width: 30px !important;
+  height: 30px !important;
+  opacity: .6 !important;
+  padding: 5px !important;
+  box-sizing: border-box !important;
+  cursor: grab !important;
+}
+.djep-timelinetable tr:hover img.ui-draggable[id^="timeline_icon_row_"] { opacity: .9 !important; }
+
+/* ============================================================
+   v3.6 — Category colour bars removed
+   The green/yellow/blue/purple left edges clashed with the
+   red brand palette and carried no information the label
+   wasn't already giving.
+   ============================================================ */
+.djep-playlistboxspotifytitle, .djep-playlistboxmustplaytitle,
+.djep-playlistboxplayifposstitle, .djep-playlistboxdedicationstitle,
+.djep-playlistboxonlyrequesttitle, .djep-playlistboxdonotplaytitle,
+.djep-playlistboxcustomtype1title, .djep-playlistboxcustomtype2title,
+.djep-playlistboxcustomtype3title, .djep-playlistboxcustomtype4title,
+.djep-playlistboxcustomtype5title {
+  border-left: 1px solid var(--cme-line2) !important;
+}
+/* Do Not Play keeps a red edge — that one genuinely carries meaning */
+.djep-playlistboxdonotplaytitle { border-left: 3px solid var(--cme-red) !important; }
+
+/* ============================================================
+   v3.6 — Catch every input type
+   The earlier rule listed specific types, so inputs with no
+   type attribute (or unusual ones) stayed browser-default white.
+   ============================================================ */
+input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]):not([type="image"]):not([type="file"]) {
+  background-color: #131313 !important;
+  color: #ffffff !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-radius: 8px !important;
+}
+input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]):not([type="image"]):not([type="file"]):focus {
+  border-color: var(--cme-red) !important;
+  background-color: #171717 !important;
+  box-shadow: 0 0 0 3px rgba(229,9,20,.16) !important;
+  outline: none !important;
+}
+
+/* ============================================================
+   v3.6 — MOBILE
+   ============================================================ */
+@media (max-width: 760px) {
+  #djep-content, #djep-guestrequestcontent {
+    max-width: 100% !important;
+    width: auto !important;
+    padding: 0 8px 20px !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    border-left: none !important;
+    border-right: none !important;
+  }
+  #djep-navbar, #djep-header { max-width: 100% !important; width: auto !important; }
+
+  /* 16px minimum stops iOS auto-zooming on focus */
+  input, select, textarea,
+  .djep-timelinetextbox1, .djep-timelinetextbox2, .djep-timelinetextbox3 {
+    font-size: 16px !important;
+  }
+
+  /* Timeline + names form: use the full width instead of a squeezed column */
+  .djep-timelineitems { width: 100% !important; box-sizing: border-box !important; }
+  .djep-timelinetable { width: 100% !important; }
+  .djep-timelinetable td { padding: 5px 4px !important; }
+  table { max-width: 100% !important; }
+
+  /* Music tiles: were overlapping and clipping their labels */
+  #djep-addsongimage a, #djep-musicrequestsimage a, #djep-specialsongsimage a,
+  #djep-printrequestsimage a, #djep-guestrequestsimage a {
+    width: 78px !important;
+    height: 92px !important;
+    background-size: 30px 30px !important;
+    background-position: center 18px !important;
+    border-radius: 10px !important;
+    margin: 4px !important;
+  }
+  #djep-addsongimage a::after, #djep-musicrequestsimage a::after,
+  #djep-specialsongsimage a::after, #djep-printrequestsimage a::after,
+  #djep-guestrequestsimage a::after {
+    bottom: 8px !important;
+    left: 2px !important; right: 2px !important;
+    font-size: 8px !important;
+    letter-spacing: .04em !important;
+    line-height: 1.25 !important;
+  }
+  .djepm-musicicondiv ul li { float: none !important; display: inline-block !important; margin: 0 !important; }
+}
+
+/* Touch devices keep :hover stuck after a tap, which leaves buttons
+   looking permanently selected. Neutralise hover where there's no pointer. */
+@media (hover: none) {
+  .djep-toplistbuttons:hover, .djep-toplistbuttons2:hover, .djep-toplistbuttons3:hover,
+  .djep-toplistbuttons4:hover, .djep-toplistbuttons5:hover, .djepm-toplistbuttons:hover,
+  a.djep-toplistbuttons:hover, a.djep-toplistbuttons2:hover, a.djep-toplistbuttons3:hover,
+  a.djep-toplistbuttons4:hover, a.djep-toplistbuttons5:hover, a.djepm-toplistbuttons:hover {
+    background: var(--cme-raise) !important;
+    background-color: var(--cme-raise) !important;
+    border-color: var(--cme-line2) !important;
+    color: var(--cme-text) !important;
+    transform: none !important;
+  }
+  .djep-eventlistbox:hover, .djep-planneraccessbox:hover, .djep-managemusicbox:hover,
+  .djep-planningformsbox:hover, .djep-timelinebox:hover, .djep-documentsbox:hover,
+  .djep-paymentsfinancesbox:hover {
+    transform: none !important;
+    border-color: var(--cme-line2) !important;
+    box-shadow: 0 2px 14px rgba(0,0,0,.45) !important;
+  }
+}
+
+/* ============================================================
+   v3.6 — Hide the phone number in Contact Us
+   Targets the row containing a tel: link. If the number is not
+   marked up as a link this will not match — see notes.
+   ============================================================ */
+.djep-ourcontactinfobox tr:has(a[href^="tel:"]),
+#djep-contactbox tr:has(a[href^="tel:"]) { display: none !important; }
+.djep-ourcontactinfobox a[href^="tel:"] { display: none !important; }
+
+/* ============================================================
+   v3.7 — DRAG AND DROP SAFETY AUDIT
+   Everything below exists to undo cosmetic rules of mine that
+   can interfere with jQuery UI's drag/drop position maths.
+   Visual language is preserved using borders and colour only.
+   ============================================================ */
+
+/* --- 1. No transforms anywhere near drag/drop --- */
+.djep-timelineitems,
+.djep-timelineitems:hover,
+.djep-timelineitems:active,
+.djep-timelineitems:focus,
+.ui-draggable, .ui-draggable:hover, .ui-draggable:active,
+.ui-droppable, .ui-droppable:hover,
+img.ui-draggable[id^="timeline_icon_row_"],
+img.ui-draggable[id^="timeline_icon_row_"]:hover,
+img.ui-draggable[id^="timeline_icon_row_"]:active,
+tr[id*="draggable_"], tr[id*="draggable_"]:hover,
+tr[id*="timeline_row_"], tr[id*="timeline_row_"]:hover,
+.djep-timelinetable tr, .djep-timelinetable tr:hover,
+.djep-timelinetable td, .djep-timelinetable td:hover,
+.djep-timelinetable a, .djep-timelinetable a:hover,
+.djep-timelinetable img, .djep-timelinetable img:hover,
+.djep-playlistbox, .djep-playlistboxmustplay, .djep-playlistboxdonotplay,
+.djep-playlistboxplayifposs, .djep-playlistboxdedications,
+.djep-playlistboxonlyrequest, .djep-playlistboxguests,
+.djep-musicresultrow, .djep-musicresultrow:hover {
+  transform: none !important;
+}
+
+/* --- 2. Timeline table back to native geometry --- */
+.djep-timelinetable {
+  border-collapse: collapse !important;
+  border-spacing: 0 !important;
+}
+.djep-timelinetable td {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid var(--cme-line) !important;
+  border-radius: 0 !important;
+  padding: 8px !important;
+  vertical-align: middle !important;
+}
+/* row separation and active state via colour, not layout */
+.djep-timelinetable td:first-child {
+  border-left: 3px solid transparent !important;
+  border-radius: 0 !important;
+  transition: border-color .2s ease !important;
+}
+.djep-timelinetable td:last-child { border-radius: 0 !important; }
+.djep-timelinetable tr:nth-child(odd),
+.djep-timelinetable tr:nth-child(even) { background: transparent !important; }
+.djep-timelinetable tr:hover { background: #131313 !important; }
+.djep-timelinetable tr:hover td:first-child { border-left-color: #3a3a3a !important; }
+.djep-timelinetable tr:focus-within { background: #1a0507 !important; box-shadow: none !important; }
+.djep-timelinetable tr:focus-within td:first-child { border-left-color: var(--cme-red) !important; }
+
+/* --- 3. Activity chips: hover reads through colour alone --- */
+.djep-timelineitems {
+  width: auto !important;
+  max-width: 100% !important;
+  border-left: 3px solid #3a3a3a !important;
+}
+.djep-timelineitems:hover {
+  background: #1c0406 !important;
+  border-color: var(--cme-red) !important;
+  border-left-color: var(--cme-red) !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+.djep-timelineitems:active { cursor: grabbing !important; }
+
+/* --- 4. Drag handle: replaced icon, native box, no transform --- */
+img.ui-draggable[id^="timeline_icon_row_"] {
+  width: 26px !important;
+  height: 26px !important;
+  padding: 3px !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-radius: 6px !important;
+  background-color: var(--cme-raise) !important;
+  background-image: none !important;
+  opacity: .65 !important;
+  cursor: grab !important;
+}
+.djep-timelinetable tr:hover img.ui-draggable[id^="timeline_icon_row_"] { opacity: 1 !important; }
+
+/* --- 5. Action buttons: colour-only feedback --- */
+.djep-timelinetable a[onclick*="jsMoveDown"],
+.djep-timelinetable a[onclick*="jsMoveUp"],
+.djep-timelinetable a[onclick*="jsClearRow"],
+.djep-timelinebox a[onclick*="jsMoveDown"],
+.djep-timelinebox a[onclick*="jsMoveUp"],
+.djep-timelinebox a[onclick*="jsClearRow"] {
+  width: 26px !important;
+  height: 26px !important;
+  background-size: 15px 15px !important;
+  transform: none !important;
+}
+.djep-timelinetable a[onclick*="jsMoveDown"]:hover,
+.djep-timelinetable a[onclick*="jsMoveUp"]:hover,
+.djep-timelinebox a[onclick*="jsMoveDown"]:hover,
+.djep-timelinebox a[onclick*="jsMoveUp"]:hover {
+  transform: none !important;
+  border-color: var(--cme-red) !important;
+  background-color: #1c0406 !important;
+  opacity: 1 !important;
+}
+.djep-timelinetable a[onclick*="jsClearRow"]:hover,
+.djep-timelinebox a[onclick*="jsClearRow"]:hover {
+  transform: none !important;
+  border-color: var(--cme-red) !important;
+  background-color: #2a0004 !important;
+  opacity: 1 !important;
+}
