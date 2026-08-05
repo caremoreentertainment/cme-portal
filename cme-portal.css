@@ -2389,7 +2389,7 @@ width: 95%;
 	background-color: #BBD7E8;
 }
 /* ============================================================
-   CARE MORE ENTERTAINMENT — CLIENT PORTAL DARK THEME v3.7
+   CARE MORE ENTERTAINMENT — CLIENT PORTAL DARK THEME v3.9
    Append to the BOTTOM of DJEP's downloaded theme CSS.
    Replaces v2 entirely. Do not delete anything above it.
 
@@ -2398,6 +2398,17 @@ width: 95%;
    - #djep-content padding reverted (was clipping wide layouts)
    - jQuery UI smoothness theme skinned (white music panel)
    - e-signature / payment / error blocks skinned
+
+   v3.9 adds:
+   - contact phone row hidden (multiple selector strategies)
+
+   v3.8 fixes:
+   - blanket transparent safety net kills ALL unstyled white boxes
+   - .djep-changebutton un-floated (was compressing timeline +
+     names form; questionnaire cleared it, which is why only
+     those two pages were squashed, desktop and mobile)
+   - timeline row grouping restored via zebra + column rules,
+     using no geometry changes so drag/drop stays intact
 
    v3.7 fixes (drag-and-drop safety audit):
    - ALL transforms removed from draggable/droppable elements.
@@ -3958,3 +3969,125 @@ img.ui-draggable[id^="timeline_icon_row_"] {
   background-color: #2a0004 !important;
   opacity: 1 !important;
 }
+
+/* ============================================================
+   v3.8 — WHITE BOX SAFETY NET
+   Specificity, not source order, decides !important conflicts.
+   `*` scores 0,0,0 — the lowest possible — so every class or id
+   rule above beats it. Net effect: anything I have deliberately
+   styled keeps its colour; anything I have never targeted falls
+   back to transparent and shows the dark panel behind it.
+   This catches white boxes without needing their class names.
+   ============================================================ */
+* { background-color: transparent !important; }
+* { color: var(--cme-text) !important; }
+
+/* element-level selectors (0,0,1) outrank * and re-establish the shell */
+html { background-color: var(--cme-bg) !important; }
+img, svg, iframe, canvas, video { background-color: transparent !important; }
+b, strong { color: var(--cme-white) !important; }
+em, i, small { color: var(--cme-muted) !important; }
+option { background-color: #131313 !important; color: #ffffff !important; }
+
+/* ============================================================
+   v3.8 — PLANNING OPTIONS BUTTON
+   DJEP floats this right. Content that doesn't clear the float
+   gets squeezed into the remaining width — which is exactly why
+   the questionnaire looked fine but timeline/names form didn't.
+   ============================================================ */
+.djep-changebutton {
+  float: none !important;
+  display: block !important;
+  width: -moz-fit-content !important;
+  width: fit-content !important;
+  margin: 0 0 16px auto !important;
+  padding: 0 !important;
+  clear: both !important;
+}
+.djep-changebutton + * { clear: both !important; }
+
+/* ============================================================
+   v3.8 — TIMELINE LEGIBILITY (geometry-neutral)
+   v3.7 removed the card spacing to protect drag/drop. Grouping
+   is rebuilt here with colour and column rules only — nothing
+   that moves an element's box.
+   ============================================================ */
+.djep-timelinetable tr:nth-child(even) { background-color: rgba(255,255,255,.028) !important; }
+.djep-timelinetable tr:nth-child(odd)  { background-color: transparent !important; }
+.djep-timelinetable tr:hover           { background-color: #151515 !important; }
+.djep-timelinetable tr:focus-within    { background-color: #1a0507 !important; }
+
+/* column separators so TIME | ACTIVITY | COMMENTS read as columns */
+.djep-timelinetable td { border-right: 1px solid rgba(255,255,255,.05) !important; }
+.djep-timelinetable td:last-child { border-right: none !important; }
+.djep-timelinetable td:first-child { border-left: 3px solid transparent !important; }
+.djep-timelinetable tr:hover td:first-child { border-left-color: #3a3a3a !important; }
+.djep-timelinetable tr:focus-within td:first-child { border-left-color: var(--cme-red) !important; }
+
+/* keep header locked to the column widths below it */
+.djep-timelinebox .djep-table-headers td,
+.djep-timelinebox .djep-table-headers th {
+  border-bottom: 2px solid var(--cme-red) !important;
+  border-right: 1px solid rgba(255,255,255,.05) !important;
+}
+
+/* ============================================================
+   v3.8 — MOBILE FULL WIDTH
+   ============================================================ */
+@media (max-width: 760px) {
+  .djep-changebutton {
+    float: none !important;
+    width: 100% !important;
+    margin: 0 0 14px 0 !important;
+    text-align: center !important;
+  }
+  .djep-changebutton a, .djep-changebutton input { width: 100% !important; box-sizing: border-box !important; }
+
+  .djep-timelinetable, .djep-timelinebox table,
+  .djep-weddingnamesbox table, .djep-editweddingnamesbox table,
+  .djep-planningformseditbox table {
+    width: 100% !important;
+    max-width: 100% !important;
+    table-layout: auto !important;
+  }
+  .djep-timelinetable td { padding: 6px 4px !important; }
+  .djep-timelinetextbox1 { min-width: 52px !important; }
+}
+
+/* ============================================================
+   v3.9 — HIDE PHONE NUMBER ON CONTACT PAGE
+   Written blind, so several strategies are stacked: link scheme,
+   icon filename, and any element whose own link points at a
+   phone. Non-matching selectors simply do nothing.
+   ============================================================ */
+.djep-ourcontactinfobox tr:has(a[href^="tel"]),
+.djep-ourcontactinfobox tr:has(a[href^="callto"]),
+.djep-ourcontactinfobox tr:has(a[href*="tel:"]),
+.djep-ourcontactinfobox tr:has(img[src*="phone"]),
+.djep-ourcontactinfobox tr:has(img[src*="telephone"]),
+.djep-ourcontactinfobox tr:has(img[src*="call"]),
+.djep-ourcontactinfobox td:has(img[src*="phone"]),
+[class*="ourcontactinfo"] tr:has(a[href^="tel"]),
+[class*="ourcontactinfo"] tr:has(img[src*="phone"]),
+#djep-contactbox tr:has(a[href^="tel"]),
+#djep-contactbox tr:has(img[src*="phone"]) {
+  display: none !important;
+}
+
+/* Direct hits, in case the number sits outside a table row */
+.djep-ourcontactinfobox a[href^="tel"],
+.djep-ourcontactinfobox a[href^="callto"],
+[class*="ourcontactinfo"] a[href^="tel"],
+.djep-ourcontactinfobox img[src*="phone"],
+[class*="ourcontactinfo"] img[src*="phone"] {
+  display: none !important;
+}
+
+/* ------------------------------------------------------------
+   FALLBACK — only if the phone row is STILL visible after this.
+   Per the screenshot the contact rows run phone, email, address,
+   website, so the phone is the first row. Remove the opening and
+   closing comment markers on the line below to hide it by
+   position. Verify it hides the phone and not the email.
+   ------------------------------------------------------------ */
+/* .djep-ourcontactinfobox table tr:first-child { display: none !important; } */
