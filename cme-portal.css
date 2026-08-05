@@ -2389,7 +2389,7 @@ width: 95%;
 	background-color: #BBD7E8;
 }
 /* ============================================================
-   CARE MORE ENTERTAINMENT — CLIENT PORTAL DARK THEME v3.9
+   CARE MORE ENTERTAINMENT - CLIENT PORTAL DARK THEME v4.1
    Append to the BOTTOM of DJEP's downloaded theme CSS.
    Replaces v2 entirely. Do not delete anything above it.
 
@@ -2398,6 +2398,28 @@ width: 95%;
    - #djep-content padding reverted (was clipping wide layouts)
    - jQuery UI smoothness theme skinned (white music panel)
    - e-signature / payment / error blocks skinned
+
+   v4.1 fixes (self-audit):
+   - REMOVED !important from every display rule except deliberate
+     hides. jQuery .show()/.hide() sets an INLINE display style,
+     which loses to !important in a stylesheet - meaning my rules
+     were permanently blocking DJEP from hiding elements once
+     shown. This is the likely cause of the duplicate dropdown
+     that appears and never goes away on mobile.
+   - stripped all non-ASCII characters from this file. Em dashes
+     in comments are an encoding hazard if the file is ever saved
+     as ANSI rather than UTF-8.
+
+   v4.0 fixes:
+   - generic button/submit styling (mobile Search button was blue
+     because the input catch-all excludes [type=submit] and all
+     button rules were class-based)
+   - Planning Options button oversized -> horizontal scroll
+     (width:100% without box-sizing)
+   - mobile timeline: red divider moved off the mid-entry header
+     and onto the panel edge, so entries group correctly
+   - desktop timeline row separation strengthened
+   - select dropdown highlight attempt (limited browser support)
 
    v3.9 adds:
    - contact phone row hidden (multiple selector strategies)
@@ -2485,7 +2507,7 @@ html { scroll-behavior: smooth; }
 
 #djep-page, #djep-guestrequestpage, #djep-header { background: transparent !important; }
 
-/* padding matches DJEP's original 0 10px — do not increase, it clips wide content */
+/* padding matches DJEP's original 0 10px - do not increase, it clips wide content */
 #djep-content,
 #djep-guestrequestcontent {
   background: var(--cme-panel) !important;
@@ -2510,7 +2532,7 @@ html { scroll-behavior: smooth; }
 }
 
 /* ============================================================
-   IMAGE PATH REPAIR — relative URLs break when this file is
+   IMAGE PATH REPAIR - relative URLs break when this file is
    rehosted off DJEP's server. All rewritten absolute.
    ============================================================ */
 #djep-addsongimage a       { background: url('https://djep21.com/clients/images/musicrequests_addsong.png') no-repeat center !important; }
@@ -2523,7 +2545,7 @@ html { scroll-behavior: smooth; }
 #djep-printrequestsimage a, #djep-guestrequestsimage a {
   height: 150px !important;
   width: 150px !important;
-  display: inline-block !important;
+  display: inline-block;
   border-radius: 12px !important;
   transition: transform .25s ease, filter .25s ease !important;
 }
@@ -2564,7 +2586,7 @@ tr[id*="draggable_"] {
   background: linear-gradient(90deg, var(--cme-reddeep), var(--cme-redlite)) !important;
 }
 
-/* Stock DJEP icons (contact info, file icons) — desaturate so they
+/* Stock DJEP icons (contact info, file icons) - desaturate so they
    stop reading as clip art against the dark panels. */
 .djep-ourcontactinfobox img,
 .djep-planningformsbox img,
@@ -2588,7 +2610,7 @@ tr[id*="draggable_"] {
 }
 
 /* ============================================================
-   jQUERY UI (smoothness) — the white music panel, tabs, dialogs,
+   jQUERY UI (smoothness) - the white music panel, tabs, dialogs,
    accordions, datepickers. Loaded from a file we don't control.
    ============================================================ */
 .ui-widget, .ui-widget-content, .ui-widget.ui-widget-content {
@@ -2974,7 +2996,7 @@ a.djep-artistsongbuttons:hover, a.djep-artistsongbuttonswide:hover, a.djep-timel
 .djep-artistsongbuttons, .djep-artistsongbuttonswide { opacity: .65 !important; }
 .djep-artistsongbuttons:hover, .djep-artistsongbuttonswide:hover { opacity: 1 !important; }
 
-/* ACTIVE / SELECTED PILLS — includes the white-background variants
+/* ACTIVE / SELECTED PILLS - includes the white-background variants
    from stylesheet_updates.css */
 .djep-toplistbuttons_active, .djepm-toplistbuttons_active,
 .djep-toplistbuttons2_active, .djep-toplistbuttons3_active, .djep-toplistbuttons4_active,
@@ -3159,7 +3181,7 @@ hr { border-color: var(--cme-line) !important; }
   text-shadow: none !important;
 }
 
-/* Pay button — bare <button>, no class, so it needs its own rule */
+/* Pay button - bare <button>, no class, so it needs its own rule */
 #card-submit button {
   background: linear-gradient(180deg, var(--cme-redlite) 0%, var(--cme-red) 45%, var(--cme-reddeep) 100%) !important;
   border: 1px solid var(--cme-redlite) !important;
@@ -3209,7 +3231,7 @@ hr { border-color: var(--cme-line) !important; }
 #djep-billingcheckbox label { font-family: var(--cme-ui) !important; }
 
 /* ============================================================
-   v3.2 — LAYOUT WIDTH
+   v3.2 - LAYOUT WIDTH
    DJEP caps #djep-content at 800px with overflow:hidden, which
    guillotines the music planner and other wide tools. Widened
    responsively; the nav bar is widened to match so the tabs
@@ -3235,7 +3257,7 @@ hr { border-color: var(--cme-line) !important; }
 }
 
 /* ============================================================
-   v3.2 — FIXED-HEIGHT LIST BUTTONS
+   v3.2 - FIXED-HEIGHT LIST BUTTONS
    .djep-toplistbuttons3 / 4 have hard-coded heights. The global
    letter-spacing pushed their labels onto a second line, which
    overflowed into the row beneath. Spacing removed, height freed.
@@ -3264,7 +3286,7 @@ a.djepm-toplistbuttons:link, a.djepm-toplistbuttons:visited {
   vertical-align: top !important;
   text-align: center !important;
 }
-/* no lift on these — they sit in tight grids and the shift reads as a glitch */
+/* no lift on these - they sit in tight grids and the shift reads as a glitch */
 .djep-toplistbuttons:hover, .djep-toplistbuttons2:hover, .djep-toplistbuttons3:hover,
 .djep-toplistbuttons4:hover, .djep-toplistbuttons5:hover, .djepm-toplistbuttons:hover,
 a.djep-toplistbuttons:hover, a.djep-toplistbuttons2:hover, a.djep-toplistbuttons3:hover,
@@ -3274,7 +3296,7 @@ a.djep-toplistbuttons4:hover, a.djep-toplistbuttons5:hover, a.djepm-toplistbutto
 .djep-toplistbutton_a { margin-top: 5px !important; vertical-align: top !important; }
 
 /* ============================================================
-   v3.2 — MUSIC SECTION ICONS
+   v3.2 - MUSIC SECTION ICONS
    DJEP's originals are skeuomorphic PNGs on white tiles. Replaced
    with inline SVG line icons; labels were baked into the old PNGs
    so they are re-added as ::after text.
@@ -3289,7 +3311,7 @@ a.djep-toplistbuttons4:hover, a.djep-toplistbuttons5:hover, a.djepm-toplistbutto
   border-radius: 14px !important;
   width: 150px !important;
   height: 150px !important;
-  display: inline-block !important;
+  display: inline-block;
   position: relative !important;
   box-sizing: border-box !important;
   transition: border-color .25s ease, background-color .25s ease,
@@ -3322,38 +3344,38 @@ a.djep-toplistbuttons4:hover, a.djep-toplistbuttons5:hover, a.djepm-toplistbutto
 #djep-specialsongsimage a:hover::after, #djep-printrequestsimage a:hover::after,
 #djep-guestrequestsimage a:hover::after { color: #ffffff; }
 
-/* Add Requests — note + plus */
+/* Add Requests - note + plus */
 #djep-addsongimage a {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e50914' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M11 18V5l9-2v13'/%3E%3Ccircle cx='8' cy='18' r='3'/%3E%3Ccircle cx='17' cy='16' r='3'/%3E%3Cpath d='M4 3v6M1 6h6'/%3E%3C/svg%3E") !important;
 }
 #djep-addsongimage a::after { content: "Add Requests"; }
 
-/* View Requests — magnifier */
+/* View Requests - magnifier */
 #djep-musicrequestsimage a {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e50914' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='10.5' cy='10.5' r='7.5'/%3E%3Cpath d='M21 21l-5-5'/%3E%3Cpath d='M9 14V8l5-1v5'/%3E%3Ccircle cx='8' cy='14' r='1.6'/%3E%3C/svg%3E") !important;
 }
 #djep-musicrequestsimage a::after { content: "View Requests"; }
 
-/* Special Songs — star */
+/* Special Songs - star */
 #djep-specialsongsimage a {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e50914' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.4-5.8-3-5.8 3 1.1-6.4L2.6 9.8l6.5-.9z'/%3E%3C/svg%3E") !important;
 }
 #djep-specialsongsimage a::after { content: "Special Songs"; }
 
-/* Print Requests — printer */
+/* Print Requests - printer */
 #djep-printrequestsimage a {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e50914' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9V3h12v6'/%3E%3Cpath d='M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2'/%3E%3Crect x='6' y='14' width='12' height='8' rx='1'/%3E%3C/svg%3E") !important;
 }
 #djep-printrequestsimage a::after { content: "Print Requests"; }
 
-/* Guest Requests — people */
+/* Guest Requests - people */
 #djep-guestrequestsimage a {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e50914' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='9' cy='7' r='4'/%3E%3Cpath d='M22 20v-2a4 4 0 0 0-3-3.9'/%3E%3Cpath d='M17 3.1a4 4 0 0 1 0 7.8'/%3E%3C/svg%3E") !important;
 }
 #djep-guestrequestsimage a::after { content: "Guest Requests"; }
 
 /* ============================================================
-   v3.3 — TIMELINE BUILDER
+   v3.3 - TIMELINE BUILDER
    Rows become spaced cards instead of a dense grid, the drop
    targets read as drop targets, and the active row is obvious.
    ============================================================ */
@@ -3413,7 +3435,7 @@ textarea#djep-timelineheadline:focus {
 .djep-timelinetable tr:hover { background: #141414 !important; }
 .djep-timelinetable tr:hover td:first-child { border-left-color: var(--cme-red) !important; }
 
-/* Active row — the one being edited lights up */
+/* Active row - the one being edited lights up */
 .djep-timelinetable tr:focus-within {
   background: #1a0507 !important;
   box-shadow: 0 6px 22px rgba(0,0,0,.55) !important;
@@ -3423,7 +3445,7 @@ textarea#djep-timelineheadline:focus {
 }
 
 /* --- Field treatment per column --- */
-/* TIME — the anchor of the whole document, so it gets weight */
+/* TIME - the anchor of the whole document, so it gets weight */
 .djep-timelinetextbox1 {
   width: 100% !important;
   box-sizing: border-box !important;
@@ -3452,7 +3474,7 @@ textarea#djep-timelineheadline:focus {
   font-weight: 600 !important;
   padding: 8px 10px !important;
 }
-/* COMMENTS — secondary, quieter */
+/* COMMENTS - secondary, quieter */
 .djep-timelinetextbox3 {
   width: 100% !important;
   box-sizing: border-box !important;
@@ -3500,7 +3522,7 @@ textarea#djep-timelineheadline:focus {
   transition: border-color .2s ease, background-color .2s ease,
               transform .18s ease, box-shadow .2s ease !important;
 }
-/* grip dots — makes the drag affordance visible instead of hidden */
+/* grip dots - makes the drag affordance visible instead of hidden */
 .djep-timelineitems::before {
   content: "" !important;
   position: absolute !important;
@@ -3563,7 +3585,7 @@ textarea#djep-timelineheadline:focus {
 .djepm-timelinemobilebody { padding: 10px !important; }
 
 /* ============================================================
-   v3.4 — TIMELINE INSTRUCTION HINT
+   v3.4 - TIMELINE INSTRUCTION HINT
    div#djep-timelineactivitydescription.djep-timeline_instructions
    Was DJEP-default light gray, effectively invisible on dark.
    Restyled as a dashed hint card that reads as a drop target.
@@ -3587,7 +3609,7 @@ textarea#djep-timelineheadline:focus {
   position: relative !important;
   transition: border-color .25s ease, color .25s ease, background-color .25s ease !important;
 }
-/* the leading <br><br> in the markup is dead space — suppress it */
+/* the leading <br><br> in the markup is dead space - suppress it */
 #djep-timelineactivitydescription br,
 .djep-timeline_instructions br { display: none !important; }
 
@@ -3613,14 +3635,14 @@ textarea#djep-timelineheadline:focus {
 }
 
 /* ============================================================
-   v3.5 — TIMELINE ROW CONTROLS
+   v3.5 - TIMELINE ROW CONTROLS
    Confirmed markup per row:
      img.ui-draggable#timeline_icon_row_N   (drag handle)
      a[onclick*="jsMoveDown"] > img          (move down)
      a[onclick*="jsMoveUp"]   > img          (move up)
      a[onclick*="jsClearRow"] > img          (clear/delete)
    The original GIFs are hidden and replaced with inline SVG so
-   each control is self-explanatory. onclick handlers untouched —
+   each control is self-explanatory. onclick handlers untouched -
    this is purely cosmetic, the row logic is unchanged.
 
    NOTE: jsClearRow on an already-empty row does nothing (DJEP JS).
@@ -3642,7 +3664,7 @@ img.ui-draggable[id^="timeline_icon_row_"],
   padding: 0 !important;
 }
 
-/* Shared control chip — applied to the draggable img (as a box)
+/* Shared control chip - applied to the draggable img (as a box)
    and to each action anchor */
 img.ui-draggable[id^="timeline_icon_row_"],
 .djep-timelinetable a[onclick*="jsMoveDown"],
@@ -3651,7 +3673,7 @@ img.ui-draggable[id^="timeline_icon_row_"],
 .djep-timelinebox a[onclick*="jsMoveDown"],
 .djep-timelinebox a[onclick*="jsMoveUp"],
 .djep-timelinebox a[onclick*="jsClearRow"] {
-  display: inline-flex !important;
+  display: inline-flex;
   align-items: center !important;
   justify-content: center !important;
   width: 30px !important;
@@ -3688,19 +3710,19 @@ img.ui-draggable[id^="timeline_icon_row_"]:hover,
   transform: translateY(-1px) !important;
 }
 
-/* DRAG HANDLE — grip dots, grab cursor */
+/* DRAG HANDLE - grip dots, grab cursor */
 img.ui-draggable[id^="timeline_icon_row_"] {
   cursor: grab !important;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238f8f8f'%3E%3Ccircle cx='9' cy='6' r='1.6'/%3E%3Ccircle cx='15' cy='6' r='1.6'/%3E%3Ccircle cx='9' cy='12' r='1.6'/%3E%3Ccircle cx='15' cy='12' r='1.6'/%3E%3Ccircle cx='9' cy='18' r='1.6'/%3E%3Ccircle cx='15' cy='18' r='1.6'/%3E%3C/svg%3E") !important;
 }
 img.ui-draggable[id^="timeline_icon_row_"]:active { cursor: grabbing !important; transform: scale(.94) !important; }
 
-/* MOVE UP — chevron up */
+/* MOVE UP - chevron up */
 .djep-timelinetable a[onclick*="jsMoveUp"],
 .djep-timelinebox a[onclick*="jsMoveUp"] {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c9c9c9' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 15l6-6 6 6'/%3E%3C/svg%3E") !important;
 }
-/* MOVE DOWN — chevron down */
+/* MOVE DOWN - chevron down */
 .djep-timelinetable a[onclick*="jsMoveDown"],
 .djep-timelinebox a[onclick*="jsMoveDown"] {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c9c9c9' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") !important;
@@ -3708,7 +3730,7 @@ img.ui-draggable[id^="timeline_icon_row_"]:active { cursor: grabbing !important;
 .djep-timelinetable a[onclick*="jsMoveUp"]:hover img,
 .djep-timelinetable a[onclick*="jsMoveDown"]:hover img { filter: none !important; }
 
-/* CLEAR / DELETE — trash can, red hover so its consequence is legible */
+/* CLEAR / DELETE - trash can, red hover so its consequence is legible */
 .djep-timelinetable a[onclick*="jsClearRow"],
 .djep-timelinebox a[onclick*="jsClearRow"] {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b98a8a' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 7h16'/%3E%3Cpath d='M10 4h4a1 1 0 0 1 1 1v2H9V5a1 1 0 0 1 1-1z'/%3E%3Cpath d='M6 7l1 13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1l1-13'/%3E%3Cpath d='M10 11v6M14 11v6'/%3E%3C/svg%3E") !important;
@@ -3723,7 +3745,7 @@ img.ui-draggable[id^="timeline_icon_row_"]:active { cursor: grabbing !important;
 }
 
 /* ============================================================
-   v3.6 — FIX: drag handle rendering two icons
+   v3.6 - FIX: drag handle rendering two icons
    v3.5 gave the <img> a background icon but never removed its
    own src image, so both drew on top of each other. content:
    replaces the image itself, which is the correct approach.
@@ -3741,7 +3763,7 @@ img.ui-draggable[id^="timeline_icon_row_"] {
 .djep-timelinetable tr:hover img.ui-draggable[id^="timeline_icon_row_"] { opacity: .9 !important; }
 
 /* ============================================================
-   v3.6 — Category colour bars removed
+   v3.6 - Category colour bars removed
    The green/yellow/blue/purple left edges clashed with the
    red brand palette and carried no information the label
    wasn't already giving.
@@ -3754,11 +3776,11 @@ img.ui-draggable[id^="timeline_icon_row_"] {
 .djep-playlistboxcustomtype5title {
   border-left: 1px solid var(--cme-line2) !important;
 }
-/* Do Not Play keeps a red edge — that one genuinely carries meaning */
+/* Do Not Play keeps a red edge - that one genuinely carries meaning */
 .djep-playlistboxdonotplaytitle { border-left: 3px solid var(--cme-red) !important; }
 
 /* ============================================================
-   v3.6 — Catch every input type
+   v3.6 - Catch every input type
    The earlier rule listed specific types, so inputs with no
    type attribute (or unusual ones) stayed browser-default white.
    ============================================================ */
@@ -3776,7 +3798,7 @@ input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type=
 }
 
 /* ============================================================
-   v3.6 — MOBILE
+   v3.6 - MOBILE
    ============================================================ */
 @media (max-width: 760px) {
   #djep-content, #djep-guestrequestcontent {
@@ -3821,7 +3843,7 @@ input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type=
     letter-spacing: .04em !important;
     line-height: 1.25 !important;
   }
-  .djepm-musicicondiv ul li { float: none !important; display: inline-block !important; margin: 0 !important; }
+  .djepm-musicicondiv ul li { float: none !important; display: inline-block; margin: 0 !important; }
 }
 
 /* Touch devices keep :hover stuck after a tap, which leaves buttons
@@ -3847,16 +3869,16 @@ input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type=
 }
 
 /* ============================================================
-   v3.6 — Hide the phone number in Contact Us
+   v3.6 - Hide the phone number in Contact Us
    Targets the row containing a tel: link. If the number is not
-   marked up as a link this will not match — see notes.
+   marked up as a link this will not match - see notes.
    ============================================================ */
 .djep-ourcontactinfobox tr:has(a[href^="tel:"]),
 #djep-contactbox tr:has(a[href^="tel:"]) { display: none !important; }
 .djep-ourcontactinfobox a[href^="tel:"] { display: none !important; }
 
 /* ============================================================
-   v3.7 — DRAG AND DROP SAFETY AUDIT
+   v3.7 - DRAG AND DROP SAFETY AUDIT
    Everything below exists to undo cosmetic rules of mine that
    can interfere with jQuery UI's drag/drop position maths.
    Visual language is preserved using borders and colour only.
@@ -3971,9 +3993,9 @@ img.ui-draggable[id^="timeline_icon_row_"] {
 }
 
 /* ============================================================
-   v3.8 — WHITE BOX SAFETY NET
+   v3.8 - WHITE BOX SAFETY NET
    Specificity, not source order, decides !important conflicts.
-   `*` scores 0,0,0 — the lowest possible — so every class or id
+   `*` scores 0,0,0 - the lowest possible - so every class or id
    rule above beats it. Net effect: anything I have deliberately
    styled keeps its colour; anything I have never targeted falls
    back to transparent and shows the dark panel behind it.
@@ -3990,14 +4012,14 @@ em, i, small { color: var(--cme-muted) !important; }
 option { background-color: #131313 !important; color: #ffffff !important; }
 
 /* ============================================================
-   v3.8 — PLANNING OPTIONS BUTTON
+   v3.8 - PLANNING OPTIONS BUTTON
    DJEP floats this right. Content that doesn't clear the float
-   gets squeezed into the remaining width — which is exactly why
+   gets squeezed into the remaining width - which is exactly why
    the questionnaire looked fine but timeline/names form didn't.
    ============================================================ */
 .djep-changebutton {
   float: none !important;
-  display: block !important;
+  display: block;
   width: -moz-fit-content !important;
   width: fit-content !important;
   margin: 0 0 16px auto !important;
@@ -4007,9 +4029,9 @@ option { background-color: #131313 !important; color: #ffffff !important; }
 .djep-changebutton + * { clear: both !important; }
 
 /* ============================================================
-   v3.8 — TIMELINE LEGIBILITY (geometry-neutral)
+   v3.8 - TIMELINE LEGIBILITY (geometry-neutral)
    v3.7 removed the card spacing to protect drag/drop. Grouping
-   is rebuilt here with colour and column rules only — nothing
+   is rebuilt here with colour and column rules only - nothing
    that moves an element's box.
    ============================================================ */
 .djep-timelinetable tr:nth-child(even) { background-color: rgba(255,255,255,.028) !important; }
@@ -4032,7 +4054,7 @@ option { background-color: #131313 !important; color: #ffffff !important; }
 }
 
 /* ============================================================
-   v3.8 — MOBILE FULL WIDTH
+   v3.8 - MOBILE FULL WIDTH
    ============================================================ */
 @media (max-width: 760px) {
   .djep-changebutton {
@@ -4055,7 +4077,7 @@ option { background-color: #131313 !important; color: #ffffff !important; }
 }
 
 /* ============================================================
-   v3.9 — HIDE PHONE NUMBER ON CONTACT PAGE
+   v3.9 - HIDE PHONE NUMBER ON CONTACT PAGE
    Written blind, so several strategies are stacked: link scheme,
    icon filename, and any element whose own link points at a
    phone. Non-matching selectors simply do nothing.
@@ -4084,10 +4106,130 @@ option { background-color: #131313 !important; color: #ffffff !important; }
 }
 
 /* ------------------------------------------------------------
-   FALLBACK — only if the phone row is STILL visible after this.
+   FALLBACK - only if the phone row is STILL visible after this.
    Per the screenshot the contact rows run phone, email, address,
    website, so the phone is the first row. Remove the opening and
    closing comment markers on the line below to hide it by
    position. Verify it hides the phone and not the email.
    ------------------------------------------------------------ */
 /* .djep-ourcontactinfobox table tr:first-child { display: none !important; } */
+
+/* ============================================================
+   v4.0 - GENERIC FORM BUTTONS
+   Every button rule so far was class-based, and the input
+   catch-all excludes submit/button types. Any button whose class
+   I have not seen stayed browser-default blue. This catches them
+   by element and type instead, so mobile-only markup is covered.
+   ============================================================ */
+input[type="submit"], input[type="button"], input[type="reset"] {
+  background: var(--cme-raise) !important;
+  background-image: none !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-radius: 8px !important;
+  color: var(--cme-text) !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: .1em !important;
+  padding: 10px 18px !important;
+  cursor: pointer !important;
+  text-shadow: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  transition: border-color .2s ease, background-color .2s ease, color .2s ease !important;
+}
+input[type="submit"]:hover, input[type="button"]:hover, input[type="reset"]:hover {
+  background: #1c0406 !important;
+  border-color: var(--cme-red) !important;
+  color: #ffffff !important;
+}
+/* Search-style submits read as the primary action */
+input[type="submit"][value="Search" i],
+input[type="button"][value="Search" i] {
+  background: linear-gradient(180deg, var(--cme-redlite) 0%, var(--cme-red) 45%, var(--cme-reddeep) 100%) !important;
+  border-color: var(--cme-redlite) !important;
+  color: #ffffff !important;
+}
+
+/* ============================================================
+   v4.0 - SELECT DROPDOWN HIGHLIGHT
+   The open dropdown list is drawn by the operating system on
+   most desktop browsers, so this only partially applies. Where
+   it is unsupported the blue highlight will remain - that is an
+   OS control, not something CSS can reach.
+   ============================================================ */
+select option { background-color: #131313 !important; color: #ffffff !important; }
+select option:checked, select option:hover, select option:focus {
+  background: var(--cme-red) !important;
+  background-color: var(--cme-red) !important;
+  color: #ffffff !important;
+}
+select { accent-color: var(--cme-red); }
+
+/* ============================================================
+   v4.0 - PLANNING OPTIONS BUTTON SIZING
+   ============================================================ */
+.djep-changebutton {
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
+.djep-changebutton a, .djep-changebutton input {
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+  white-space: normal !important;
+}
+body.djep-body { overflow-x: hidden !important; }
+
+@media (max-width: 760px) {
+  .djep-changebutton {
+    width: auto !important;
+    max-width: 100% !important;
+    margin: 0 auto 14px !important;
+    padding: 0 8px !important;
+    text-align: center !important;
+  }
+  .djep-changebutton a, .djep-changebutton input {
+    width: auto !important;
+    max-width: 100% !important;
+    display: inline-block;
+    padding: 10px 18px !important;
+    font-size: 11px !important;
+  }
+}
+
+/* ============================================================
+   v4.0 - MOBILE TIMELINE GROUPING
+   The red rule was sitting under the Time row, which is INSIDE
+   an entry - so it read as a separator between entries. Emphasis
+   moved to the panel edge; the internal divider goes neutral.
+   ============================================================ */
+.djepm-timelinemobilepanel {
+  background: var(--cme-inset) !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-left: 3px solid var(--cme-red) !important;
+  border-radius: 12px !important;
+  margin: 16px 0 !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 18px rgba(0,0,0,.5) !important;
+}
+.djepm-timelinemobileheader {
+  background: var(--cme-raise) !important;
+  border-bottom: 1px solid var(--cme-line2) !important;
+  color: var(--cme-white) !important;
+  padding: 10px 12px !important;
+}
+.djepm-timelinemobilebody { padding: 12px !important; }
+.djepm-timelinemobilerow { margin: 10px 0 !important; }
+
+/* ============================================================
+   v4.0 - DESKTOP TIMELINE ROW SEPARATION
+   ============================================================ */
+.djep-timelinetable td {
+  border-bottom: 2px solid #232323 !important;
+  padding: 10px 8px !important;
+}
+.djep-timelinetable tr:nth-child(even) { background-color: rgba(255,255,255,.035) !important; }
+.djep-timelinetable tr:hover           { background-color: #171717 !important; }
+.djep-timelinetable tr:focus-within    { background-color: #1c0508 !important; }
+.djep-timelinetable tr:focus-within td { border-bottom-color: #3a1418 !important; }
