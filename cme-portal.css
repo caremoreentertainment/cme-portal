@@ -2389,7 +2389,7 @@ width: 95%;
 	background-color: #BBD7E8;
 }
 /* ============================================================
-   CARE MORE ENTERTAINMENT - CLIENT PORTAL DARK THEME v4.1
+   CARE MORE ENTERTAINMENT - CLIENT PORTAL DARK THEME v4.2
    Append to the BOTTOM of DJEP's downloaded theme CSS.
    Replaces v2 entirely. Do not delete anything above it.
 
@@ -2398,6 +2398,22 @@ width: 95%;
    - #djep-content padding reverted (was clipping wide layouts)
    - jQuery UI smoothness theme skinned (white music panel)
    - e-signature / payment / error blocks skinned
+
+   v4.2 adds:
+   - <button> elements now styled generically, not just <input>
+     submit/button types (the mobile Search button is very likely
+     a <button> tag, which the v4.0 fix never covered)
+   - mobile-only best-effort fix for the two-dropdown bug: hides
+     all but the last visible sibling inside a request/song modal
+     wrapper. This is a guess based on the confirmed symptom
+     pattern (JS toggles a class, not inline display), NOT
+     verified against real markup. Flag if it does not resolve it.
+   - forced color-scheme: light on <select> and its native option
+     list, since the dropdown was confirmed to be a native browser
+     control (closes instantly on click) rather than a custom
+     widget. This is a browser rendering boundary, not a DJEP or
+     CSS one - true dark-mode native dropdowns are outside what
+     any stylesheet can fully control.
 
    v4.1 fixes (self-audit):
    - REMOVED !important from every display rule except deliberate
@@ -4233,3 +4249,72 @@ body.djep-body { overflow-x: hidden !important; }
 .djep-timelinetable tr:hover           { background-color: #171717 !important; }
 .djep-timelinetable tr:focus-within    { background-color: #1c0508 !important; }
 .djep-timelinetable tr:focus-within td { border-bottom-color: #3a1418 !important; }
+
+/* ============================================================
+   v4.2 - GENERIC <button> STYLING
+   v4.0 covered input[type=submit/button]. If the mobile Search
+   control is an actual <button> element, that rule never
+   touched it. This catches real button tags generically.
+   ============================================================ */
+button {
+  background: var(--cme-raise) !important;
+  background-image: none !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-radius: 8px !important;
+  color: var(--cme-text) !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: .1em !important;
+  padding: 10px 18px !important;
+  cursor: pointer !important;
+  text-shadow: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  transition: border-color .2s ease, background-color .2s ease, color .2s ease !important;
+}
+button:hover {
+  background: #1c0406 !important;
+  border-color: var(--cme-red) !important;
+  color: #ffffff !important;
+}
+/* Search-style buttons read as the primary action, same as inputs */
+button:has([value="Search" i]), button[aria-label="Search" i] {
+  background: linear-gradient(180deg, var(--cme-redlite) 0%, var(--cme-red) 45%, var(--cme-reddeep) 100%) !important;
+  border-color: var(--cme-redlite) !important;
+  color: #ffffff !important;
+}
+
+/* ============================================================
+   v4.2 - MOBILE-ONLY: two-dropdown modal bug (best effort)
+   CONFIRMED: content switches correctly per tab, so the JS logic
+   is sound - the failure is visibility only. Since it survives
+   after switching tabs, the toggle almost certainly adds/removes
+   a CLASS (e.g. .active/.selected) rather than setting inline
+   display, which is why the earlier !important-on-display fix
+   did not touch it. Written blind - flag if this does not help.
+   ============================================================ */
+@media (max-width: 760px) {
+  /* If both dropdowns share a wrapper and only the active one
+     should show, this keeps just the last one currently visible
+     in the flow. Scoped to the request/special-song modal area
+     by class-name substring so it cannot reach unrelated modals. */
+  [class*="request"] > select:not(:last-of-type),
+  [class*="special"] select ~ select {
+    display: none !important;
+  }
+}
+
+/* ============================================================
+   v4.2 - NATIVE SELECT: force light color-scheme
+   Confirmed native (closes instantly on click = browser-drawn
+   list, not a custom widget). Chrome renders native form
+   controls in dark mode - dark background, blue accent - when
+   the page declares color-scheme: dark. Forcing light here asks
+   Chrome to fall back to its plain native rendering instead.
+   This cannot make the native list red; that styling boundary
+   belongs to the browser, not the page.
+   ============================================================ */
+select {
+  color-scheme: light !important;
+}
