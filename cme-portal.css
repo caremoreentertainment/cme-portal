@@ -2389,7 +2389,7 @@ width: 95%;
 	background-color: #BBD7E8;
 }
 /* ============================================================
-   CARE MORE ENTERTAINMENT - CLIENT PORTAL DARK THEME v4.3
+   CARE MORE ENTERTAINMENT - CLIENT PORTAL DARK THEME v4.4
    Append to the BOTTOM of DJEP's downloaded theme CSS.
    Replaces v2 entirely. Do not delete anything above it.
 
@@ -2398,6 +2398,17 @@ width: 95%;
    - #djep-content padding reverted (was clipping wide layouts)
    - jQuery UI smoothness theme skinned (white music panel)
    - e-signature / payment / error blocks skinned
+
+   v4.4 - hamburger icon, attempt 2:
+   v4.3 targeted background-image and did not fix it, which rules
+   that theory out. Revised theory: the icon is very likely three
+   small bars rendered with background-color alone (a common
+   hamburger pattern with no image/font involved), which the v3.8
+   blanket "* background-color: transparent" safety net would
+   erase completely on a dark background. Written blind against
+   several common naming patterns at once - same approach used
+   for the phone-number hiding earlier. If none of these match,
+   the real class name is needed to finish this one.
 
    v4.3 fixes:
    - CONFIRMED, permanently: Custom Scripting reaches pre-login /
@@ -4330,4 +4341,40 @@ button:has([value="Search" i]), button[aria-label="Search" i] {
    ============================================================ */
 select {
   color-scheme: light !important;
+}
+
+/* ============================================================
+   v4.4 - HAMBURGER / MOBILE MENU TOGGLE (best effort, attempt 2)
+   Exempts elements matching common menu-toggle naming patterns
+   from the v3.8 blanket transparent rule, restoring a visible
+   bar color. Non-destructive: only touches elements whose class
+   or id contains these specific words, so it cannot affect
+   unrelated parts of the page even if some patterns don't match
+   anything real.
+   ============================================================ */
+[class*="hamburger"], [id*="hamburger"],
+[class*="burger"], [id*="burger"],
+[class*="menu-toggle"], [id*="menu-toggle"],
+[class*="menuToggle"], [id*="menuToggle"],
+[class*="nav-toggle"], [id*="nav-toggle"],
+[class*="navToggle"], [id*="navToggle"],
+[class*="mobile-menu"] *, [id*="mobile-menu"] *,
+[class*="mobilemenu"] *, [id*="mobilemenu"] *,
+button[class*="menu"], a[class*="menu"],
+button[aria-label*="menu" i], button[aria-label*="Menu" i] {
+  background-color: #e0e0e0 !important;
+}
+[class*="hamburger"]:hover, [id*="hamburger"]:hover,
+[class*="burger"]:hover, [id*="burger"]:hover,
+[class*="menu-toggle"]:hover, [id*="menu-toggle"]:hover,
+button[class*="menu"]:hover, a[class*="menu"]:hover {
+  background-color: var(--cme-red) !important;
+}
+/* the outer clickable container itself should stay transparent/dark,
+   only the bar elements inside it need to be visible */
+button[class*="menu"], a[class*="menu"],
+[class*="hamburger"], [id*="hamburger"] {
+  background-color: transparent !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-radius: 6px !important;
 }
