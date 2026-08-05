@@ -2389,7 +2389,7 @@ width: 95%;
 	background-color: #BBD7E8;
 }
 /* ============================================================
-   CARE MORE ENTERTAINMENT - CLIENT PORTAL DARK THEME v4.4
+   CARE MORE ENTERTAINMENT - CLIENT PORTAL THEME - FINAL
    Append to the BOTTOM of DJEP's downloaded theme CSS.
    Replaces v2 entirely. Do not delete anything above it.
 
@@ -3033,7 +3033,7 @@ a.djep-artistsongbuttons:hover, a.djep-artistsongbuttonswide:hover, a.djep-timel
   filter: none !important;
   border-color: var(--cme-red) !important;
   color: #ffffff !important;
-  transform: translateY(-1px) !important;
+  transform: none !important  /* removed - drag safety */;
 }
 .djep-artistsongbuttons, .djep-artistsongbuttonswide { opacity: .65 !important; }
 .djep-artistsongbuttons:hover, .djep-artistsongbuttonswide:hover { opacity: 1 !important; }
@@ -3583,7 +3583,7 @@ textarea#djep-timelineheadline:focus {
   border-color: var(--cme-red) !important;
   border-left-color: var(--cme-red) !important;
   color: #ffffff !important;
-  transform: translateX(3px) !important;
+  transform: none !important  /* was translateX(3px); removed - breaks jQuery UI drag positioning */;
   box-shadow: 0 6px 20px rgba(0,0,0,.5), 0 0 20px rgba(229,9,20,.18) !important;
 }
 .djep-timelineitems:hover::before {
@@ -3591,7 +3591,7 @@ textarea#djep-timelineheadline:focus {
   box-shadow: 0 -5px 0 var(--cme-red), 0 5px 0 var(--cme-red),
               6px 0 0 var(--cme-red), 6px -5px 0 var(--cme-red), 6px 5px 0 var(--cme-red) !important;
 }
-.djep-timelineitems:active { cursor: grabbing !important; transform: scale(.985) !important; }
+.djep-timelineitems:active { cursor: grabbing !important; transform: none !important  /* was scale(.985); removed - breaks jQuery UI drag positioning */; }
 .djep-timelineitems:hover:before { content: "" !important; }
 
 /* --- Row action icons --- */
@@ -3749,7 +3749,7 @@ img.ui-draggable[id^="timeline_icon_row_"]:hover,
   opacity: 1 !important;
   border-color: var(--cme-red) !important;
   background-color: #1c0406 !important;
-  transform: translateY(-1px) !important;
+  transform: none !important  /* drag handle - no transform, breaks jQuery UI */;
 }
 
 /* DRAG HANDLE - grip dots, grab cursor */
@@ -3757,7 +3757,7 @@ img.ui-draggable[id^="timeline_icon_row_"] {
   cursor: grab !important;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238f8f8f'%3E%3Ccircle cx='9' cy='6' r='1.6'/%3E%3Ccircle cx='15' cy='6' r='1.6'/%3E%3Ccircle cx='9' cy='12' r='1.6'/%3E%3Ccircle cx='15' cy='12' r='1.6'/%3E%3Ccircle cx='9' cy='18' r='1.6'/%3E%3Ccircle cx='15' cy='18' r='1.6'/%3E%3C/svg%3E") !important;
 }
-img.ui-draggable[id^="timeline_icon_row_"]:active { cursor: grabbing !important; transform: scale(.94) !important; }
+img.ui-draggable[id^="timeline_icon_row_"]:active { cursor: grabbing !important; transform: none !important  /* drag handle - no transform, breaks jQuery UI */; }
 
 /* MOVE UP - chevron up */
 .djep-timelinetable a[onclick*="jsMoveUp"],
@@ -4267,9 +4267,14 @@ body.djep-body { overflow-x: hidden !important; }
    v4.0 - DESKTOP TIMELINE ROW SEPARATION
    ============================================================ */
 .djep-timelinetable td {
+  border: none !important;
   border-bottom: 2px solid #232323 !important;
+  border-right: 1px solid rgba(255,255,255,.05) !important;
   padding: 10px 8px !important;
+  vertical-align: middle !important;
+  transform: none !important;
 }
+.djep-timelinetable td:last-child { border-right: none !important; }
 .djep-timelinetable tr:nth-child(even) { background-color: rgba(255,255,255,.035) !important; }
 .djep-timelinetable tr:hover           { background-color: #171717 !important; }
 .djep-timelinetable tr:focus-within    { background-color: #1c0508 !important; }
@@ -4377,4 +4382,57 @@ button[class*="menu"], a[class*="menu"],
   background-color: transparent !important;
   border: 1px solid var(--cme-line2) !important;
   border-radius: 6px !important;
+}
+
+
+/* ============================================================
+   FINAL POLISH - appended last so these win cleanly.
+   Small, additive refinements only. Nothing structural.
+   ============================================================ */
+
+/* 1. Respect reduced-motion globally (accessibility + battery on
+      phones). Anyone with the OS setting on gets a calm, static UI. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 2. Consistent text selection colour across the whole portal,
+      matching the brand instead of the browser default blue. */
+::selection { background: rgba(229,9,20,.85); color: #ffffff; }
+
+/* 3. Tap highlight on mobile: replace the default grey/blue flash
+      with a faint brand-red so taps feel intentional and on-brand. */
+* { -webkit-tap-highlight-color: rgba(229,9,20,.18); }
+
+/* 4. Smooth the one thing clients see most - focus states on every
+      text field - so tabbing through the planning forms feels
+      polished rather than abrupt. Additive; does not alter colour. */
+input, select, textarea {
+  transition: border-color .18s ease, box-shadow .18s ease, background-color .18s ease !important;
+}
+
+/* 5. Print stylesheet: if a client prints their timeline or
+      details, force legible black-on-white instead of dumping a
+      near-black page to the printer. Genuinely useful, zero screen
+      impact. */
+@media print {
+  body.djep-body, #djep-content, #djep-guestrequestcontent {
+    background: #ffffff !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  body.djep-body *, #djep-content * {
+    background: transparent !important;
+    color: #000000 !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+  a, a:link, a:visited { color: #000000 !important; text-decoration: underline !important; }
+  ul#djep-navigation, .djep-changebutton, .djep-logoutbutton { display: none !important; }
 }
