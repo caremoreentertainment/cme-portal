@@ -5372,3 +5372,12 @@ img[id^="timeline_icon_row_"] {
   background-color: transparent !important;
   box-sizing: content-box !important;
 }
+/* v5.2.3 - activity chips back to near-native box.
+   The tall padded chip shifts jQuery UI's cursorAt hit point up
+   into the previous row when dragged onto the timeline. */
+.djep-timelineitems {
+  padding: 4px 6px !important;
+  border-left-width: 1px !important;
+  line-height: 1.3 !important;
+}
+.djep-timelineitems::before { display: none !important; }
