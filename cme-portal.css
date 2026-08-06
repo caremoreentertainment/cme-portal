@@ -4921,3 +4921,57 @@ input[value="Save Changes"]:hover {
   }
   [id^="question_row_id_"] .table-responsive { -webkit-overflow-scrolling: touch !important; }
 }
+/* ============================================================
+   v5.0.1 - LABEL SIZE LOCK
+   One font-size for every question label, every question type,
+   both templates. Nothing below this should change it.
+   ============================================================ */
+
+#ep_form tr[id^="question_row_id_"] > td,
+#ep_form tr[id^="question_row_id_"] > td.ed,
+#ep_form [id^="question_row_id_"] p.questiontitle,
+.djepm-planningformseditbox [id^="question_row_id_"] p.questiontitle,
+[id^="question_row_id_"] p.questiontitle {
+  font-size: 15px !important;
+  font-family: var(--cme-ui) !important;
+  font-weight: 700 !important;
+  letter-spacing: .11em !important;
+  line-height: 1.7 !important;
+}
+
+/* inputs must not inherit the label size or its uppercase */
+#ep_form [id^="question_row_id_"] input[type="text"],
+#ep_form [id^="question_row_id_"] textarea,
+[id^="question_row_id_"] input[type="text"],
+[id^="question_row_id_"] textarea {
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+}
+
+/* radio and checkbox option text */
+#ep_form tr[id^="question_row_id_"] > td.ed[width="300"],
+[id^="question_row_id_"] > div[class*="col-"]:not(.questiontitle) {
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+/* grid cells keep their own smaller scale */
+#ep_form [id^="question_row_id_"] td.ed table[border="10"] td.ed,
+[id^="question_row_id_"] .table-responsive td,
+[id^="question_row_id_"] .table-responsive th {
+  font-size: 13px !important;
+}
+
+/* comment blocks: inline styles own everything */
+#ep_form [id^="question_row_id_"] td.ed > div[style],
+[id^="question_row_id_"] div[class*="col-"] > div[style] {
+  font-size: initial !important;
+  font-weight: 400 !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  line-height: normal !important;
+}
