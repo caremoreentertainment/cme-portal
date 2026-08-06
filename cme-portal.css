@@ -4523,18 +4523,24 @@ tr[id^="question_row_id_"] a[onclick*="moreinfo"] {
     color: var(--cme-muted) !important;
   }
   tr[id^="question_row_id_"] > td.ed { padding: 10px 10px !important; }
-}/* ============================================================
-   v4.8 - PLANNING FORM "TYPEFORM MODE"
-   Replaces v4.7 entirely. Delete v4.7, paste this.
+}
+/* ============================================================
+   v4.9 - PLANNING FORM "TYPEFORM MODE"
+   Replaces v4.8 entirely. Delete v4.8, paste this.
 
-   v4.8 changes:
-   - label font size unified (textarea labels were rendering
-     smaller than text/radio labels)
-   - focus bar no longer crowds the text: real padding added
-   - section headers restyled: badged number, gradient rule
-   - comment blocks given consistent spacing in the flow
+   v4.9 fixes:
+   - comment blocks were inheriting LABEL styling on desktop
+     (uppercase/letterspaced) because they sit in td.ed:first-child.
+     All typography rules are now gated behind
+     :has(input, textarea, select) so comment-only rows are left
+     alone and their inline HTML styles render as authored.
+   - textarea labels rendered smaller than text/radio labels on
+     desktop because they sit in a colspan cell, which the old
+     :not([colspan]) selector skipped. Now covered.
+   - comment block + the question beneath it are pulled together
+     so they read as one unit.
 
-   REMINDER: no display rule here uses !important. The form runs
+   REMINDER: no display rule uses !important. The form runs
    jsProcessConditionalLogic() which hides questions via inline
    jQuery styles - !important would permanently block it.
    ============================================================ */
@@ -4553,7 +4559,6 @@ tr[id^="question_row_id_"] a[onclick*="moreinfo"] {
 [id^="question_row_id_"]:hover {
   background-color: rgba(255,255,255,.015) !important;
 }
-/* focus: red bar sits OUTSIDE the content, not against it */
 [id^="question_row_id_"]:focus-within {
   background-image: linear-gradient(90deg, rgba(229,9,20,.06), transparent 65%) !important;
   border-left: 2px solid var(--cme-red) !important;
@@ -4570,13 +4575,33 @@ tr[id^="question_row_id_"] > td.ed {
   padding: 0 !important;
 }
 
-/* ---------- 2. LABELS - UNIFORM SIZE ----------
-   Textarea rows were inheriting a smaller size. Locked here so
-   text / textarea / radio / checkbox labels all match. */
-p.questiontitle,
-[id^="question_row_id_"] p.questiontitle,
-[id^="question_row_id_"] p[class*="questiontitle"],
-tr[id^="question_row_id_"] > td.ed:first-child:not([colspan]) {
+/* ---------- 2. COMMENT-ONLY ROWS ----------
+   No input = it's a comment block. Strip the row chrome and
+   apply NO typography, so the authored inline HTML wins. */
+[id^="question_row_id_"]:not(:has(input, textarea, select)) {
+  border-bottom: none !important;
+  border-left: 2px solid transparent !important;
+  background-image: none !important;
+  padding: 18px 4px 0 6px !important;
+}
+/* pull the question beneath a comment up tight against it */
+[id^="question_row_id_"]:not(:has(input, textarea, select))
+  + [id^="question_row_id_"] {
+  padding-top: 10px !important;
+}
+/* belt and braces: kill inherited case/spacing inside comment HTML */
+[id^="question_row_id_"] td.ed div[style],
+[id^="question_row_id_"] div[class*="col-"] > div[style] {
+  text-transform: none !important;
+  letter-spacing: normal !important;
+}
+
+/* ---------- 3. LABELS - UNIFORM SIZE ----------
+   Gated to rows that actually have an input, and no longer
+   excludes colspan cells (that was the textarea label bug). */
+[id^="question_row_id_"]:has(input, textarea, select) p.questiontitle,
+[id^="question_row_id_"]:has(input, textarea, select) p[class*="questiontitle"],
+tr[id^="question_row_id_"]:has(input, textarea, select) > td.ed:first-child {
   background: transparent !important;
   font-family: var(--cme-ui) !important;
   font-size: 13.5px !important;
@@ -4590,13 +4615,15 @@ tr[id^="question_row_id_"] > td.ed:first-child:not([colspan]) {
   transition: color .2s ease !important;
 }
 [id^="question_row_id_"]:focus-within p.questiontitle,
-tr[id^="question_row_id_"]:focus-within > td.ed:first-child:not([colspan]) {
+tr[id^="question_row_id_"]:focus-within > td.ed:first-child {
   color: var(--cme-white) !important;
 }
 
-/* ---------- 3. ANSWER AREA TYPOGRAPHY ---------- */
-[id^="question_row_id_"] > div[class*="col-"]:not(.questiontitle),
-tr[id^="question_row_id_"] > td.ed:last-child:not([colspan]) {
+/* ---------- 4. ANSWER AREA TYPOGRAPHY (gated) ---------- */
+[id^="question_row_id_"]:has(input, textarea, select)
+  > div[class*="col-"]:not(.questiontitle),
+tr[id^="question_row_id_"]:has(input, textarea, select)
+  > td.ed:last-child:not(:first-child) {
   font-family: var(--cme-ui) !important;
   font-size: 15px !important;
   font-weight: 400 !important;
@@ -4606,7 +4633,7 @@ tr[id^="question_row_id_"] > td.ed:last-child:not([colspan]) {
   line-height: 2.3 !important;
 }
 
-/* ---------- 4. INPUTS ---------- */
+/* ---------- 5. INPUTS ---------- */
 [id^="question_row_id_"] input.metro-input-text,
 [id^="question_row_id_"] input[type="text"] {
   width: 100% !important;
@@ -4629,7 +4656,7 @@ tr[id^="question_row_id_"] > td.ed:last-child:not([colspan]) {
   box-sizing: border-box !important;
 }
 
-/* ---------- 5. CUSTOM RADIOS + CHECKBOXES ---------- */
+/* ---------- 6. CUSTOM RADIOS + CHECKBOXES ---------- */
 [id^="question_row_id_"] input[type="radio"],
 [id^="question_row_id_"] input[type="checkbox"] {
   -webkit-appearance: none !important;
@@ -4680,9 +4707,7 @@ tr[id^="question_row_id_"] > td.ed:last-child:not([colspan]) {
   transform: rotate(42deg) !important;
 }
 
-/* ---------- 6. SECTION HEADERS - RESTYLED ----------
-   Number lives in its own outlined badge. Title sits on a dark
-   plate with a red gradient rule running underneath it. */
+/* ---------- 7. SECTION HEADERS ---------- */
 .djep-form-sections,
 .djepm-form-sections {
   counter-increment: cmeSection !important;
@@ -4705,7 +4730,6 @@ tr[id^="question_row_id_"] > td.ed:last-child:not([colspan]) {
   color: var(--cme-white) !important;
   overflow: hidden !important;
 }
-/* numbered badge */
 .djep-form-sections::before,
 .djepm-form-sections::before {
   content: counter(cmeSection, decimal-leading-zero) !important;
@@ -4721,7 +4745,6 @@ tr[id^="question_row_id_"] > td.ed:last-child:not([colspan]) {
   color: var(--cme-redlite) !important;
   vertical-align: 2px !important;
 }
-/* red rule bleeding along the bottom edge */
 .djep-form-sections::after,
 .djepm-form-sections::after {
   content: "" !important;
@@ -4733,16 +4756,7 @@ tr[id^="question_row_id_"] > td.ed:last-child:not([colspan]) {
   background: linear-gradient(90deg, var(--cme-red) 0%, rgba(229,9,20,.35) 34%, transparent 78%) !important;
 }
 
-/* ---------- 7. COMMENT BLOCKS IN FLOW ----------
-   Rows with no input (comment-only) shouldn't carry a focus bar
-   or a heavy divider. */
-[id^="question_row_id_"]:not(:has(input)):not(:has(textarea)):not(:has(select)) {
-  border-bottom: none !important;
-  border-left: 2px solid transparent !important;
-  padding-bottom: 6px !important;
-}
-
-/* ---------- 8. GRID QUESTIONS (Rough Timeline) ---------- */
+/* ---------- 8. GRID QUESTIONS ---------- */
 [id^="question_row_id_"] .table-responsive table.table-bordered {
   border: 1px solid var(--cme-line2) !important;
   border-radius: 10px !important;
@@ -4771,6 +4785,7 @@ tr[id^="question_row_id_"] > td.ed:last-child:not([colspan]) {
   font-family: var(--cme-ui) !important;
   font-size: 13px !important;
   letter-spacing: .06em !important;
+  text-transform: none !important;
   vertical-align: middle !important;
 }
 [id^="question_row_id_"] .table-responsive input.metro-input-text {
@@ -4815,9 +4830,11 @@ input[value="Save Changes"]:hover {
 @media (max-width: 767px) {
   [id^="question_row_id_"] { padding: 21px 2px 21px 4px !important; }
   [id^="question_row_id_"]:focus-within { padding-left: 16px !important; }
+  [id^="question_row_id_"]:not(:has(input, textarea, select)) {
+    padding: 14px 2px 0 4px !important;
+  }
 
-  p.questiontitle,
-  [id^="question_row_id_"] p.questiontitle {
+  [id^="question_row_id_"]:has(input, textarea, select) p.questiontitle {
     font-size: 12.5px !important;
     letter-spacing: .1em !important;
     line-height: 1.65 !important;
@@ -4828,7 +4845,8 @@ input[value="Save Changes"]:hover {
     max-width: 100% !important;
     width: 100% !important;
   }
-  [id^="question_row_id_"] > div[class*="col-"]:not(.questiontitle) {
+  [id^="question_row_id_"]:has(input, textarea, select)
+    > div[class*="col-"]:not(.questiontitle) {
     font-size: 15.5px !important;
     line-height: 2.4 !important;
   }
