@@ -5961,31 +5961,33 @@ table.djep-playlist-listing td {
   #requests_accordion { width: 100% !important; }
 }
 /* ============================================================
-   v5.4 - MUSIC BUILDER FIXES + SPECIAL SONGS
-   Append after v5.3.
+   v5.5 - MUSIC BUILDER (replaces v5.4 ENTIRELY)
+   DELETE the whole v5.4 block before pasting this.
 
-   Fixes from live testing:
-   1. mobile tab <select> clipping its own text
-   2. mobile Search button rendering Bootstrap blue
-   3. chart/Top Hits rows cramped (.djep-musicresultrow - a
-      DIFFERENT class from .djep-song-result, written by
-      buildPlaylistRow() at runtime with inline font-size:11px)
-   4. "Don't Need" button clipped (base CSS pins width:90px)
-   5. Special Songs accordion never styled - it was hidden
-      when v5.3 was written
-   6. save-confirmation banner still DJEP green
-   7. sticky :hover / :active on touch devices
+   v5.4 caused regressions. Removed here:
+   - :focus in the touch hover-reset. The tapped button HAS
+     focus, so it was being reset to grey and only turned red
+     once focus moved away. Exactly backwards.
+   - height/padding on .ui-accordion-header. jQuery UI computes
+     accordion panel geometry from header height, so changing it
+     jumbled the Requests panel. SAME LESSON AS THE TIMELINE:
+     accordion headers get COLOUR ONLY, never geometry.
+   - the :has() Requests/Special-Songs toggle. It did not work
+     and is DJEP's own mobile bug.
+   - .djep-special_song_content_div padding/border, which
+     collapsed the Special Songs panels on mobile.
 
-   NOT FIXABLE, for the record:
-   - the preview audio player is a native <audio> element;
-     browsers draw its internals and CSS cannot reach them
-   - listen_on_*.png are brand logos on white; recoloring
-     would break them. Framed instead.
+   Kept from v5.4 (confirmed working):
+   - mobile tab <select> sizing
+   - "Don't Need" button width
+   - chart row padding
+   - Special Songs header colour treatment (desktop looked good)
+
+   NEW: the green save toast is alertify, not
+   .djep-titlebarmusicconfirm - that is why it never changed.
    ============================================================ */
 
-/* ---------- 1. MOBILE TAB SELECT ----------
-   mobile-framework.css pins .form-control height; our padding
-   then pushed the text past the clip edge. */
+/* ---------- 1. MOBILE TAB SELECT (kept) ---------- */
 select.metro-select.open-tab,
 select.open-tab.form-control,
 #tabs > select.form-control {
@@ -5996,7 +5998,6 @@ select.open-tab.form-control,
   font-size: 15px !important;
   font-weight: 700 !important;
   letter-spacing: .06em !important;
-  text-overflow: ellipsis !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e50914' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") !important;
@@ -6005,18 +6006,12 @@ select.open-tab.form-control,
   background-size: 16px 16px !important;
 }
 
-/* ---------- 2. SEARCH BUTTONS ----------
-   Mobile renders these as Bootstrap buttons, which arrive blue.
-   Multiple patterns targeted because the exact element varies. */
+/* ---------- 2. SEARCH BUTTONS + FIELD (kept) ---------- */
 #search_by_artist_button_id,
 #search_by_song_button_id,
-.djep-selectyourmusicbox .btn,
 .djep-selectyourmusicbox .btn-primary,
-.djep-selectmusicdiv .btn,
 .djep-selectmusicdiv .btn-primary,
-.djep-selectyourmusicbox input[value="Search" i],
-.djep-selectyourmusicbox button[value="Search" i] {
-  background: linear-gradient(180deg, var(--cme-redlite) 0%, var(--cme-red) 45%, var(--cme-reddeep) 100%) !important;
+.djep-selectyourmusicbox input[value="Search" i] {
   background-color: var(--cme-red) !important;
   background-image: linear-gradient(180deg, var(--cme-redlite) 0%, var(--cme-red) 45%, var(--cme-reddeep) 100%) !important;
   border: 1px solid var(--cme-redlite) !important;
@@ -6027,36 +6022,25 @@ select.open-tab.form-control,
   font-weight: 700 !important;
   letter-spacing: .12em !important;
   text-transform: uppercase !important;
-  text-shadow: 0 1px 2px rgba(0,0,0,.4) !important;
   height: auto !important;
-  min-height: 48px !important;
+  min-height: 46px !important;
   padding: 12px 18px !important;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 3px 12px rgba(0,0,0,.5) !important;
 }
-/* the mobile search field beside it */
 .djep-selectmusicdiv input.form-control[type="text"],
 .djep-selectyourmusicbox input.form-control[type="text"] {
   height: auto !important;
-  min-height: 48px !important;
+  min-height: 46px !important;
   background-color: #131313 !important;
   border: 1px solid var(--cme-line2) !important;
   border-radius: 9px !important;
   color: var(--cme-white) !important;
   font-family: var(--cme-ui) !important;
   font-size: 16px !important;
-  padding: 12px 14px !important;
+  padding: 11px 14px !important;
 }
 
-/* ---------- 3. CHART / TOP HITS ROWS ----------
-   .djep-musicresultrow is built by buildPlaylistRow() with
-   inline width and font-size on every cell. */
-#music_results_table_id,
-#spotify_results_table_id {
-  width: 100% !important;
-  border-collapse: collapse !important;
-}
+/* ---------- 3. CHART / TOP HITS ROWS (kept) ---------- */
 tr.djep-musicresultrow > td,
-tr.djep-musicresultrowmobile > td,
 #music_results_table_id > tbody > tr > td {
   padding: 11px 10px !important;
   font-size: 14px !important;
@@ -6064,25 +6048,51 @@ tr.djep-musicresultrowmobile > td,
   color: var(--cme-text) !important;
   border-bottom: 1px solid var(--cme-line) !important;
   line-height: 1.45 !important;
-  vertical-align: middle !important;
 }
 tr.djep-musicresultrow > td:first-child {
   color: var(--cme-muted) !important;
   font-size: 12px !important;
-  font-variant-numeric: tabular-nums !important;
 }
 tr.djep-musicresultrow > td:nth-child(2) div {
   font-weight: 700 !important;
   color: var(--cme-white) !important;
 }
-tr.djep-musicresultrow:hover > td,
-tr.djep-tablehover > td {
-  background-color: #1a0507 !important;
+
+/* ---------- 4. PAGINATION OVERLAP ----------
+   #genre_api_pagination_results and the search equivalents carry
+   an inline height:25px. When the page-count text wraps it spills
+   over the results below. */
+div[id$="_pagination_results"] {
+  height: auto !important;
+  min-height: 28px !important;
+  padding: 6px 0 10px !important;
+  overflow: visible !important;
+  line-height: 1.8 !important;
 }
+.djep-paginatebutton, .djep-activepaginatebutton {
+  display: inline-block !important;
+  margin: 3px 2px !important;
+  padding: 5px 9px !important;
+  border-radius: 6px !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  background-color: var(--cme-raise) !important;
+  border: 1px solid var(--cme-line2) !important;
+  color: var(--cme-text) !important;
+}
+.djep-activepaginatebutton {
+  background-color: var(--cme-red) !important;
+  border-color: var(--cme-redlite) !important;
+  color: #fff !important;
+}
+/* the "Page X of Y" caption that overlaps the list */
+div[id$="_pagination_results"] + table,
+div[id$="_pagination_results"] ~ table { margin-top: 6px !important; }
 
-/* ---------- 4. SPECIAL SONGS PANEL ---------- */
-#special_songs_accordion { width: 100% !important; }
-
+/* ---------- 5. SPECIAL SONGS - COLOUR ONLY ----------
+   NO height, min-height or padding on the accordion header.
+   jQuery UI reads header geometry to position panels. */
 .djep-special_song_header {
   background: var(--cme-raise) !important;
   background-image: linear-gradient(90deg, rgba(229,9,20,.10), transparent 60%) !important;
@@ -6090,45 +6100,30 @@ tr.djep-tablehover > td {
   border-left: 3px solid var(--cme-red) !important;
   border-radius: 8px !important;
   color: var(--cme-white) !important;
-  height: auto !important;
-  min-height: 38px !important;
-  margin-top: 7px !important;
-  padding: 4px 6px !important;
   cursor: pointer !important;
-  transition: background-color .2s ease, border-color .2s ease !important;
 }
 .djep-special_song_header:hover {
   background-color: #1c0406 !important;
   border-color: var(--cme-red) !important;
 }
 .djep-specialtitle {
-  position: static !important;
-  top: auto !important;
-  left: auto !important;
-  width: auto !important;
-  max-width: 100% !important;
-  padding: 8px 6px 8px 22px !important;
   font-family: var(--cme-ui) !important;
   font-size: 11px !important;
   font-weight: 700 !important;
   letter-spacing: .13em !important;
   text-transform: uppercase !important;
   color: var(--cme-white) !important;
-  line-height: 1.4 !important;
 }
+/* content panel: colour only, no box changes */
 .djep-special_song_content_div {
   background: var(--cme-inset) !important;
-  border: 1px solid var(--cme-line2) !important;
-  border-top: none !important;
-  border-radius: 0 0 8px 8px !important;
-  padding: 6px 0 10px !important;
+  color: var(--cme-text) !important;
 }
 .djep-special_song_content_div td {
   background: transparent !important;
   color: var(--cme-text) !important;
   font-family: var(--cme-ui) !important;
   font-size: 12.5px !important;
-  padding: 6px 8px !important;
 }
 .djep-special_song_content_div td:first-child {
   color: var(--cme-muted) !important;
@@ -6142,31 +6137,20 @@ tr.djep-tablehover > td {
   color: var(--cme-white) !important;
   font-weight: 600 !important;
 }
-.djep-special_song_content_div div[id^="comments_div_"] {
-  color: var(--cme-muted) !important;
-}
-/* "No song selected" placeholder - inline dashed #CCCCCC */
 div[id^="none_selected_div_"] > div {
   background: #0d0d0d !important;
   border: 1px dashed #333333 !important;
   color: var(--cme-muted) !important;
   font-family: var(--cme-ui) !important;
   font-size: 11.5px !important;
-  letter-spacing: .08em !important;
-  text-transform: uppercase !important;
-  padding: 16px 10px !important;
 }
-/* live drop target */
 .djep-special_song_header.ui-droppable-hover,
 .djep-special_song_content_div.ui-droppable-hover {
   background-color: #240609 !important;
-  outline: 1px dashed var(--cme-red) !important;
-  outline-offset: -3px !important;
 }
 
-/* "Don't Need" - base CSS pins width:90px, which clipped it */
-input.djep-specialsongbutton,
-.djep-specialsongbutton {
+/* "Don't Need" - base CSS pins width:90px (kept) */
+input.djep-specialsongbutton, .djep-specialsongbutton {
   width: auto !important;
   min-width: 120px !important;
   height: auto !important;
@@ -6182,7 +6166,6 @@ input.djep-specialsongbutton,
   letter-spacing: .1em !important;
   text-transform: uppercase !important;
   white-space: nowrap !important;
-  cursor: pointer !important;
 }
 .djep-specialsongbutton:hover {
   background: #1c0406 !important;
@@ -6190,79 +6173,89 @@ input.djep-specialsongbutton,
   color: #ffffff !important;
 }
 
-/* Requests / Special Songs toggle bar */
-.djep-music_selections_navigation {
-  width: 100% !important;
-  height: auto !important;
-  padding: 4px !important;
-  background: var(--cme-inset) !important;
-  border: 1px solid var(--cme-line2) !important;
-  border-radius: 9px !important;
+/* ---------- 6. REQUESTS ACCORDION - COLOUR ONLY ----------
+   v5.4 set height/padding here and jumbled the whole panel.
+   Base CSS positions .djep-playlisttitle absolutely and floats
+   .djep-playlistlimits; leave both alone. */
+#requests_accordion .ui-accordion-header {
+  cursor: pointer !important;
 }
-.djep-music_selections_navigation li { height: auto !important; }
-.djep-music_selections_navigation li a {
-  height: auto !important;
-  padding: 9px 6px !important;
+.djep-playlisttitle {
   font-family: var(--cme-ui) !important;
-  font-size: 10.5px !important;
+  font-size: 11px !important;
   font-weight: 700 !important;
-  letter-spacing: .12em !important;
+  letter-spacing: .1em !important;
   text-transform: uppercase !important;
-  border-radius: 7px !important;
+  color: var(--cme-white) !important;
+}
+.djep-playlistlimits {
+  font-family: var(--cme-ui) !important;
+  font-size: 10px !important;
+  color: var(--cme-muted) !important;
+}
+table.djep-playlist-listing td {
+  background: transparent !important;
+  border-bottom: 1px solid var(--cme-line) !important;
+  color: var(--cme-text) !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 12px !important;
+}
+div[id^="request_table_div_"].ui-droppable-hover,
+div[id^="request_table_title_div_"].ui-droppable-hover {
+  background: rgba(229,9,20,.12) !important;
 }
 
-/* ---------- 5. BOTH PANELS SHOWING AT ONCE ----------
-   DJEP toggles #your_requests_content / #special_songs_content
-   with inline display. On mobile both can end up visible. The
-   nav item carries .djep-music_selections_navigation-active, so
-   the sibling panel can be forced hidden based on which tab is
-   live. When the tab changes, the selector stops matching, so
-   this never blocks DJEP's own toggling.
-   EXPERIMENTAL - remove this block if the panels misbehave. */
-.djep-music_selections_navigation:has(#music_selection_button_special_songs.djep-music_selections_navigation-active)
-  ~ #your_requests_content { display: none !important; }
-.djep-music_selections_navigation:has(#music_selection_button_requests.djep-music_selections_navigation-active)
-  ~ #special_songs_content { display: none !important; }
-
-/* ---------- 6. SAVE CONFIRMATION BANNER ---------- */
-#alert_message_div,
-div[id*="alert_message"],
-.djep-titlebarmusicconfirm,
-.djep-titlebarconfirm {
+/* ---------- 7. SAVE TOAST ----------
+   This is alertify (alertify.default.css), NOT
+   .djep-titlebarmusicconfirm. That is why it stayed green. */
+.alertify-logs > *,
+.alertify-log,
+.alertify-log-success,
+.alertify-log-error {
+  background: var(--cme-panel) !important;
+  background-image: none !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-left: 3px solid var(--cme-red) !important;
+  border-radius: 10px !important;
+  color: var(--cme-white) !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  letter-spacing: .04em !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,.7) !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+.alertify-log-success { border-left-color: #4caf50 !important; }
+.alertify-log-error   { border-left-color: var(--cme-red) !important; }
+/* DJEP's own inline confirm bar */
+#alert_message_div, .djep-titlebarmusicconfirm, .djep-titlebarconfirm {
   background: #0e1a0e !important;
   background-color: #0e1a0e !important;
   background-image: none !important;
   filter: none !important;
   border: 1px solid #2f5c2f !important;
-  border-left: 3px solid #4caf50 !important;
   border-radius: 9px !important;
   color: #8ce07a !important;
   font-family: var(--cme-ui) !important;
-  font-size: 12px !important;
-  font-weight: 600 !important;
-  letter-spacing: .06em !important;
-  box-shadow: 0 6px 22px rgba(0,0,0,.6) !important;
 }
 #alert_message_div td, .djep-titlebarmusicconfirm td {
   background: transparent !important;
   color: #8ce07a !important;
 }
 img[src*="good_or_tick"], .djep-successtickimage {
-  filter: hue-rotate(-15deg) saturate(.75) brightness(.95) !important;
   max-width: 26px !important;
   height: auto !important;
 }
 
-/* ---------- 7. STICKY HOVER ON TOUCH ----------
-   Tapped buttons keep :hover on mobile, so the previous
-   selection appears to stay lit. */
+/* ---------- 8. TOUCH: HOVER ONLY, NEVER FOCUS ----------
+   v5.4 included :focus here, which reset the button the moment
+   it was tapped. Hover only. */
 @media (hover: none) {
-  .djep-toplistbuttons:hover, .djep-toplistbuttons:focus,
-  .djep-toplistbuttons2:hover, .djep-toplistbuttons3:hover,
-  .djep-toplistbuttons4:hover, .djep-toplistbuttons5:hover,
-  .djepm-toplistbuttons:hover, .djepm-toplistbuttons:focus,
-  a.djep-toplistbuttons:hover, a.djep-toplistbuttons:focus,
-  a.djepm-toplistbuttons:hover, a.djepm-toplistbuttons:focus {
+  .djep-toplistbuttons:hover, .djep-toplistbuttons2:hover,
+  .djep-toplistbuttons3:hover, .djep-toplistbuttons4:hover,
+  .djep-toplistbuttons5:hover, .djepm-toplistbuttons:hover,
+  a.djep-toplistbuttons:hover, a.djepm-toplistbuttons:hover {
     background: var(--cme-raise) !important;
     background-color: var(--cme-raise) !important;
     background-image: none !important;
@@ -6270,72 +6263,50 @@ img[src*="good_or_tick"], .djep-successtickimage {
     color: var(--cme-text) !important;
     box-shadow: none !important;
   }
-  /* the genuinely active one still reads red */
-  .djep-toplistbuttons_active, .djepm-toplistbuttons_active,
-  .djep-toplistbuttons2_active, .djep-toplistbuttons3_active,
-  .djep-toplistbuttons4_active,
-  a.djep-toplistbuttons_active, a.djepm-toplistbuttons_active,
-  a.djep-toplistbuttons3_active {
-    background: var(--cme-red) !important;
-    background-color: var(--cme-red) !important;
-    border-color: var(--cme-redlite) !important;
-    color: #ffffff !important;
-    box-shadow: 0 0 18px rgba(229,9,20,.35) !important;
-  }
   .djep-artist-row:hover, .djep-song-result:hover,
   tr.djep-musicresultrow:hover > td {
     background-color: transparent !important;
   }
 }
-
-/* ---------- 8. PREVIEW MODAL ----------
-   The audio element itself is browser-drawn and unreachable.
-   Framing it so it reads as part of the panel. */
-#preview_song_modal_div {
-  background: var(--cme-panel) !important;
-  padding: 6px 10px 14px !important;
+/* the active pill always wins, on every device */
+.djep-toplistbuttons_active, .djepm-toplistbuttons_active,
+.djep-toplistbuttons2_active, .djep-toplistbuttons3_active,
+.djep-toplistbuttons4_active,
+a.djep-toplistbuttons_active, a.djepm-toplistbuttons_active,
+a.djep-toplistbuttons3_active,
+a.djep-toplistbuttons.djep-toplistbuttons_active,
+a.djep-toplistbuttons.djep-toplistbuttons_active:hover {
+  background: var(--cme-red) !important;
+  background-color: var(--cme-red) !important;
+  background-image: none !important;
+  border-color: var(--cme-redlite) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 18px rgba(229,9,20,.35) !important;
 }
+
+/* ---------- 9. PREVIEW MODAL ---------- */
+#preview_song_modal_div { background: var(--cme-panel) !important; }
 #preview_song_modal_div img[src*="listen_on"] {
   border: 1px solid var(--cme-line2) !important;
   border-radius: 10px !important;
-  transition: border-color .2s ease, transform .15s ease !important;
 }
 #preview_song_modal_div img[src*="listen_on"]:hover {
   border-color: var(--cme-red) !important;
-  transform: translateY(-1px) !important;
 }
-#preview_song_modal_div audio {
-  width: 100% !important;
-  margin-top: 10px !important;
-  border-radius: 999px !important;
-  filter: invert(.92) hue-rotate(180deg) !important;
-}
-#songpreviewurl + *, #artist_song_display_div {
+#artist_song_display_div {
   font-family: var(--cme-ui) !important;
-  font-size: 14px !important;
   color: var(--cme-white) !important;
 }
 
-/* ---------- 9. MOBILE ---------- */
+/* ---------- 10. MOBILE ---------- */
 @media (max-width: 767px) {
   tr.djep-musicresultrow > td,
   #music_results_table_id > tbody > tr > td {
     padding: 13px 8px !important;
     font-size: 14.5px !important;
   }
-  .djep-specialtitle {
-    font-size: 11.5px !important;
-    padding: 10px 6px 10px 20px !important;
-  }
-  .djep-special_song_header { min-height: 44px !important; }
   input.djep-specialsongbutton {
     width: 100% !important;
     min-height: 46px !important;
-    font-size: 11.5px !important;
-  }
-  .djep-music_selections_navigation li a { font-size: 11px !important; }
-  #special_songs_accordion, #requests_accordion {
-    width: 100% !important;
-    margin: 0 !important;
   }
 }
