@@ -5373,64 +5373,46 @@ img[id^="timeline_icon_row_"] {
   box-sizing: content-box !important;
 }
 /* ============================================================
-   v5.2.5 - ACTIVITY CHIP HEIGHT LOCK
-   Measured: DJEP stock chip renders at 13.33px. Our styling
-   pushed it to 26.03px. jQuery UI's cursorAt:{top:-5} is tuned
-   to the stock box, so the extra ~13px shifted every drop one
-   row up. Height is now pinned to stock; all visual identity
-   comes from colour and a left border, which add no height.
-   DO NOT add vertical padding, borders, or line-height here.
+   v5.2.6 - TIMELINE ROW GEOMETRY LOCK
+   handleDropEventForTimeline() derives the target row from the
+   droppable's id and then subtracts 1. That compensation only
+   resolves correctly when rows render at DJEP's native height.
+   Our padding changed row height, so the visually-targeted row
+   and the reported droppable diverge by one.
+   Row boxes are pinned to stock. Style rows with COLOUR ONLY.
+   Do not add padding, borders or min-height to these cells.
    ============================================================ */
-.djep-timelineitems,
-div.djep-timelineitems.ui-draggable {
-  height: 13.33px !important;
+table.djep-timelinetable tr[id^="timeline_row_"] > td {
+  padding: 2px !important;
+  border: none !important;
+  border-bottom: 1px solid var(--cme-line) !important;
+  height: auto !important;
+  line-height: normal !important;
+  vertical-align: middle !important;
+}
+table.djep-timelinetable tr[id^="timeline_row_"] input.djep-timelinetextbox1,
+table.djep-timelinetable tr[id^="timeline_row_"] input.djep-timelinetextbox2 {
+  padding: 3px 6px !important;
   min-height: 0 !important;
-  max-height: 13.33px !important;
-  padding: 0 0 0 9px !important;
+  height: auto !important;
+  font-size: 12.5px !important;
+}
+table.djep-timelinetable tr[id^="timeline_row_"] textarea.djep-timelinetextbox3 {
+  padding: 3px 6px !important;
+  min-height: 0 !important;
+  height: 22px !important;
+  font-size: 12px !important;
+  line-height: 1.35 !important;
+}
+table.djep-timelinetable tr[id^="timeline_row_"] img[id^="timeline_icon_row_"],
+table.djep-timelinetable tr[id^="timeline_row_"] a[onclick*="jsMove"],
+table.djep-timelinetable tr[id^="timeline_row_"] a[onclick*="jsClearRow"] {
+  width: 18px !important;
+  height: 18px !important;
+  padding: 0 !important;
+  margin: 0 1px !important;
   border: none !important;
-  border-left: 2px solid #3a3a3a !important;
-  border-radius: 0 4px 4px 0 !important;
-  margin: 3px 0 !important;
-  background: var(--cme-raise) !important;
-  background-image: none !important;
-  color: var(--cme-text) !important;
-  font-family: var(--cme-ui) !important;
-  font-size: 11px !important;
-  font-weight: 600 !important;
-  letter-spacing: .02em !important;
-  line-height: 13.33px !important;
-  box-sizing: border-box !important;
-  overflow: hidden !important;
-  white-space: nowrap !important;
-  text-overflow: ellipsis !important;
-  width: auto !important;
-  max-width: 100% !important;
-  position: static !important;
-  transform: none !important;
-  box-shadow: none !important;
-  text-shadow: none !important;
-  cursor: grab !important;
-  transition: background-color .18s ease, border-left-color .18s ease,
-              color .18s ease !important;
+  background-color: transparent !important;
+  background-size: 14px 14px !important;
+  vertical-align: middle !important;
 }
-.djep-timelineitems::before,
-.djep-timelineitems::after,
-.djep-timelineitems:hover::before,
-.djep-timelineitems:hover::after { content: none !important; display: none !important; }
-
-.djep-timelineitems:hover {
-  background: #1c0406 !important;
-  border-left-color: var(--cme-red) !important;
-  color: #ffffff !important;
-  transform: none !important;
-  box-shadow: none !important;
-}
-.djep-timelineitems:active { cursor: grabbing !important; transform: none !important; }
-
-/* the row wrapping each chip shouldn't add height either */
-tr[onmouseup*="jsNewAddActivity"] > td {
-  padding: 0 4px !important;
-  border: none !important;
-  background: transparent !important;
-}
-tr[onmouseup*="jsNewAddActivity"]:hover > td { background: transparent !important; }
