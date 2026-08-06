@@ -4466,7 +4466,6 @@ tr[id^="question_row_id_"] > td.ed:first-child:not([colspan]) {
   color: var(--cme-muted) !important;
   line-height: 1.5 !important;
 }
-
 /* Full-width rows: grids and any question DJEP spans across both cells */
 tr[id^="question_row_id_"] > td.ed[colspan="2"] {
   font-family: var(--cme-ui) !important;
