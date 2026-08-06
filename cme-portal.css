@@ -4931,3 +4931,428 @@ button.navbar-toggle .icon-bar {
   background-color: var(--cme-panel) !important;
   border-color: var(--cme-line) !important;
 }
+/* ============================================================
+   v5.2 - TIMELINE BUILDER (desktop + mobile)
+   Append at the very bottom, after v5.1.
+
+   Supersedes the timeline rules in v3.3, v3.4, v3.5, v3.6,
+   v3.7, v3.8 and v4.0. Those blocks are left in place for now
+   and are simply outranked by source order - they get removed
+   in the consolidation pass.
+
+   CONFIRMED MARKUP
+   Desktop:
+     div.djep-edittimelinebox > form#ep_form
+     div#djep-timelineactivitydescription.djep-timeline_instructions
+     textarea#djep-timelineheadline
+     table.djep-timelinetable
+       tr > td.djep-sectiontitle  (header row: Time/Activity/Comments/blank)
+       tr#timeline_row_N.djep-tablehover2.ui-droppable
+         td1 input.djep-timelinetextbox1   (time)
+         td2 input.djep-timelinetextbox2   (activity)
+         td3 textarea.djep-timelinetextbox3 (comments, inline max-width:190px)
+         td4 img#timeline_icon_row_N.ui-draggable + 3 anchors w/ GIFs
+   Mobile:
+     div#timeline_row_N.djepm-timelinemobilepanel
+       .djepm-timelinemobileheader  > div.col-xs-3 "Time:" + input + actions
+       .djepm-timelinemobilebody    > .djepm-timelinemobilerow x2
+     NOTE: mobile has NO drag handle - only the 3 action anchors.
+
+   The page itself injects <style> setting the instructions box to
+   #EEEEEE and the table cells to text-align:center. Neither uses
+   !important, so the rules below win.
+
+   DRAG SAFETY: no transforms anywhere on rows, handles or
+   droppables. jQuery UI computes drag offsets from element
+   geometry and a transform creates a containing block its maths
+   ignores. Feedback is colour and border only.
+   ============================================================ */
+
+/* ---------- 1. INSTRUCTIONS BOX ---------- */
+#djep-timelineactivitydescription,
+div.djep-timeline_instructions {
+  width: 220px !important;
+  height: auto !important;
+  min-height: 96px !important;
+  background-color: #101010 !important;
+  border: 1px dashed #3a3a3a !important;
+  border-radius: 12px !important;
+  color: var(--cme-muted) !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 12px !important;
+  line-height: 1.6 !important;
+  text-align: center !important;
+  padding: 44px 14px 16px !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  transition: border-color .25s ease, color .25s ease, background-color .25s ease !important;
+}
+#djep-timelineactivitydescription br,
+div.djep-timeline_instructions br { display: none !important; }
+#djep-timelineactivitydescription::before,
+div.djep-timeline_instructions::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 13px; left: 50%;
+  margin-left: -13px !important;
+  width: 26px; height: 26px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e50914' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 11V5.5a1.5 1.5 0 0 1 3 0V11'/%3E%3Cpath d='M12 11V4.5a1.5 1.5 0 0 1 3 0V11'/%3E%3Cpath d='M15 11V6.5a1.5 1.5 0 0 1 3 0V13'/%3E%3Cpath d='M9 11V9.5a1.5 1.5 0 0 0-3 0V14a7 7 0 0 0 7 7h1a6 6 0 0 0 6-6'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+  opacity: .9 !important;
+}
+#djep-timelineactivitydescription:hover,
+div.djep-timeline_instructions:hover {
+  border-color: rgba(229,9,20,.55) !important;
+  background-color: #140406 !important;
+  color: var(--cme-text) !important;
+}
+
+/* ---------- 2. HEADLINE BANNER ---------- */
+textarea#djep-timelineheadline {
+  width: 100% !important;
+  max-width: 535px !important;
+  height: auto !important;
+  min-height: 104px !important;
+  background: linear-gradient(180deg, var(--cme-raise), var(--cme-inset)) !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-bottom: 2px solid var(--cme-red) !important;
+  border-radius: 12px !important;
+  color: var(--cme-white) !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: 18px !important;
+  line-height: 1.5 !important;
+  text-align: center !important;
+  padding: 16px !important;
+  box-sizing: border-box !important;
+  resize: vertical !important;
+}
+textarea#djep-timelineheadline:focus {
+  border-color: var(--cme-red) !important;
+  box-shadow: 0 0 0 3px rgba(229,9,20,.15) !important;
+}
+
+/* ---------- 3. DESKTOP TABLE ---------- */
+table.djep-timelinetable {
+  border-collapse: collapse !important;
+  border-spacing: 0 !important;
+  width: 100% !important;
+}
+/* header row */
+table.djep-timelinetable td.djep-sectiontitle {
+  background: var(--cme-raise) !important;
+  background-image: none !important;
+  border: none !important;
+  border-bottom: 2px solid var(--cme-red) !important;
+  color: var(--cme-white) !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: .18em !important;
+  text-transform: uppercase !important;
+  padding: 11px 6px !important;
+  text-align: left !important;
+}
+table.djep-timelinetable td.djep-sectiontitle:first-child { text-align: center !important; }
+
+/* rows - compact, because there are 52 of them */
+table.djep-timelinetable tr[id^="timeline_row_"] {
+  transition: background-color .18s ease !important;
+}
+table.djep-timelinetable tr[id^="timeline_row_"] > td {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid var(--cme-line) !important;
+  border-right: 1px solid rgba(255,255,255,.04) !important;
+  padding: 4px 6px !important;
+  vertical-align: middle !important;
+  transform: none !important;
+}
+table.djep-timelinetable tr[id^="timeline_row_"] > td:last-child {
+  border-right: none !important;
+}
+table.djep-timelinetable tr[id^="timeline_row_"] > td:first-child {
+  border-left: 3px solid transparent !important;
+  transition: border-color .18s ease !important;
+}
+table.djep-timelinetable tr[id^="timeline_row_"]:nth-child(even) {
+  background-color: rgba(255,255,255,.022) !important;
+}
+table.djep-timelinetable tr[id^="timeline_row_"]:hover {
+  background-color: #151515 !important;
+}
+table.djep-timelinetable tr[id^="timeline_row_"]:hover > td:first-child {
+  border-left-color: #3a3a3a !important;
+}
+table.djep-timelinetable tr[id^="timeline_row_"]:focus-within {
+  background-color: #1a0507 !important;
+}
+table.djep-timelinetable tr[id^="timeline_row_"]:focus-within > td:first-child {
+  border-left-color: var(--cme-red) !important;
+}
+/* jQuery UI adds this class while a row is a live drop target */
+table.djep-timelinetable tr.ui-droppable-hover,
+table.djep-timelinetable tr.ui-state-hover {
+  background-color: #240609 !important;
+  outline: 1px dashed var(--cme-red) !important;
+  outline-offset: -2px !important;
+}
+
+/* ---------- 4. ROW FIELDS (both templates) ---------- */
+/* TIME - the anchor of the document */
+input.djep-timelinetextbox1 {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  background: #0f0f0f !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-radius: 7px !important;
+  color: #ffffff !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
+  font-variant-numeric: tabular-nums !important;
+  letter-spacing: .03em !important;
+  text-align: center !important;
+  padding: 7px 4px !important;
+}
+/* ACTIVITY */
+input.djep-timelinetextbox2 {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  background: #0f0f0f !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-radius: 7px !important;
+  color: var(--cme-white) !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  text-align: left !important;
+  padding: 7px 10px !important;
+}
+/* COMMENTS - secondary. Inline max-width:190px on desktop is
+   overridden; the column has room for more. */
+textarea.djep-timelinetextbox3 {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  background: #0d0d0d !important;
+  border: 1px solid var(--cme-line) !important;
+  border-radius: 7px !important;
+  color: var(--cme-text) !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 12.5px !important;
+  line-height: 1.5 !important;
+  text-align: left !important;
+  padding: 7px 10px !important;
+  min-height: 34px !important;
+  resize: vertical !important;
+}
+input.djep-timelinetextbox1:hover,
+input.djep-timelinetextbox2:hover,
+textarea.djep-timelinetextbox3:hover {
+  background: #141414 !important;
+  border-color: #3a3a3a !important;
+  color: var(--cme-white) !important;
+}
+input.djep-timelinetextbox1:focus,
+input.djep-timelinetextbox2:focus,
+textarea.djep-timelinetextbox3:focus {
+  background: #171717 !important;
+  border-color: var(--cme-red) !important;
+  box-shadow: 0 0 0 3px rgba(229,9,20,.16) !important;
+  outline: none !important;
+}
+
+/* ---------- 5. ROW ACTION ICONS (BOTH templates) ----------
+   Earlier versions scoped these to .djep-timelinetable only, so
+   mobile still showed DJEP's raw down.gif / up.gif / scissors.gif.
+   Matching on the onclick handler catches both. */
+a[onclick*="jsMoveUp"] > img,
+a[onclick*="jsMoveDown"] > img,
+a[onclick*="jsClearRow"] > img {
+  width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  visibility: hidden !important;
+}
+a[onclick*="jsMoveUp"],
+a[onclick*="jsMoveDown"],
+a[onclick*="jsClearRow"] {
+  display: inline-block !important;
+  width: 28px !important;
+  height: 28px !important;
+  margin: 2px !important;
+  padding: 0 !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-radius: 7px !important;
+  background-color: var(--cme-raise) !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: 15px 15px !important;
+  vertical-align: middle !important;
+  box-sizing: border-box !important;
+  opacity: .6 !important;
+  transform: none !important;
+  transition: opacity .18s ease, background-color .18s ease,
+              border-color .18s ease !important;
+}
+tr[id^="timeline_row_"]:hover a[onclick*="jsMoveUp"],
+tr[id^="timeline_row_"]:hover a[onclick*="jsMoveDown"],
+tr[id^="timeline_row_"]:hover a[onclick*="jsClearRow"],
+.djepm-timelinemobilepanel a[onclick*="jsMoveUp"],
+.djepm-timelinemobilepanel a[onclick*="jsMoveDown"],
+.djepm-timelinemobilepanel a[onclick*="jsClearRow"] {
+  opacity: .85 !important;
+}
+a[onclick*="jsMoveUp"] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c9c9c9' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 15l6-6 6 6'/%3E%3C/svg%3E") !important;
+}
+a[onclick*="jsMoveDown"] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c9c9c9' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") !important;
+}
+a[onclick*="jsClearRow"] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b98a8a' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 7h16'/%3E%3Cpath d='M10 4h4a1 1 0 0 1 1 1v2H9V5a1 1 0 0 1 1-1z'/%3E%3Cpath d='M6 7l1 13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1l1-13'/%3E%3Cpath d='M10 11v6M14 11v6'/%3E%3C/svg%3E") !important;
+}
+a[onclick*="jsMoveUp"]:hover,
+a[onclick*="jsMoveDown"]:hover {
+  opacity: 1 !important;
+  border-color: var(--cme-red) !important;
+  background-color: #1c0406 !important;
+  transform: none !important;
+}
+a[onclick*="jsClearRow"]:hover {
+  opacity: 1 !important;
+  border-color: var(--cme-red) !important;
+  background-color: #2a0004 !important;
+  transform: none !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff5760' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 7h16'/%3E%3Cpath d='M10 4h4a1 1 0 0 1 1 1v2H9V5a1 1 0 0 1 1-1z'/%3E%3Cpath d='M6 7l1 13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1l1-13'/%3E%3Cpath d='M10 11v6M14 11v6'/%3E%3C/svg%3E") !important;
+}
+
+/* ---------- 6. DESKTOP DRAG HANDLE ----------
+   content: replaces the <img> source itself. Using a background
+   image instead draws both icons stacked. */
+img[id^="timeline_icon_row_"] {
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='%238f8f8f'%3E%3Ccircle cx='9' cy='6' r='1.7'/%3E%3Ccircle cx='15' cy='6' r='1.7'/%3E%3Ccircle cx='9' cy='12' r='1.7'/%3E%3Ccircle cx='15' cy='12' r='1.7'/%3E%3Ccircle cx='9' cy='18' r='1.7'/%3E%3Ccircle cx='15' cy='18' r='1.7'/%3E%3C/svg%3E") !important;
+  background-image: none !important;
+  width: 28px !important;
+  height: 28px !important;
+  padding: 5px !important;
+  margin: 2px !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-radius: 7px !important;
+  background-color: var(--cme-raise) !important;
+  box-sizing: border-box !important;
+  vertical-align: middle !important;
+  opacity: .6 !important;
+  cursor: grab !important;
+  transform: none !important;
+  transition: opacity .18s ease, border-color .18s ease,
+              background-color .18s ease !important;
+}
+tr[id^="timeline_row_"]:hover img[id^="timeline_icon_row_"] { opacity: .95 !important; }
+img[id^="timeline_icon_row_"]:hover {
+  opacity: 1 !important;
+  border-color: var(--cme-red) !important;
+  background-color: #1c0406 !important;
+  transform: none !important;
+}
+img[id^="timeline_icon_row_"]:active { cursor: grabbing !important; transform: none !important; }
+
+/* ---------- 7. MOBILE PANELS ---------- */
+.djepm-timelinemobilepanel {
+  background: var(--cme-inset) !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-left: 3px solid var(--cme-red) !important;
+  border-radius: 12px !important;
+  margin: 14px 0 !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 18px rgba(0,0,0,.5) !important;
+  transition: border-color .2s ease !important;
+}
+.djepm-timelinemobilepanel:focus-within {
+  border-color: rgba(229,9,20,.5) !important;
+  box-shadow: 0 6px 24px rgba(0,0,0,.6), 0 0 20px rgba(229,9,20,.12) !important;
+}
+.djepm-timelinemobileheader {
+  background: var(--cme-raise) !important;
+  border-bottom: 1px solid var(--cme-line2) !important;
+  padding: 10px 12px !important;
+}
+.djepm-timelinemobilebody { padding: 12px !important; }
+.djepm-timelinemobilerow { margin: 10px 0 !important; }
+
+/* the "Time:" / "Activity:" / "Comments:" labels */
+.djepm-timelinemobileheader > div.col-xs-3,
+.djepm-timelinemobilerow > div.col-xs-3 {
+  font-family: var(--cme-ui) !important;
+  font-size: 10.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: .16em !important;
+  text-transform: uppercase !important;
+  color: var(--cme-muted) !important;
+  padding-top: 9px !important;
+}
+.djepm-timelinemobilepanel input.djep-timelinetextbox1 {
+  max-width: 100px !important;
+}
+/* the instruction paragraph above the mobile list */
+#djepm-timelineselectdiv p {
+  font-family: var(--cme-ui) !important;
+  font-size: 12px !important;
+  color: var(--cme-muted) !important;
+  text-align: center !important;
+  margin: 6px 0 14px !important;
+}
+
+/* ---------- 8. FOOTER BUTTONS ----------
+   Cancel stays secondary; Save Changes is already promoted to
+   red by the v5.0 rule on input[value="Save Changes"]. */
+input.djep-actionbutton[value="Cancel And Return"] {
+  background: var(--cme-raise) !important;
+  background-image: none !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-radius: 10px !important;
+  color: var(--cme-muted) !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: .16em !important;
+  text-transform: uppercase !important;
+  padding: 15px 28px !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+}
+input.djep-actionbutton[value="Cancel And Return"]:hover {
+  background: #1c0406 !important;
+  border-color: var(--cme-red) !important;
+  color: #fff !important;
+}
+
+/* ---------- 9. MOBILE TWEAKS ---------- */
+@media (max-width: 767px) {
+  .djepm-timelinemobileheader > div.col-xs-3,
+  .djepm-timelinemobilerow > div.col-xs-3 {
+    font-size: 10px !important;
+    letter-spacing: .14em !important;
+    padding-top: 10px !important;
+  }
+  a[onclick*="jsMoveUp"],
+  a[onclick*="jsMoveDown"],
+  a[onclick*="jsClearRow"] {
+    width: 32px !important;
+    height: 32px !important;
+    background-size: 16px 16px !important;
+    margin: 1px !important;
+  }
+  input.djep-timelinetextbox1,
+  input.djep-timelinetextbox2,
+  textarea.djep-timelinetextbox3 {
+    font-size: 16px !important;  /* stops iOS zoom-on-focus */
+  }
+  .djepm-timelinemobilepanel input.djep-timelinetextbox1 {
+    max-width: 100% !important;
+  }
+}
