@@ -5372,12 +5372,65 @@ img[id^="timeline_icon_row_"] {
   background-color: transparent !important;
   box-sizing: content-box !important;
 }
-/* v5.2.3 - activity chips back to near-native box.
-   The tall padded chip shifts jQuery UI's cursorAt hit point up
-   into the previous row when dragged onto the timeline. */
-.djep-timelineitems {
-  padding: 4px 6px !important;
-  border-left-width: 1px !important;
-  line-height: 1.3 !important;
+/* ============================================================
+   v5.2.5 - ACTIVITY CHIP HEIGHT LOCK
+   Measured: DJEP stock chip renders at 13.33px. Our styling
+   pushed it to 26.03px. jQuery UI's cursorAt:{top:-5} is tuned
+   to the stock box, so the extra ~13px shifted every drop one
+   row up. Height is now pinned to stock; all visual identity
+   comes from colour and a left border, which add no height.
+   DO NOT add vertical padding, borders, or line-height here.
+   ============================================================ */
+.djep-timelineitems,
+div.djep-timelineitems.ui-draggable {
+  height: 13.33px !important;
+  min-height: 0 !important;
+  max-height: 13.33px !important;
+  padding: 0 0 0 9px !important;
+  border: none !important;
+  border-left: 2px solid #3a3a3a !important;
+  border-radius: 0 4px 4px 0 !important;
+  margin: 3px 0 !important;
+  background: var(--cme-raise) !important;
+  background-image: none !important;
+  color: var(--cme-text) !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: .02em !important;
+  line-height: 13.33px !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+  width: auto !important;
+  max-width: 100% !important;
+  position: static !important;
+  transform: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  cursor: grab !important;
+  transition: background-color .18s ease, border-left-color .18s ease,
+              color .18s ease !important;
 }
-.djep-timelineitems::before { display: none !important; }
+.djep-timelineitems::before,
+.djep-timelineitems::after,
+.djep-timelineitems:hover::before,
+.djep-timelineitems:hover::after { content: none !important; display: none !important; }
+
+.djep-timelineitems:hover {
+  background: #1c0406 !important;
+  border-left-color: var(--cme-red) !important;
+  color: #ffffff !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+.djep-timelineitems:active { cursor: grabbing !important; transform: none !important; }
+
+/* the row wrapping each chip shouldn't add height either */
+tr[onmouseup*="jsNewAddActivity"] > td {
+  padding: 0 4px !important;
+  border: none !important;
+  background: transparent !important;
+}
+tr[onmouseup*="jsNewAddActivity"]:hover > td { background: transparent !important; }
