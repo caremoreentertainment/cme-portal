@@ -5542,3 +5542,421 @@ table.djep-timelinetable input.djep-timelinetextbox2 {
 table.djep-timelinetable input.djep-timelinetextbox2:not(:placeholder-shown) {
   border-color: #2e2e2e !important;
 }
+/* ============================================================
+   v5.3 - MUSIC BUILDER (desktop + mobile)
+   Append at the very bottom, after v5.2.9.
+
+   The music page injects its OWN <style> block with hardcoded
+   light-mode colours. None of it uses !important, so everything
+   below overrides cleanly. Page-injected values being replaced:
+     .djep-artist-row:hover        #f5f5f5
+     .djep-artist-row.djep-expanded #e8f4fc (desktop) / #eef (mobile)
+     .djep-song-result:hover       #f5f5f5
+     .djep-songs-container         #fafafa / #f9f9f9
+     .djep-song-odd                #f5f5f5
+     .djep-even/.djep-song-even    #fff
+     .djep-odd                     #f9f9f9
+     .djep-mobile-az a             #f0f0f0 bg / #333 text
+     .djep-mobile-az a:hover       #007bff  <- Bootstrap blue
+   Instruction boxes and the mobile edit-song header use INLINE
+   styles, so those need !important and attribute matching.
+
+   DRAG SAFETY: song rows drag into #request_table_div_XXX.
+   handleDropEvent resolves the target from the droppable's id
+   (MPL/PIP/DED/DNP/CR1-4), NOT from position maths - unlike the
+   timeline. So row height here is safe to change. The droppable
+   containers keep their inline height:250px regardless.
+   ============================================================ */
+
+/* ---------- 1. TAB SHELL ---------- */
+#tabs.ui-tabs {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+}
+#tabs .ui-tabs-nav {
+  background: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  border-bottom: 1px solid var(--cme-line2) !important;
+  border-radius: 0 !important;
+  padding: 4px 4px 0 !important;
+}
+#tabs .ui-tabs-nav li {
+  background: var(--cme-inset) !important;
+  background-image: none !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-bottom: none !important;
+  border-radius: 8px 8px 0 0 !important;
+  margin: 0 2px !important;
+}
+#tabs .ui-tabs-nav li a {
+  color: var(--cme-muted) !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 10.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: .16em !important;
+  text-transform: uppercase !important;
+  padding: 9px 14px !important;
+}
+#tabs .ui-tabs-nav li.ui-tabs-active {
+  background: linear-gradient(180deg, var(--cme-red), var(--cme-reddeep)) !important;
+  border-color: var(--cme-redlite) !important;
+}
+#tabs .ui-tabs-nav li.ui-tabs-active a { color: #ffffff !important; }
+#tabs .ui-tabs-nav li:not(.ui-tabs-active):hover { background: #1c0406 !important; }
+#tabs .ui-tabs-nav li:not(.ui-tabs-active):hover a { color: #ffffff !important; }
+#tabs .djep-tabs-all,
+#tabs .ui-tabs-panel {
+  background: var(--cme-panel) !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-top: none !important;
+  border-radius: 0 0 10px 10px !important;
+  color: var(--cme-text) !important;
+}
+/* mobile tab picker */
+select.metro-select.open-tab,
+select.open-tab.form-control {
+  width: 100% !important;
+  background-color: #131313 !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-left: 3px solid var(--cme-red) !important;
+  border-radius: 10px !important;
+  color: var(--cme-white) !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: .1em !important;
+  padding: 12px 14px !important;
+  margin-bottom: 10px !important;
+}
+
+/* ---------- 2. SEARCH RESULT ROWS ---------- */
+.djep-artist-list, .djep-song-list { background: transparent !important; }
+
+.djep-artist-row {
+  background-color: transparent !important;
+  border-bottom: 1px solid var(--cme-line) !important;
+  padding: 10px !important;
+  transition: background-color .18s ease !important;
+}
+.djep-artist-row:hover { background-color: #1a0507 !important; }
+.djep-artist-row.djep-expanded {
+  background-color: #1c0406 !important;
+  border-left: 3px solid var(--cme-red) !important;
+}
+.djep-artist-name {
+  color: var(--cme-white) !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
+}
+.djep-artist-genres {
+  color: #7d7d7d !important;
+  font-family: var(--cme-ui) !important;
+}
+.djep-song-count {
+  color: var(--cme-muted) !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 11px !important;
+}
+.djep-expand-icon { color: var(--cme-red) !important; }
+.djep-artist-thumb {
+  border: 1px solid var(--cme-line2) !important;
+  background: var(--cme-raise) !important;
+}
+
+/* expanded song list under an artist */
+.djep-songs-container {
+  background-color: #0b0b0b !important;
+  border-bottom: 1px solid var(--cme-line2) !important;
+}
+.djep-songs-table tr { border-bottom: 1px solid var(--cme-line) !important; }
+.djep-songs-table td {
+  background: transparent !important;
+  border-bottom: 1px solid var(--cme-line) !important;
+  color: var(--cme-text) !important;
+}
+.djep-song-odd { background-color: rgba(255,255,255,.02) !important; }
+.djep-song-even { background-color: transparent !important; }
+.djep-song-title {
+  color: var(--cme-text) !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 13px !important;
+}
+.djep-song-type { color: var(--cme-red) !important; }
+.djep-no-songs, .djep-no-results {
+  color: var(--cme-muted) !important;
+  font-family: var(--cme-ui) !important;
+}
+
+/* flat song results (song / genre / top hits tabs) */
+.djep-song-result {
+  background-color: transparent !important;
+  border-bottom: 1px solid var(--cme-line) !important;
+  transition: background-color .18s ease !important;
+}
+.djep-song-result:hover { background-color: #1a0507 !important; }
+.djep-song-result-title {
+  color: var(--cme-white) !important;
+  font-family: var(--cme-ui) !important;
+  font-weight: 700 !important;
+}
+.djep-song-result-sub {
+  color: var(--cme-muted) !important;
+  font-family: var(--cme-ui) !important;
+}
+
+/* generic zebra used by the spotify/chart tables */
+.djep-even  { background-color: transparent !important; }
+.djep-odd   { background-color: rgba(255,255,255,.022) !important; }
+
+/* ---------- 3. SELECT + PREVIEW ICONS ----------
+   icon_plus_dark.png and icon_listen.png are dark artwork on a
+   now-dark panel. Inverted so they read. */
+img[src*="icon_plus_dark"],
+img[src*="icon_listen"] {
+  filter: invert(1) brightness(1.15) !important;
+  opacity: .7 !important;
+  transition: opacity .18s ease, filter .18s ease !important;
+}
+a:hover > img[src*="icon_plus_dark"],
+a:hover > img[src*="icon_listen"] {
+  opacity: 1 !important;
+  filter: invert(24%) sepia(96%) saturate(6000%) hue-rotate(353deg) brightness(95%) contrast(105%) !important;
+}
+img[src*="good_or_tick"], .djep-successtickimage {
+  filter: none !important;
+}
+img[src*="loading.gif"] {
+  filter: invert(1) brightness(1.4) !important;
+  opacity: .8 !important;
+}
+
+/* ---------- 4. MOBILE A-Z BUTTONS ----------
+   Page style hovers these #007bff. */
+.djep-mobile-az { padding: 8px 0 !important; }
+.djep-mobile-az a {
+  background: var(--cme-raise) !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-radius: 7px !important;
+  color: var(--cme-text) !important;
+  font-family: var(--cme-ui) !important;
+  font-weight: 700 !important;
+  width: 30px !important;
+  height: 30px !important;
+  line-height: 28px !important;
+  transition: background-color .15s ease, border-color .15s ease, color .15s ease !important;
+}
+.djep-mobile-az a:hover,
+.djep-mobile-az a:active {
+  background: var(--cme-red) !important;
+  border-color: var(--cme-redlite) !important;
+  color: #ffffff !important;
+}
+
+/* ---------- 5. INSTRUCTION BOXES (inline styled) ---------- */
+#tabs div[style*="E3E3E3"],
+#tabs div[style*="e3e3e3"],
+.djep-tabs-all > div[style*="dashed"] {
+  background: #101010 !important;
+  border: 1px dashed #3a3a3a !important;
+  border-radius: 10px !important;
+  color: var(--cme-muted) !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 11.5px !important;
+  line-height: 1.6 !important;
+  width: auto !important;
+  max-width: 420px !important;
+  padding: 14px 16px !important;
+}
+#tabs div[style*="E3E3E3"] strong,
+.djep-tabs-all > div[style*="dashed"] strong {
+  color: var(--cme-red) !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: .16em !important;
+  text-transform: uppercase !important;
+}
+
+/* ---------- 6. YOUR REQUESTS PANEL ---------- */
+.djep-requestonlytitle {
+  background: var(--cme-raise) !important;
+  background-image: linear-gradient(90deg, rgba(229,9,20,.12), transparent 60%) !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-left: 3px solid var(--cme-red) !important;
+  border-radius: 8px !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 4px 0 !important;
+}
+.djep-requestonlytitle > p {
+  color: var(--cme-white) !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: .2em !important;
+  text-transform: uppercase !important;
+  margin: 8px 0 !important;
+}
+.djep-playlisttitle {
+  font-family: var(--cme-ui) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: .1em !important;
+  text-transform: uppercase !important;
+  color: var(--cme-white) !important;
+}
+.djep-playlistlimits {
+  font-family: var(--cme-ui) !important;
+  font-size: 10px !important;
+  color: var(--cme-muted) !important;
+  letter-spacing: .06em !important;
+}
+/* accordion headers already carry the playlistbox*title classes
+   from the base theme; this just tightens them */
+#requests_accordion .ui-accordion-header {
+  height: auto !important;
+  min-height: 34px !important;
+  padding: 6px 8px !important;
+  margin-top: 6px !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+}
+#requests_accordion .ui-accordion-header.ui-accordion-header-active {
+  border-radius: 8px 8px 0 0 !important;
+}
+#requests_accordion .ui-accordion-content {
+  background: var(--cme-inset) !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-top: none !important;
+  border-radius: 0 0 8px 8px !important;
+}
+/* the droppable song wells - do NOT change height, they are
+   inline height:250px and are live drop targets */
+div[id^="request_table_div_"] {
+  background: transparent !important;
+}
+div[id^="request_table_div_"].ui-droppable-hover,
+div[id^="request_table_title_div_"].ui-droppable-hover {
+  background: rgba(229,9,20,.12) !important;
+  outline: 1px dashed var(--cme-red) !important;
+  outline-offset: -3px !important;
+}
+table.djep-playlist-listing td {
+  background: transparent !important;
+  border-bottom: 1px solid var(--cme-line) !important;
+  color: var(--cme-text) !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 12px !important;
+}
+.djep-requestlimitbox {
+  background: var(--cme-inset) !important;
+  border: 1px solid var(--cme-line) !important;
+  border-radius: 8px !important;
+  margin-top: 12px !important;
+}
+#playlist_limit_span_ALL, #playlist_counter_span_ALL {
+  font-family: var(--cme-ui) !important;
+  font-size: 10.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+  color: var(--cme-muted) !important;
+}
+
+/* ---------- 7. MODALS ---------- */
+#edit_song_div, #confirm_song_deletion_div, #confirm_playlist_deletion_div,
+#warning_div, #edit_playlist_window, #preview_song_modal_div {
+  background: var(--cme-panel) !important;
+  color: var(--cme-text) !important;
+}
+#edit_song_div td, #confirm_song_deletion_div td,
+#warning_div td, #edit_playlist_window td {
+  background: transparent !important;
+  color: var(--cme-text) !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 12.5px !important;
+}
+/* mobile edit-song header block is inline #E9E9E9 */
+#edit_song_div div[style*="E9E9E9"] {
+  background: var(--cme-raise) !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-left: 3px solid var(--cme-red) !important;
+  border-radius: 8px !important;
+}
+#artist_name_table_cell { color: var(--cme-white) !important; }
+#song_title_table_cell  { color: var(--cme-text) !important; }
+#artist_song_display_div {
+  color: var(--cme-white) !important;
+  font-family: var(--cme-ui) !important;
+}
+#no_song_selected_overlay {
+  border-color: var(--cme-line2) !important;
+  color: var(--cme-muted) !important;
+}
+#preview_song_modal_div img {
+  border-radius: 8px !important;
+  border: 1px solid var(--cme-line2) !important;
+  transition: border-color .18s ease !important;
+}
+#preview_song_modal_div img:hover { border-color: var(--cme-red) !important; }
+
+/* ---------- 8. SEARCH FIELDS + GENRE SELECT ---------- */
+.djep-musicsearchform {
+  background-color: #131313 !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-radius: 8px !important;
+  color: var(--cme-white) !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  height: auto !important;
+  padding: 10px 14px !important;
+  text-indent: 0 !important;
+}
+.djep-songgenresdropdown, #genre_api_select {
+  background-color: #131313 !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-radius: 8px !important;
+  color: var(--cme-white) !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  height: auto !important;
+  padding: 10px 12px !important;
+}
+#add_your_own_artist_name_id, #add_your_own_song_title_id,
+#add_your_own_comments_id, #comments_textarea_id {
+  background-color: #131313 !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-radius: 8px !important;
+  color: var(--cme-white) !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 15px !important;
+  padding: 10px 12px !important;
+}
+
+/* ---------- 9. MOBILE ---------- */
+@media (max-width: 767px) {
+  .djep-mobile-az a {
+    width: 32px !important;
+    height: 32px !important;
+    line-height: 30px !important;
+    font-size: 13px !important;
+  }
+  .djep-artist-row, .djep-song-result { padding: 12px 8px !important; }
+  .djep-artist-name, .djep-song-result-title { font-size: 14px !important; }
+  .djep-musicsearchform,
+  #add_your_own_artist_name_id, #add_your_own_song_title_id {
+    font-size: 16px !important;   /* stops iOS zoom-on-focus */
+  }
+  #tabs div[style*="E3E3E3"],
+  .djep-tabs-all > div[style*="dashed"] {
+    width: auto !important;
+    max-width: 100% !important;
+    margin: 18px 0 !important;
+  }
+  #requests_accordion { width: 100% !important; }
+}
