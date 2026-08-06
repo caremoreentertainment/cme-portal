@@ -4525,3 +4525,232 @@ tr[id^="question_row_id_"] a[onclick*="moreinfo"] {
   }
   tr[id^="question_row_id_"] > td.ed { padding: 10px 10px !important; }
 }
+/* ============================================================
+   v4.6 - PLANNING FORM "TYPEFORM MODE"
+   Append below v4.5. Scoped to planning-form markup only:
+   tr[id^="question_row_id_"] and td.djep-form-sections.
+
+   What it does:
+   1. Stacks the two-column table: label above answer, full width
+   2. Custom radios/checkboxes (appearance:none, red fill)
+   3. Section headers become numbered chapter breaks
+   4. Focus-within: the active question lights up, rest recede
+   5. Bigger inputs, real vertical rhythm, styled save button
+
+   TEST BEFORE THE BRIDE SEES IT (on your test event):
+   - autosave still fires after editing a stacked field
+   - a radio + a checkbox save correctly (custom-drawn inputs
+     are still the real inputs, but verify once)
+   - the Rough Timeline grid and vendor rows render intact
+   ============================================================ */
+
+/* ---------- 1. STACK THE LAYOUT ---------- */
+tr[id^="question_row_id_"] {
+  display: block !important;
+  padding: 26px 6px !important;
+  border-bottom: 1px solid var(--cme-line) !important;
+}
+tr[id^="question_row_id_"] > td.ed {
+  display: block !important;
+  width: 100% !important;
+  max-width: 720px !important;
+  border-bottom: none !important;
+  padding: 0 !important;
+}
+/* label cell gets breathing room below it */
+tr[id^="question_row_id_"] > td.ed:first-child:not([colspan]) {
+  padding-bottom: 12px !important;
+  font-size: 12px !important;
+  letter-spacing: .14em !important;
+  color: #b5b5b5 !important;
+  line-height: 1.6 !important;
+}
+/* colspan rows (grids, full-width questions) keep their flow */
+tr[id^="question_row_id_"] > td.ed[colspan="2"] {
+  padding-bottom: 10px !important;
+}
+
+/* inner grid tables (Rough Timeline, etc.) must stay tables */
+tr[id^="question_row_id_"] td.ed table,
+tr[id^="question_row_id_"] td.ed table tr,
+tr[id^="question_row_id_"] td.ed table td {
+  display: revert !important;
+  width: revert !important;
+  max-width: none !important;
+}
+tr[id^="question_row_id_"] td.ed table td.ed {
+  padding: 5px 6px !important;
+}
+
+/* ---------- 2. INPUTS: BIGGER, CALMER ---------- */
+tr[id^="question_row_id_"] input[type="text"],
+tr[id^="question_row_id_"] input[type="email"],
+tr[id^="question_row_id_"] input[type="tel"],
+tr[id^="question_row_id_"] input[type="number"] {
+  width: 100% !important;
+  max-width: 560px !important;
+  min-height: 46px !important;
+  padding: 10px 16px !important;
+  font-size: 15px !important;
+  border-radius: 10px !important;
+  box-sizing: border-box !important;
+}
+tr[id^="question_row_id_"] textarea {
+  width: 100% !important;
+  max-width: 680px !important;
+  min-height: 110px !important;
+  padding: 14px 16px !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  border-radius: 10px !important;
+  box-sizing: border-box !important;
+}
+/* grid cells stay compact */
+tr[id^="question_row_id_"] td.ed table input[type="text"] {
+  min-height: 38px !important;
+  max-width: none !important;
+  font-size: 13.5px !important;
+}
+
+/* ---------- 3. CUSTOM RADIOS + CHECKBOXES ---------- */
+tr[id^="question_row_id_"] input[type="radio"],
+tr[id^="question_row_id_"] input[type="checkbox"] {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  width: 21px !important;
+  height: 21px !important;
+  margin: 0 10px 0 0 !important;
+  vertical-align: -5px !important;
+  background: #131313 !important;
+  border: 2px solid #3a3a3a !important;
+  cursor: pointer !important;
+  position: relative !important;
+  transition: border-color .18s ease, background-color .18s ease,
+              box-shadow .18s ease !important;
+  transform: none !important; /* overrides v4.5 scale */
+}
+tr[id^="question_row_id_"] input[type="radio"] { border-radius: 50% !important; }
+tr[id^="question_row_id_"] input[type="checkbox"] { border-radius: 6px !important; }
+
+tr[id^="question_row_id_"] input[type="radio"]:hover,
+tr[id^="question_row_id_"] input[type="checkbox"]:hover {
+  border-color: var(--cme-red) !important;
+  box-shadow: 0 0 0 4px rgba(229,9,20,.12) !important;
+}
+tr[id^="question_row_id_"] input[type="radio"]:checked,
+tr[id^="question_row_id_"] input[type="checkbox"]:checked {
+  border-color: var(--cme-red) !important;
+  background: #1a0507 !important;
+}
+/* radio: red dot */
+tr[id^="question_row_id_"] input[type="radio"]:checked::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 4px !important;
+  border-radius: 50% !important;
+  background: radial-gradient(circle at 35% 35%, var(--cme-redlite), var(--cme-red)) !important;
+  box-shadow: 0 0 8px rgba(229,9,20,.55) !important;
+}
+/* checkbox: red check */
+tr[id^="question_row_id_"] input[type="checkbox"]:checked::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 5px !important;
+  top: 1px !important;
+  width: 6px !important;
+  height: 11px !important;
+  border: solid var(--cme-redlite) !important;
+  border-width: 0 2.5px 2.5px 0 !important;
+  transform: rotate(42deg) !important;
+}
+
+/* option text: bump to UI font so it matches the labels */
+tr[id^="question_row_id_"] > td.ed:last-child:not([colspan]),
+tr[id^="question_row_id_"] > td.ed[colspan="2"] {
+  font-family: var(--cme-ui) !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  font-size: 14.5px !important;
+  font-weight: 400 !important;
+  color: var(--cme-text) !important;
+  line-height: 2.15 !important;
+}
+
+/* ---------- 4. SECTION HEADERS AS CHAPTERS ---------- */
+tbody { counter-reset: none; }
+td.djep-form-sections {
+  counter-increment: cmeSection !important;
+  display: block !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  background-image: linear-gradient(90deg, rgba(229,9,20,.08), transparent 45%) !important;
+  border: none !important;
+  border-left: 3px solid var(--cme-red) !important;
+  border-radius: 10px !important;
+  margin: 44px 0 6px !important;
+  padding: 16px 20px !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  letter-spacing: .22em !important;
+  text-transform: uppercase !important;
+  color: var(--cme-white) !important;
+}
+td.djep-form-sections::before {
+  content: counter(cmeSection, decimal-leading-zero) !important;
+  display: inline-block !important;
+  margin-right: 14px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: .1em !important;
+  color: var(--cme-red) !important;
+}
+
+/* ---------- 5. FOCUS: ACTIVE QUESTION LIGHTS UP ---------- */
+tr[id^="question_row_id_"]:focus-within {
+  background: linear-gradient(90deg, rgba(229,9,20,.05), transparent 70%) !important;
+  border-left: 2px solid var(--cme-red) !important;
+  padding-left: 14px !important;
+  border-radius: 0 10px 10px 0 !important;
+}
+tr[id^="question_row_id_"]:focus-within > td.ed:first-child:not([colspan]) {
+  color: var(--cme-white) !important;
+}
+/* gentle hover, no layout shift */
+tr[id^="question_row_id_"]:hover {
+  background: rgba(255,255,255,.014) !important;
+}
+
+/* ---------- 6. SAVE BUTTON + AUTOSAVE BAR ---------- */
+input[value="Save Changes"], input[value="Save Information"],
+button[name*="save" i] {
+  background: linear-gradient(180deg, var(--cme-redlite) 0%, var(--cme-red) 45%, var(--cme-reddeep) 100%) !important;
+  border: 1px solid var(--cme-redlite) !important;
+  border-radius: 10px !important;
+  color: #fff !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: .18em !important;
+  text-transform: uppercase !important;
+  padding: 14px 34px !important;
+  cursor: pointer !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.22), 0 4px 18px rgba(0,0,0,.55) !important;
+  transition: box-shadow .25s ease, transform .15s ease !important;
+}
+input[value="Save Changes"]:hover, input[value="Save Information"]:hover {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 0 30px rgba(229,9,20,.5) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ---------- 7. MOBILE ---------- */
+@media (max-width: 700px) {
+  tr[id^="question_row_id_"] { padding: 20px 2px !important; }
+  tr[id^="question_row_id_"] input[type="text"],
+  tr[id^="question_row_id_"] textarea { max-width: 100% !important; }
+  td.djep-form-sections { margin-top: 32px !important; font-size: 13px !important; }
+  tr[id^="question_row_id_"] input[type="radio"],
+  tr[id^="question_row_id_"] input[type="checkbox"] {
+    width: 24px !important; height: 24px !important; /* bigger touch targets */
+  }
+}
