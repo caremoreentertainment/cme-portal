@@ -4525,24 +4525,29 @@ tr[id^="question_row_id_"] a[onclick*="moreinfo"] {
   tr[id^="question_row_id_"] > td.ed { padding: 10px 10px !important; }
 }
 /* ============================================================
-   v4.9 - PLANNING FORM "TYPEFORM MODE"
-   Replaces v4.8 entirely. Delete v4.8, paste this.
+   v5.0 - PLANNING FORM "TYPEFORM MODE"
+   Replaces v4.9 entirely. Delete v4.9, paste this.
 
-   v4.9 fixes:
-   - comment blocks were inheriting LABEL styling on desktop
-     (uppercase/letterspaced) because they sit in td.ed:first-child.
-     All typography rules are now gated behind
-     :has(input, textarea, select) so comment-only rows are left
-     alone and their inline HTML styles render as authored.
-   - textarea labels rendered smaller than text/radio labels on
-     desktop because they sit in a colspan cell, which the old
-     :not([colspan]) selector skipped. Now covered.
-   - comment block + the question beneath it are pulled together
-     so they read as one unit.
+   Written against FULL confirmed markup for BOTH templates.
 
-   REMINDER: no display rule uses !important. The form runs
-   jsProcessConditionalLogic() which hides questions via inline
-   jQuery styles - !important would permanently block it.
+   DESKTOP has two row shapes:
+     A) td.ed[width="450"] = label  +  td.ed[width="300"] = answer
+        (text inputs, vertical radios, checkbox lists)
+     B) td.ed[colspan="2"] = label text node + <br> + the input
+        (textareas, horizontal radios, grids, comment blocks)
+
+   Shape B puts the label and the input in the SAME cell with no
+   wrapper element, so the label can only be styled by styling the
+   cell, then resetting the inputs inside it. That is what this does.
+
+   Horizontal-radio rows are shape B, so their option text picks up
+   label styling too. That is unavoidable (bare text nodes, no hook)
+   and reads as deliberate.
+
+   MOBILE is a separate template: div.form-group + p.questiontitle.
+
+   Grids on desktop are table[border="10"] - NOT .table-responsive,
+   which is mobile-only. Both are handled below.
    ============================================================ */
 
 /* ---------- 0. COUNTER ROOT ---------- */
@@ -4550,11 +4555,9 @@ tr[id^="question_row_id_"] a[onclick*="moreinfo"] {
 
 /* ---------- 1. QUESTION ROW ---------- */
 [id^="question_row_id_"] {
-  padding: 24px 4px 24px 6px !important;
   border-bottom: 1px solid var(--cme-line) !important;
   border-left: 2px solid transparent !important;
-  transition: background-color .2s ease, border-color .2s ease,
-              padding-left .2s ease !important;
+  transition: background-color .2s ease, border-color .2s ease !important;
 }
 [id^="question_row_id_"]:hover {
   background-color: rgba(255,255,255,.015) !important;
@@ -4562,46 +4565,22 @@ tr[id^="question_row_id_"] a[onclick*="moreinfo"] {
 [id^="question_row_id_"]:focus-within {
   background-image: linear-gradient(90deg, rgba(229,9,20,.06), transparent 65%) !important;
   border-left: 2px solid var(--cme-red) !important;
-  padding-left: 20px !important;
 }
 
-/* DESKTOP: stack the two-column table. No !important on display. */
+/* DESKTOP: stack the two-column shape. No !important on display -
+   jsProcessConditionalLogic hides rows with inline styles. */
 tr[id^="question_row_id_"] { display: block; }
 tr[id^="question_row_id_"] > td.ed {
   display: block;
   width: 100% !important;
-  max-width: 760px !important;
+  max-width: 100% !important;
   border-bottom: none !important;
-  padding: 0 !important;
 }
 
-/* ---------- 2. COMMENT-ONLY ROWS ----------
-   No input = it's a comment block. Strip the row chrome and
-   apply NO typography, so the authored inline HTML wins. */
-[id^="question_row_id_"]:not(:has(input, textarea, select)) {
-  border-bottom: none !important;
-  border-left: 2px solid transparent !important;
-  background-image: none !important;
-  padding: 18px 4px 0 6px !important;
-}
-/* pull the question beneath a comment up tight against it */
-[id^="question_row_id_"]:not(:has(input, textarea, select))
-  + [id^="question_row_id_"] {
-  padding-top: 10px !important;
-}
-/* belt and braces: kill inherited case/spacing inside comment HTML */
-[id^="question_row_id_"] td.ed div[style],
-[id^="question_row_id_"] div[class*="col-"] > div[style] {
-  text-transform: none !important;
-  letter-spacing: normal !important;
-}
-
-/* ---------- 3. LABELS - UNIFORM SIZE ----------
-   Gated to rows that actually have an input, and no longer
-   excludes colspan cells (that was the textarea label bug). */
-[id^="question_row_id_"]:has(input, textarea, select) p.questiontitle,
-[id^="question_row_id_"]:has(input, textarea, select) p[class*="questiontitle"],
-tr[id^="question_row_id_"]:has(input, textarea, select) > td.ed:first-child {
+/* ---------- 2. DESKTOP LABEL TYPOGRAPHY ----------
+   Shape A label cell and Shape B colspan cell get IDENTICAL type. */
+tr[id^="question_row_id_"] > td.ed[width="450"],
+tr[id^="question_row_id_"] > td.ed[colspan="2"] {
   background: transparent !important;
   font-family: var(--cme-ui) !important;
   font-size: 13.5px !important;
@@ -4610,20 +4589,21 @@ tr[id^="question_row_id_"]:has(input, textarea, select) > td.ed:first-child {
   text-transform: uppercase !important;
   color: #b4b4b4 !important;
   line-height: 1.7 !important;
-  margin: 0 0 14px !important;
-  padding: 0 !important;
+  padding: 22px 6px 6px !important;
   transition: color .2s ease !important;
 }
-[id^="question_row_id_"]:focus-within p.questiontitle,
-tr[id^="question_row_id_"]:focus-within > td.ed:first-child {
+/* shape A label needs bottom room before its sibling answer cell */
+tr[id^="question_row_id_"] > td.ed[width="450"] {
+  padding-bottom: 12px !important;
+}
+tr[id^="question_row_id_"]:focus-within > td.ed[width="450"],
+tr[id^="question_row_id_"]:focus-within > td.ed[colspan="2"] {
   color: var(--cme-white) !important;
 }
 
-/* ---------- 4. ANSWER AREA TYPOGRAPHY (gated) ---------- */
-[id^="question_row_id_"]:has(input, textarea, select)
-  > div[class*="col-"]:not(.questiontitle),
-tr[id^="question_row_id_"]:has(input, textarea, select)
-  > td.ed:last-child:not(:first-child) {
+/* ---------- 3. DESKTOP ANSWER CELL (shape A) ---------- */
+tr[id^="question_row_id_"] > td.ed[width="300"] {
+  background: transparent !important;
   font-family: var(--cme-ui) !important;
   font-size: 15px !important;
   font-weight: 400 !important;
@@ -4631,26 +4611,64 @@ tr[id^="question_row_id_"]:has(input, textarea, select)
   text-transform: none !important;
   color: var(--cme-text) !important;
   line-height: 2.3 !important;
+  padding: 0 6px 22px !important;
+}
+
+/* ---------- 4. COMMENT BLOCKS ----------
+   Colspan cells whose only content is an inline-styled div.
+   Strip ALL inherited typography so the authored HTML renders
+   exactly as written. */
+tr[id^="question_row_id_"] > td.ed[colspan="2"]:has(> div[style]) {
+  font-size: initial !important;
+  font-weight: 400 !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  line-height: normal !important;
+  color: var(--cme-text) !important;
+  padding: 16px 6px 6px !important;
+}
+tr[id^="question_row_id_"] > td.ed[colspan="2"] > div[style],
+tr[id^="question_row_id_"] > td.ed[colspan="2"] > div[style] *,
+[id^="question_row_id_"] div[class*="col-"] > div[style],
+[id^="question_row_id_"] div[class*="col-"] > div[style] * {
+  text-transform: none !important;
+  letter-spacing: normal !important;
+}
+/* comment rows lose the divider and pull into the question below */
+[id^="question_row_id_"]:not(:has(input, textarea, select)) {
+  border-bottom: none !important;
+  border-left: 2px solid transparent !important;
+  background-image: none !important;
 }
 
 /* ---------- 5. INPUTS ---------- */
-[id^="question_row_id_"] input.metro-input-text,
-[id^="question_row_id_"] input[type="text"] {
+[id^="question_row_id_"] input[type="text"],
+[id^="question_row_id_"] input.metro-input-text {
   width: 100% !important;
   max-width: 540px !important;
   min-height: 48px !important;
   padding: 11px 16px !important;
+  font-family: var(--cme-ui) !important;
   font-size: 16px !important;
+  font-weight: 400 !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
   border-radius: 10px !important;
   box-sizing: border-box !important;
 }
 [id^="question_row_id_"] textarea,
 [id^="question_row_id_"] textarea.metro-input-textarea {
+  display: block !important;
   width: 100% !important;
   max-width: 680px !important;
   min-height: 130px !important;
+  margin-top: 12px !important;
   padding: 14px 16px !important;
+  font-family: var(--cme-ui) !important;
   font-size: 16px !important;
+  font-weight: 400 !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
   line-height: 1.65 !important;
   border-radius: 10px !important;
   box-sizing: border-box !important;
@@ -4664,7 +4682,7 @@ tr[id^="question_row_id_"]:has(input, textarea, select)
   width: 22px !important;
   height: 22px !important;
   min-width: 22px !important;
-  margin: 0 12px 0 0 !important;
+  margin: 0 11px 0 0 !important;
   vertical-align: -5px !important;
   background: #131313 !important;
   border: 2px solid #3a3a3a !important;
@@ -4707,20 +4725,20 @@ tr[id^="question_row_id_"]:has(input, textarea, select)
   transform: rotate(42deg) !important;
 }
 
-/* ---------- 7. SECTION HEADERS ---------- */
+/* ---------- 7. SECTION HEADERS ----------
+   Desktop carries inline background-color WITH !important, so
+   background-color cannot be overridden - background-image can. */
 .djep-form-sections,
 .djepm-form-sections {
   counter-increment: cmeSection !important;
   position: relative !important;
-  background-color: transparent !important;
   background-image:
-    linear-gradient(90deg, rgba(229,9,20,.13) 0%, rgba(229,9,20,.03) 38%, transparent 72%),
-    linear-gradient(180deg, #141414 0%, #0d0d0d 100%) !important;
+    linear-gradient(90deg, rgba(229,9,20,.16) 0%, rgba(229,9,20,.04) 38%, transparent 72%),
+    linear-gradient(180deg, #161616 0%, #0d0d0d 100%) !important;
   border: 1px solid #1e1e1e !important;
-  border-left: none !important;
   border-radius: 12px !important;
   box-shadow: 0 10px 30px rgba(0,0,0,.45) !important;
-  margin: 56px 0 14px !important;
+  margin: 20px 0 14px !important;
   padding: 20px 24px 21px !important;
   font-family: var(--cme-ui) !important;
   font-size: 15px !important;
@@ -4756,47 +4774,60 @@ tr[id^="question_row_id_"]:has(input, textarea, select)
   background: linear-gradient(90deg, var(--cme-red) 0%, rgba(229,9,20,.35) 34%, transparent 78%) !important;
 }
 
-/* ---------- 8. GRID QUESTIONS ---------- */
+/* ---------- 8. GRIDS ----------
+   Desktop: table[border="10"] nested in a colspan cell.
+   Mobile:  .table-responsive table.table-bordered */
+tr[id^="question_row_id_"] td.ed table[border="10"],
 [id^="question_row_id_"] .table-responsive table.table-bordered {
+  width: 100% !important;
+  margin-top: 14px !important;
   border: 1px solid var(--cme-line2) !important;
   border-radius: 10px !important;
   border-collapse: separate !important;
   border-spacing: 0 !important;
   overflow: hidden !important;
-  margin-top: 6px !important;
 }
-[id^="question_row_id_"] .table-responsive th {
-  background: var(--cme-raise) !important;
-  border: none !important;
-  border-bottom: 2px solid var(--cme-red) !important;
-  font-family: var(--cme-ui) !important;
-  font-size: 10.5px !important;
-  font-weight: 700 !important;
-  letter-spacing: .14em !important;
-  text-transform: uppercase !important;
-  color: var(--cme-white) !important;
-  padding: 11px 8px !important;
-}
+/* inner grid cells: reset the uppercase inherited from the outer cell */
+tr[id^="question_row_id_"] td.ed table[border="10"] td.ed,
 [id^="question_row_id_"] .table-responsive td {
+  display: table-cell !important;
+  width: auto !important;
   background: transparent !important;
   border: none !important;
   border-top: 1px solid var(--cme-line) !important;
   padding: 7px 8px !important;
   font-family: var(--cme-ui) !important;
   font-size: 13px !important;
-  letter-spacing: .06em !important;
-  text-transform: none !important;
+  font-weight: 600 !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+  color: #9a9a9a !important;
+  line-height: 1.5 !important;
   vertical-align: middle !important;
 }
+/* first row of the desktop grid acts as the header row */
+tr[id^="question_row_id_"] td.ed table[border="10"] tr:first-child td.ed,
+[id^="question_row_id_"] .table-responsive th {
+  background: var(--cme-raise) !important;
+  border-top: none !important;
+  border-bottom: 2px solid var(--cme-red) !important;
+  font-size: 10.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: .14em !important;
+  color: var(--cme-white) !important;
+  padding: 11px 8px !important;
+}
+tr[id^="question_row_id_"] td.ed table[border="10"] input[type="text"],
 [id^="question_row_id_"] .table-responsive input.metro-input-text {
   min-height: 40px !important;
   max-width: none !important;
+  margin-top: 0 !important;
   font-size: 15px !important;
   border-radius: 8px !important;
   padding: 8px 12px !important;
 }
 
-/* ---------- 9. SAVE BUTTON ---------- */
+/* ---------- 9. SAVE BUTTON + TITLEBAR ---------- */
 #ep_form input.djep-actionbutton[type="submit"],
 input[value="Save Changes"], input[value="Save Information"] {
   background-color: var(--cme-red) !important;
@@ -4810,7 +4841,10 @@ input[value="Save Changes"], input[value="Save Information"] {
   letter-spacing: .18em !important;
   text-transform: uppercase !important;
   padding: 15px 36px !important;
+  min-height: 0 !important;
   height: auto !important;
+  width: auto !important;
+  max-width: none !important;
   cursor: pointer !important;
   box-shadow: inset 0 1px 0 rgba(255,255,255,.22), 0 4px 18px rgba(0,0,0,.55) !important;
   transition: box-shadow .25s ease, transform .15s ease !important;
@@ -4825,30 +4859,47 @@ input[value="Save Changes"]:hover {
   font-size: 12px !important;
   letter-spacing: .2em !important;
 }
+#autosavecountdowntimer {
+  font-family: var(--cme-ui) !important;
+  letter-spacing: .1em !important;
+  text-transform: uppercase !important;
+  color: #7a7a7a !important;
+}
 
-/* ---------- 10. TRUE MOBILE ---------- */
+/* ---------- 10. MOBILE TEMPLATE ---------- */
 @media (max-width: 767px) {
   [id^="question_row_id_"] { padding: 21px 2px 21px 4px !important; }
   [id^="question_row_id_"]:focus-within { padding-left: 16px !important; }
-  [id^="question_row_id_"]:not(:has(input, textarea, select)) {
-    padding: 14px 2px 0 4px !important;
-  }
 
-  [id^="question_row_id_"]:has(input, textarea, select) p.questiontitle {
+  p.questiontitle,
+  [id^="question_row_id_"] p.questiontitle {
+    background: transparent !important;
+    font-family: var(--cme-ui) !important;
     font-size: 12.5px !important;
+    font-weight: 700 !important;
     letter-spacing: .1em !important;
+    text-transform: uppercase !important;
+    color: #b4b4b4 !important;
     line-height: 1.65 !important;
-    margin-bottom: 12px !important;
+    margin: 0 0 12px !important;
+    padding: 0 !important;
   }
-  [id^="question_row_id_"] input.metro-input-text,
+  [id^="question_row_id_"]:focus-within p.questiontitle {
+    color: var(--cme-white) !important;
+  }
+  [id^="question_row_id_"] > div[class*="col-"]:not(.questiontitle) {
+    font-family: var(--cme-ui) !important;
+    font-size: 15.5px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+    color: var(--cme-text) !important;
+    line-height: 2.4 !important;
+  }
+  [id^="question_row_id_"] input[type="text"],
   [id^="question_row_id_"] textarea {
     max-width: 100% !important;
     width: 100% !important;
-  }
-  [id^="question_row_id_"]:has(input, textarea, select)
-    > div[class*="col-"]:not(.questiontitle) {
-    font-size: 15.5px !important;
-    line-height: 2.4 !important;
   }
   [id^="question_row_id_"] input[type="radio"],
   [id^="question_row_id_"] input[type="checkbox"] {
@@ -4858,7 +4909,7 @@ input[value="Save Changes"]:hover {
     vertical-align: -6px !important;
   }
   .djep-form-sections, .djepm-form-sections {
-    margin-top: 40px !important;
+    margin-top: 34px !important;
     font-size: 13px !important;
     letter-spacing: .2em !important;
     padding: 17px 18px 18px !important;
