@@ -4347,44 +4347,6 @@ button:has([value="Search" i]), button[aria-label="Search" i] {
 select {
   color-scheme: light !important;
 }
-
-/* ============================================================
-   v4.4 - HAMBURGER / MOBILE MENU TOGGLE (best effort, attempt 2)
-   Exempts elements matching common menu-toggle naming patterns
-   from the v3.8 blanket transparent rule, restoring a visible
-   bar color. Non-destructive: only touches elements whose class
-   or id contains these specific words, so it cannot affect
-   unrelated parts of the page even if some patterns don't match
-   anything real.
-   ============================================================ */
-[class*="hamburger"], [id*="hamburger"],
-[class*="burger"], [id*="burger"],
-[class*="menu-toggle"], [id*="menu-toggle"],
-[class*="menuToggle"], [id*="menuToggle"],
-[class*="nav-toggle"], [id*="nav-toggle"],
-[class*="navToggle"], [id*="navToggle"],
-[class*="mobile-menu"] *, [id*="mobile-menu"] *,
-[class*="mobilemenu"] *, [id*="mobilemenu"] *,
-button[class*="menu"], a[class*="menu"],
-button[aria-label*="menu" i], button[aria-label*="Menu" i] {
-  background-color: #e0e0e0 !important;
-}
-[class*="hamburger"]:hover, [id*="hamburger"]:hover,
-[class*="burger"]:hover, [id*="burger"]:hover,
-[class*="menu-toggle"]:hover, [id*="menu-toggle"]:hover,
-button[class*="menu"]:hover, a[class*="menu"]:hover {
-  background-color: var(--cme-red) !important;
-}
-/* the outer clickable container itself should stay transparent/dark,
-   only the bar elements inside it need to be visible */
-button[class*="menu"], a[class*="menu"],
-[class*="hamburger"], [id*="hamburger"] {
-  background-color: transparent !important;
-  border: 1px solid var(--cme-line2) !important;
-  border-radius: 6px !important;
-}
-
-
 /* ============================================================
    FINAL POLISH - appended last so these win cleanly.
    Small, additive refinements only. Nothing structural.
@@ -4886,4 +4848,86 @@ input[value="Save Changes"]:hover {
   letter-spacing: normal !important;
   text-transform: none !important;
   line-height: normal !important;
+}
+/* ============================================================
+   v5.1 - MOBILE MENU TOGGLE (hamburger)
+   Confirmed markup from the live mobile portal:
+     button.navbar-toggle.collapsed
+       span.sr-only + span.icon-bar x3
+   Root cause: the v3.8 blanket "* { background-color:
+   transparent !important }" erases the three bars, since
+   .icon-bar carries no color of its own in this theme.
+   v4.4 guessed at class names that don't exist here - delete it.
+   ============================================================ */
+
+.djepm-navbar .navbar-toggle,
+button.navbar-toggle {
+  background-color: transparent !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-radius: 8px !important;
+  padding: 9px 10px !important;
+  margin: 8px 8px 8px 0 !important;
+  transition: border-color .2s ease, background-color .2s ease !important;
+}
+.djepm-navbar .navbar-toggle:hover,
+button.navbar-toggle:hover {
+  background-color: #1c0406 !important;
+  border-color: var(--cme-red) !important;
+}
+
+/* the three bars - this is the actual fix */
+.navbar-toggle .icon-bar,
+button.navbar-toggle .icon-bar {
+  background-color: #e0e0e0 !important;
+  display: block !important;
+  width: 22px !important;
+  height: 2px !important;
+  border-radius: 2px !important;
+  transition: background-color .2s ease !important;
+}
+.navbar-toggle .icon-bar + .icon-bar {
+  margin-top: 5px !important;
+}
+.navbar-toggle:hover .icon-bar,
+.navbar-toggle:not(.collapsed) .icon-bar {
+  background-color: var(--cme-red) !important;
+}
+
+/* screen-reader label must stay hidden */
+.navbar-toggle .sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0,0,0,0) !important;
+}
+
+/* the mobile nav bar itself */
+.djepm-navbar, .navbar-inverse.djepm-navbar {
+  background-color: var(--cme-panel) !important;
+  background-image: none !important;
+  border: none !important;
+  border-bottom: 1px solid var(--cme-red) !important;
+}
+.djepm-navbar .navbar-brand {
+  color: var(--cme-white) !important;
+  font-family: var(--cme-ui) !important;
+  font-weight: 700 !important;
+  letter-spacing: .14em !important;
+  text-transform: uppercase !important;
+}
+.djepm-navbar .navbar-nav > li > a {
+  color: var(--cme-text) !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 13px !important;
+  letter-spacing: .1em !important;
+  border-bottom: 1px solid var(--cme-line) !important;
+}
+.djepm-navbar .navbar-nav > li > a:hover {
+  background-color: #1c0406 !important;
+  color: #fff !important;
+}
+.djepm-navbar .navbar-collapse {
+  background-color: var(--cme-panel) !important;
+  border-color: var(--cme-line) !important;
 }
