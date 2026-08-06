@@ -5356,3 +5356,8 @@ input.djep-actionbutton[value="Cancel And Return"]:hover {
     max-width: 100% !important;
   }
 }
+/* v5.2.1 - restore row height so jQuery UI's cursorAt:{top:-5}
+   offset lands inside the intended row, not the one above. */
+table.djep-timelinetable tr[id^="timeline_row_"] > td {
+  padding: 9px 6px !important;
+}
