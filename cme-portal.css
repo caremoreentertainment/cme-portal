@@ -6391,3 +6391,192 @@ div[id$="_pagination_results"] {
 #requests_accordion .ui-accordion-header-active {
   border-radius: 8px 8px 0 0 !important;
 }
+/* ============================================================
+   NAMES FORM
+   Append at the bottom of Custom Scripting.
+   Scoped to .djep-editweddingnamesbox, which is the ONE class
+   present identically in both desktop and mobile markup.
+   .djep-titlebar and .djep-actionbutton already inherit styling
+   from earlier unscoped rules - not re-declared here.
+   No drag-and-drop on this page, so no geometry constraints.
+   ============================================================ */
+
+/* ---------- CONTAINER ---------- */
+.djep-editweddingnamesbox {
+  background-color: #0d0d0d !important;
+  border: 1px solid #1f1f1f !important;
+  border-radius: 14px !important;
+  padding: 4px 4px 22px !important;
+  box-shadow: 0 20px 50px rgba(0,0,0,.6) !important;
+}
+.djep-editweddingnamesbox .djep-titlebar {
+  margin-bottom: 4px !important;
+}
+
+/* ---------- DESKTOP: BARE TABLE, NO CLASSES ---------- */
+.djep-editweddingnamesbox > form > table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+}
+.djep-editweddingnamesbox > form > table > tbody > tr > td {
+  padding: 9px 14px !important;
+  border-bottom: 1px solid #171717 !important;
+  vertical-align: middle !important;
+}
+/* label cells (align=right, no colspan) */
+.djep-editweddingnamesbox > form > table > tbody > tr > td[align="right"] {
+  width: 30%;
+  color: #8a8a8a !important;
+  font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 10.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: .16em !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+}
+/* instructional rows (centered, colspan=2, no nested table) */
+.djep-editweddingnamesbox > form > table > tbody > tr > td[align="center"][colspan="2"]:not(:has(table)) {
+  background: #101010 !important;
+  border: 1px dashed #333333 !important;
+  border-radius: 10px !important;
+  color: #8f8f8f !important;
+  font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 12px !important;
+  line-height: 1.6 !important;
+  padding: 14px 18px !important;
+  margin: 6px 0 !important;
+}
+/* button row */
+.djep-editweddingnamesbox > form > table > tbody > tr:last-child > td {
+  border-bottom: none !important;
+  padding-top: 20px !important;
+}
+
+/* nested bridesmaids/groomsmen table */
+.djep-editweddingnamesbox td[colspan="2"] table {
+  width: 100% !important;
+}
+.djep-editweddingnamesbox td[colspan="2"] table td {
+  border-bottom: none !important;
+  padding: 5px 8px !important;
+}
+.djep-editweddingnamesbox td[colspan="2"] table tr:first-child td {
+  color: #e50914 !important;
+  font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: .18em !important;
+  text-transform: uppercase !important;
+  padding-bottom: 10px !important;
+  border-bottom: 1px solid #1f1f1f !important;
+}
+/* "Escorted By" cells */
+.djep-editweddingnamesbox td[colspan="2"] table td:not(:has(input)):not(:first-child) {
+  color: #5a5a5a !important;
+  font-size: 10px !important;
+  font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+}
+
+/* ---------- INPUTS - both templates ---------- */
+.djep-editweddingnamesbox input[type="text"] {
+  width: 100% !important;
+  max-width: 380px !important;
+  box-sizing: border-box !important;
+  background-color: #131313 !important;
+  border: 1px solid #262626 !important;
+  border-radius: 9px !important;
+  color: #ffffff !important;
+  font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 14px !important;
+  padding: 10px 13px !important;
+  transition: border-color .25s ease, box-shadow .25s ease,
+              background-color .25s ease !important;
+}
+.djep-editweddingnamesbox input[type="text"]:focus {
+  background-color: #171717 !important;
+  border-color: #e50914 !important;
+  box-shadow: 0 0 0 3px rgba(229,9,20,.13) !important;
+  outline: none !important;
+}
+.djep-editweddingnamesbox ::placeholder { color: #4a4a4a !important; }
+/* nested-table inputs run narrower */
+.djep-editweddingnamesbox td[colspan="2"] table input[type="text"] {
+  max-width: 220px !important;
+}
+
+/* ---------- MOBILE: panels, headers, labels ---------- */
+.djep-editweddingnamesbox .panel.panel-default {
+  background-color: #101010 !important;
+  border: 1px solid #1f1f1f !important;
+  border-left: 3px solid #e50914 !important;
+  border-radius: 10px !important;
+  margin: 12px 0 !important;
+  overflow: hidden !important;
+}
+.djep-editweddingnamesbox .panel-body {
+  padding: 16px 16px 18px !important;
+}
+.djep-editweddingnamesbox .form-group > h4 {
+  color: #f5f5f5 !important;
+  font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  letter-spacing: .2em !important;
+  text-transform: uppercase !important;
+  margin: 0 0 4px !important;
+}
+.djep-editweddingnamesbox h3.small {
+  color: #8f8f8f !important;
+  font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 12px !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  margin: 6px 0 14px !important;
+}
+.djep-editweddingnamesbox label.questiontitle {
+  display: block !important;
+  color: #7a7a7a !important;
+  font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 9.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: .16em !important;
+  text-transform: uppercase !important;
+  margin: 10px 0 6px !important;
+}
+.djep-editweddingnamesbox .form-control.width90hack {
+  width: 100% !important;
+}
+
+/* toggleautosave checkbox - unstyled elsewhere, fixed here */
+.djep-editweddingnamesbox input#toggleautosave {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  width: 14px !important;
+  height: 14px !important;
+  margin: 0 4px 0 6px !important;
+  background: #131313 !important;
+  border: 1.5px solid #3a3a3a !important;
+  border-radius: 3px !important;
+  vertical-align: -2px !important;
+  cursor: pointer !important;
+}
+.djep-editweddingnamesbox input#toggleautosave:checked {
+  background: #e50914 !important;
+  border-color: #e50914 !important;
+}
+
+/* ---------- MOBILE: button row ---------- */
+@media (max-width: 600px) {
+  .djep-editweddingnamesbox .col-xs-12 input.djep-actionbutton {
+    display: block !important;
+    width: 100% !important;
+    margin: 6px 0 !important;
+  }
+}
