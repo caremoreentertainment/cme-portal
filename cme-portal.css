@@ -6798,3 +6798,34 @@ div[id$="_pagination_results"] {
 .djep-editweddingnamesbox td[colspan="2"] table tr:not(:first-child) td:not(:has(input)):not(:first-child) {
   font-size: 0 !important;
 }
+/* CENTER THE BRIDESMAIDS/GROOMSMEN COLUMNS
+   Rows are: blank | bridesmaid | "Escorted By" | groomsman | blank.
+   Hiding the middle text collapsed it, and the outer blanks were
+   still holding width, so the pair drifted left. */
+
+/* outer spacer cells give up their width */
+.djep-editweddingnamesbox td[colspan="2"] table td:first-child,
+.djep-editweddingnamesbox td[colspan="2"] table td:last-child {
+  width: 0 !important;
+  padding: 0 !important;
+}
+
+/* the collapsed middle cell holds a real gutter */
+.djep-editweddingnamesbox td[colspan="2"] table tr:not(:first-child) td:not(:has(input)):not(:first-child):not(:last-child) {
+  width: 60px !important;
+  padding: 0 !important;
+}
+
+/* input columns split the remaining space evenly */
+.djep-editweddingnamesbox td[colspan="2"] table td:has(input) {
+  width: 50% !important;
+  text-align: center !important;
+}
+.djep-editweddingnamesbox td[colspan="2"] table input[type="text"] {
+  max-width: 300px !important;
+}
+
+/* headers sit over their own columns */
+.djep-editweddingnamesbox td[colspan="2"] table tr:first-child td {
+  text-align: center !important;
+}
