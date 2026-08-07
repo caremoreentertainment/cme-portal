@@ -4328,7 +4328,6 @@ button:has([value="Search" i]), button[aria-label="Search" i] {
      should show, this keeps just the last one currently visible
      in the flow. Scoped to the request/special-song modal area
      by class-name substring so it cannot reach unrelated modals. */
-  [class*="request"] > select:not(:last-of-type),
   [class*="special"] select ~ select {
     display: none !important;
   }
