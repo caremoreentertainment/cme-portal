@@ -6792,14 +6792,9 @@ div[id$="_pagination_results"] {
 .djep-editweddingnamesbox input[type="text"] {
   font-size: 15px !important;
 }
-
-/* ============================================================
-   NAMES FORM - HIDE "ESCORTED BY"
-   Overrides the 11px set just above for this same cell,
-   collapsing it to invisible. The <td> stays in the row so
-   Bridesmaids and Groomsmen columns keep their alignment.
-   ============================================================ */
-
-.djep-editweddingnamesbox td[colspan="2"] table td:not(:has(input)):not(:first-child) {
+/* HIDE "ESCORTED BY" - excludes the header row.
+   The previous version also matched tr:first-child, which is
+   where Bridesmaids/Groomsmen live, hiding them too. */
+.djep-editweddingnamesbox td[colspan="2"] table tr:not(:first-child) td:not(:has(input)):not(:first-child) {
   font-size: 0 !important;
 }
