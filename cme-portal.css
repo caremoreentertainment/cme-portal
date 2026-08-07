@@ -6310,3 +6310,85 @@ a.djep-toplistbuttons.djep-toplistbuttons_active:hover {
     min-height: 46px !important;
   }
 }
+/* ============================================================
+   v5.6 - PAGINATION BUTTONS + REQUESTS HEADER MATCH
+   Append after v5.5.
+   Colour and width only. No height, no padding on accordion
+   headers - that is what jumbled the panel in v5.4.
+   ============================================================ */
+
+/* ---------- 1. NEXT / PREVIOUS BUTTONS ----------
+   Base CSS pins .djep-artistsongbuttons to 28x28 for single
+   letters. "Next" and "Previous" reuse the class and overflow.
+   min-width keeps the A-Z grid square. */
+.djep-artistsongbuttons,
+.djep-artistsongbuttonswide,
+a.djep-artistsongbuttons,
+a.djep-artistsongbuttonswide {
+  width: auto !important;
+  min-width: 30px !important;
+  height: auto !important;
+  min-height: 30px !important;
+  padding: 5px 9px !important;
+  box-sizing: border-box !important;
+  font-family: var(--cme-ui) !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+  letter-spacing: .04em !important;
+  white-space: nowrap !important;
+  text-align: center !important;
+  border-radius: 7px !important;
+  vertical-align: middle !important;
+}
+
+/* the "Page 1 of 17 (1630 artists)" caption */
+div[id$="_pagination_results"] {
+  font-family: var(--cme-ui) !important;
+  font-size: 12px !important;
+  color: var(--cme-muted) !important;
+  text-align: center !important;
+}
+
+/* ---------- 2. REQUESTS HEADERS MATCH SPECIAL SONGS ----------
+   Identical treatment to .djep-special_song_header. Colour,
+   border and radius only - height:35px and margins stay as
+   DJEP set them, because jQuery UI reads header geometry. */
+.djep-playlistboxmustplaytitle,
+.djep-playlistboxplayifposstitle,
+.djep-playlistboxdedicationstitle,
+.djep-playlistboxdonotplaytitle,
+.djep-playlistboxspotifytitle,
+.djep-playlistboxonlyrequesttitle,
+.djep-playlistboxcustomtype1title,
+.djep-playlistboxcustomtype2title,
+.djep-playlistboxcustomtype3title,
+.djep-playlistboxcustomtype4title,
+.djep-playlistboxcustomtype5title {
+  background: var(--cme-raise) !important;
+  background-color: var(--cme-raise) !important;
+  background-image: linear-gradient(90deg, rgba(229,9,20,.10), transparent 60%) !important;
+  filter: none !important;
+  border: 1px solid var(--cme-line2) !important;
+  border-left: 3px solid var(--cme-red) !important;
+  border-radius: 8px !important;
+  color: var(--cme-white) !important;
+  cursor: pointer !important;
+  transition: background-color .2s ease, border-color .2s ease !important;
+}
+.djep-playlistboxmustplaytitle:hover,
+.djep-playlistboxplayifposstitle:hover,
+.djep-playlistboxdedicationstitle:hover,
+.djep-playlistboxdonotplaytitle:hover,
+.djep-playlistboxcustomtype1title:hover,
+.djep-playlistboxcustomtype2title:hover,
+.djep-playlistboxcustomtype3title:hover,
+.djep-playlistboxcustomtype4title:hover,
+.djep-playlistboxcustomtype5title:hover {
+  background-color: #1c0406 !important;
+  border-color: var(--cme-red) !important;
+}
+/* open panel keeps the corners joined to its content */
+#requests_accordion .ui-accordion-header-active {
+  border-radius: 8px 8px 0 0 !important;
+}
